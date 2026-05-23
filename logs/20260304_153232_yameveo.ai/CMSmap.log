@@ -1,0 +1,24 @@
+E: Unable to locate package exploitdb
+[-] Date & Time: 04/03/2026 15:32:51
+[I] Threads: 5
+[-] Target: https://yameveo.ai:443 (104.21.48.117)
+[I] Server: cloudflare
+[L] X-Frame-Options: Not Enforced
+[I] Strict-Transport-Security: Not Enforced
+[I] X-Content-Security-Policy: Not Enforced
+[L] Robots.txt Found: https://yameveo.ai:443/robots.txt
+[I] CMS Detection: WordPress
+[I] Wordpress Version: 6.9.1
+[I] Wordpress Theme: yameveo-sentinel-classic
+[-] WordPress usernames identified: 
+[M] ]
+[M] yameveo_admin
+[M] XML-RPC services are enabled
+[M] Website vulnerable to XML-RPC Brute Force Vulnerability
+[I] Autocomplete Off Not Found: https://yameveo.ai:443/wp-login.php
+[-] Default WordPress Files:
+[-] Searching Wordpress Plugins ...
+[I] *","
+[I] Checking for Directory Listing Enabled ...
+[-] Date & Time: 04/03/2026 15:33:17
+[-] Completed in: 0:00:25

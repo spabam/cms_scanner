@@ -1,0 +1,9 @@
+[2026-05-06 17:48:25] Target input       : infrascan.net
+[2026-05-06 17:48:25] Normalized target  : https://infrascan.net:443
+[2026-05-06 17:48:25] Detected CMS       : unknown
+[2026-05-06 17:48:25] Report output      : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/infrascan.net.cms.txt
+[2026-05-06 17:48:25] Run log            : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174825_infrascan.net/run.log
+[2026-05-06 17:48:25] Tool logs          : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174825_infrascan.net
+[2026-05-06 17:48:25] Output owner       : spabam:spabam
+[2026-05-06 17:48:53] Unified report written to /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/infrascan.net.cms.txt
+[2026-05-06 17:48:53] Summary: success=3, nonzero=15, timeouts=0, skipped=3

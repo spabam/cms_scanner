@@ -1,0 +1,48 @@
+[H[2J[3J
+[0m[33m[1m                      /\
+[0m[33m[1m          _.--''-- , / /
+[0m[33m[1m  ,---- .'          /_/
+[0m[33m[1m   '---',  .  _  .    ;
+[0m[33m[1m        ._  __ __      \
+[0m[33m[1m       , _)        .-'  y      [0m[97m[1mWordPress Exploit Framework
+[0m[33m[1m       -          (_..   :     [0m[97mVersion 2.0.1
+[0m[33m[1m      ; ...  ... (\     \ '
+[0m[33m[1m      _  \ \ \ \  /      ; :   [0m[97m[1mAuxiliaries: [0m[32m58
+[0m[33m[1m     ( t  \ \/\ \/  _   '  l   [0m[97m[1mExploits:    [0m[32m288
+[0m[33m[1m     \ |   \/  \/  i )- ' /    [0m[97m[1mPayloads:    [0m[32m7
+[0m[33m[1m      - '._        | /  ,'
+[0m[33m[1m       ..   ' - ''  -j ,
+[0m[33m[1m      (  '.___.. --'.
+[0m[33m[1m       '.______..--'
+
+[0;33;49m[!] [0m1 temporary files were found that appear to no longer be needed.
+    Would you like to remove these files? [y/n]: 
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set host yameveo.ai
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set port 443
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set ssl true
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set target_uri /
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set vhost yameveo.ai
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > show options
+[1G
+[0;33;49m  [!] [0mNo module loaded
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > check
+[1G
+[0;33;49m  [!] [0mNo module loaded
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > run
+[1G
+[0;33;49m  [!] [0mNo module loaded
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > exit
+[1G[H[2J[3J

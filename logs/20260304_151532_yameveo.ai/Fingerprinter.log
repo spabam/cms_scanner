@@ -1,0 +1,5 @@
+
+No match found
+undefined method `in_scope_urls' for an instance of CMSScanner::Target
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/lib/fingerprinter/actions.rb:254:in `passive_fingerprint'
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/fingerprinter.rb:68:in `<main>'

@@ -1,0 +1,25 @@
+[H[2J[3J[33m
+    ____  _____  _____  __  __  ___   ___    __    _  _ 
+   (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  ( 
+  \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
+[31m			(1337.today)[0m
+   
+    --=[[34mOWASP JoomScan[0m
+    +---++---==[Version : [31m0.0.7
+[0m    +---++---==[Update Date : [[31m2018/09/23[0m]
+    +---++---==[Authors : [31mMohammad Reza Espargham , Ali Razmjoo[0m
+    --=[Code name : [31mSelf Challenge[0m
+    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP
+
+[34m[34mProcessing https://blog.infrascan.net:443 ...
+
+
+[34m
+[+] FireWall Detector
+[33m[++] Firewall detected : CloudFlare
+[34m[34m
+[+] Detecting Joomla Version
+[31m[++] The target is not alive!
+
+[0m

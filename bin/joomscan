@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan" && exec perl "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan/joomscan.pl" "$@"

@@ -1,0 +1,612 @@
+[2026-05-06 17:43:12] Installing user-level dependencies as: spabam
+[2026-05-06 17:43:12] ==================== PHASE OK: Preflight (0s) ====================
+[2026-05-06 17:43:12] ==================== PHASE START: System Dependencies ====================
+[2026-05-06 17:43:12] ==================== PHASE OK: System Dependencies (0s) ====================
+[2026-05-06 17:43:12] ==================== PHASE START: Tool Installation ====================
+[2026-05-06 17:43:16] RUN: sudo apt-get update
+Get:1 http://security.debian.org/debian-security trixie-security InRelease [43.4 kB]
+Hit:2 http://deb.debian.org/debian trixie InRelease
+Get:3 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+Get:4 http://security.debian.org/debian-security trixie-security/main Sources [141 kB]
+Get:5 https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64  InRelease [1,578 B]
+Get:6 http://security.debian.org/debian-security trixie-security/main amd64 Packages [132 kB]
+Get:7 http://security.debian.org/debian-security trixie-security/main Translation-en [84.0 kB]
+Get:8 https://pkgs.netbird.io/debian stable InRelease [5,934 B]
+Hit:9 https://liquorix.net/debian trixie InRelease
+Get:10 https://dl.google.com/linux/chrome-stable/deb stable InRelease [1,825 B]
+Get:11 https://pkgs.netbird.io/debian stable/main amd64 Packages [37.5 kB]
+Get:12 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1,198 B]
+Hit:13 http://linux.dropbox.com/debian trixie InRelease
+Get:14 https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64  Packages [251 kB]
+Fetched 747 kB in 1s (792 kB/s)
+Reading package lists...
+[2026-05-06 17:43:19] RUN: sudo apt-get install -y ruby ruby-dev build-essential
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.12).
+The following additional packages will be installed:
+  libruby libruby3.3 rake ruby-csv ruby-did-you-mean ruby-net-telnet
+  ruby-ruby2-keywords ruby-rubygems ruby-sdbm ruby-webrick ruby-xmlrpc ruby3.3
+  ruby3.3-dev ruby3.3-doc rubygems-integration
+Suggested packages:
+  ri bundler
+The following NEW packages will be installed:
+  libruby libruby3.3 rake ruby ruby-csv ruby-dev ruby-did-you-mean
+  ruby-net-telnet ruby-ruby2-keywords ruby-rubygems ruby-sdbm ruby-webrick
+  ruby-xmlrpc ruby3.3 ruby3.3-dev ruby3.3-doc rubygems-integration
+0 upgraded, 17 newly installed, 0 to remove and 3 not upgraded.
+Need to get 11.8 MB of archives.
+After this operation, 60.3 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian trixie/main amd64 rubygems-integration all 1.19 [5,488 B]
+Get:2 http://deb.debian.org/debian trixie/main amd64 ruby3.3 amd64 3.3.8-2 [834 kB]
+Get:3 http://deb.debian.org/debian trixie/main amd64 ruby-rubygems all 3.6.7-2 [407 kB]
+Get:4 http://deb.debian.org/debian trixie/main amd64 ruby amd64 1:3.3+b1 [6,560 B]
+Get:5 http://deb.debian.org/debian trixie/main amd64 rake all 13.2.1-1 [65.2 kB]
+Get:6 http://deb.debian.org/debian trixie/main amd64 ruby-csv all 3.3.4-1 [42.2 kB]
+Get:7 http://deb.debian.org/debian trixie/main amd64 ruby-did-you-mean all 1.6.3-2 [20.9 kB]
+Get:8 http://deb.debian.org/debian trixie/main amd64 ruby-net-telnet all 0.2.0-1 [13.1 kB]
+Get:9 http://deb.debian.org/debian trixie/main amd64 ruby-ruby2-keywords all 0.0.5-1 [4,300 B]
+Get:10 http://deb.debian.org/debian trixie/main amd64 ruby-webrick all 1.9.1-1 [59.6 kB]
+Get:11 http://deb.debian.org/debian trixie/main amd64 ruby-xmlrpc all 0.3.3-2 [24.4 kB]
+Get:12 http://deb.debian.org/debian trixie/main amd64 libruby3.3 amd64 3.3.8-2 [6,301 kB]
+Get:13 http://deb.debian.org/debian trixie/main amd64 libruby amd64 1:3.3+b1 [5,440 B]
+Get:14 http://deb.debian.org/debian trixie/main amd64 ruby3.3-dev amd64 3.3.8-2 [1,045 kB]
+Get:15 http://deb.debian.org/debian trixie/main amd64 ruby-dev amd64 1:3.3+b1 [5,576 B]
+Get:16 http://deb.debian.org/debian trixie/main amd64 ruby-sdbm amd64 1.0.0-5+b7 [15.1 kB]
+Get:17 http://deb.debian.org/debian trixie/main amd64 ruby3.3-doc all 3.3.8-2 [2,965 kB]
+Fetched 11.8 MB in 3s (3,895 kB/s)
+Selecting previously unselected package rubygems-integration.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 438678 files and directories currently installed.)
+Preparing to unpack .../00-rubygems-integration_1.19_all.deb ...
+Unpacking rubygems-integration (1.19) ...
+Selecting previously unselected package ruby3.3.
+Preparing to unpack .../01-ruby3.3_3.3.8-2_amd64.deb ...
+Unpacking ruby3.3 (3.3.8-2) ...
+Selecting previously unselected package ruby-rubygems.
+Preparing to unpack .../02-ruby-rubygems_3.6.7-2_all.deb ...
+Unpacking ruby-rubygems (3.6.7-2) ...
+Selecting previously unselected package ruby.
+Preparing to unpack .../03-ruby_1%3a3.3+b1_amd64.deb ...
+Unpacking ruby (1:3.3+b1) ...
+Selecting previously unselected package rake.
+Preparing to unpack .../04-rake_13.2.1-1_all.deb ...
+Unpacking rake (13.2.1-1) ...
+Selecting previously unselected package ruby-csv.
+Preparing to unpack .../05-ruby-csv_3.3.4-1_all.deb ...
+Unpacking ruby-csv (3.3.4-1) ...
+Selecting previously unselected package ruby-did-you-mean.
+Preparing to unpack .../06-ruby-did-you-mean_1.6.3-2_all.deb ...
+Unpacking ruby-did-you-mean (1.6.3-2) ...
+Selecting previously unselected package ruby-net-telnet.
+Preparing to unpack .../07-ruby-net-telnet_0.2.0-1_all.deb ...
+Unpacking ruby-net-telnet (0.2.0-1) ...
+Selecting previously unselected package ruby-ruby2-keywords.
+Preparing to unpack .../08-ruby-ruby2-keywords_0.0.5-1_all.deb ...
+Unpacking ruby-ruby2-keywords (0.0.5-1) ...
+Selecting previously unselected package ruby-webrick.
+Preparing to unpack .../09-ruby-webrick_1.9.1-1_all.deb ...
+Unpacking ruby-webrick (1.9.1-1) ...
+Selecting previously unselected package ruby-xmlrpc.
+Preparing to unpack .../10-ruby-xmlrpc_0.3.3-2_all.deb ...
+Unpacking ruby-xmlrpc (0.3.3-2) ...
+Selecting previously unselected package libruby3.3:amd64.
+Preparing to unpack .../11-libruby3.3_3.3.8-2_amd64.deb ...
+Unpacking libruby3.3:amd64 (3.3.8-2) ...
+Selecting previously unselected package libruby:amd64.
+Preparing to unpack .../12-libruby_1%3a3.3+b1_amd64.deb ...
+Unpacking libruby:amd64 (1:3.3+b1) ...
+Selecting previously unselected package ruby3.3-dev:amd64.
+Preparing to unpack .../13-ruby3.3-dev_3.3.8-2_amd64.deb ...
+Unpacking ruby3.3-dev:amd64 (3.3.8-2) ...
+Selecting previously unselected package ruby-dev:amd64.
+Preparing to unpack .../14-ruby-dev_1%3a3.3+b1_amd64.deb ...
+Unpacking ruby-dev:amd64 (1:3.3+b1) ...
+Selecting previously unselected package ruby-sdbm:amd64.
+Preparing to unpack .../15-ruby-sdbm_1.0.0-5+b7_amd64.deb ...
+Unpacking ruby-sdbm:amd64 (1.0.0-5+b7) ...
+Selecting previously unselected package ruby3.3-doc.
+Preparing to unpack .../16-ruby3.3-doc_3.3.8-2_all.deb ...
+Unpacking ruby3.3-doc (3.3.8-2) ...
+Setting up ruby-ruby2-keywords (0.0.5-1) ...
+Setting up rubygems-integration (1.19) ...
+Setting up ruby3.3-doc (3.3.8-2) ...
+Setting up ruby-net-telnet (0.2.0-1) ...
+Setting up ruby-csv (3.3.4-1) ...
+Setting up ruby-webrick (1.9.1-1) ...
+Setting up ruby-did-you-mean (1.6.3-2) ...
+Setting up ruby-xmlrpc (0.3.3-2) ...
+Setting up ruby3.3 (3.3.8-2) ...
+Setting up libruby:amd64 (1:3.3+b1) ...
+Setting up ruby (1:3.3+b1) ...
+Setting up rake (13.2.1-1) ...
+Setting up libruby3.3:amd64 (3.3.8-2) ...
+Setting up ruby-rubygems (3.6.7-2) ...
+Setting up ruby3.3-dev:amd64 (3.3.8-2) ...
+Setting up ruby-sdbm:amd64 (1.0.0-5+b7) ...
+Setting up ruby-dev:amd64 (1:3.3+b1) ...
+Processing triggers for man-db (2.13.1-1) ...
+Processing triggers for libc-bin (2.41-12+deb13u2) ...
+[2026-05-06 17:43:27] RUN(user:spabam): mkdir -p /home/spabam/.wpscan/db /home/spabam/.wpscan/cache
+[2026-05-06 17:43:27] RUN(user:spabam): touch /home/spabam/.wpscan/cookie_jar.txt
+[2026-05-06 17:43:27] RUN(user:spabam): wpscan --version
+wpscan executable not found in gem or system paths
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam wpscan --version
+[2026-05-06 17:43:27] RUN(user:spabam): timeout --signal=INT --kill-after=10s 300 wpscan --update
+wpscan executable not found in gem or system paths
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam timeout --signal=INT --kill-after=10s 300 wpscan --update
+[2026-05-06 17:43:27] OK: WPScan installed
+[2026-05-06 17:43:27] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSmap pull --ff-only
+Already up to date.
+[2026-05-06 17:43:27] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmsmap
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/cmsmap
+[2026-05-06 17:43:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsmap/bin/python: No such file or directory
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+[2026-05-06 17:43:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsmap/bin/pip: No such file or directory
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install --upgrade pip
+[2026-05-06 17:43:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsmap/bin/python: No such file or directory
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+[2026-05-06 17:43:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSmap
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsmap/bin/pip: No such file or directory
+[2026-05-06 17:43:27] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSmap
+[2026-05-06 17:43:27] WARN: CMSmap: could not locate cmsmap.conf for exploitdb path patching
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap: No such file or directory
+[2026-05-06 17:43:27] FAIL: CMSmap - unexpected help output
+[2026-05-06 17:43:27] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK pull --ff-only
+Already up to date.
+[2026-05-06 17:43:28] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmseek
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/cmseek
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmseek/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmseek/bin/pip: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmseek/bin/pip install --upgrade pip
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmseek/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmseek/bin/pip: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmseek/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/cmseek.py --help
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmseek/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmseek/bin/python /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/cmseek.py --help
+[2026-05-06 17:43:28] OK: CMSeek installed
+[2026-05-06 17:43:28] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/droopescan
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/droopescan
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/pip: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/droopescan/bin/pip install --upgrade pip
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/pip install droopescan
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/pip: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/droopescan/bin/pip install droopescan
+[2026-05-06 17:43:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/python: No such file or directory
+[2026-05-06 17:43:28] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+[2026-05-06 17:43:28] FAIL: Droopescan - Smoke test failed
+[2026-05-06 17:43:28] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan pull --ff-only
+Already up to date.
+[H[2J[3J[33m
+    ____  _____  _____  __  __  ___   ___    __    _  _ 
+   (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  ( 
+  \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
+[31m			(1337.today)[0m
+   
+    --=[[34mOWASP JoomScan[0m
+    +---++---==[Version : [31m0.0.7
+[0m    +---++---==[Update Date : [[31m2018/09/23[0m]
+    +---++---==[Authors : [31mMohammad Reza Espargham , Ali Razmjoo[0m
+    --=[Code name : [31mSelf Challenge[0m
+    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP
+
+[36m   
+
+Help :
+
+Usage:	/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan/joomscan.pl [options]
+
+--url | -u <URL>                |   The Joomla URL/domain to scan.
+--mass | -m <filename>          |   Cycle through URLs provided in txt file
+--enumerate-components | -ec    |   Try to enumerate components.
+--joomla-version | -jv          |   Output target Joomla version and exit without further checks
+--no-report | -nr               |   Do not produce a report  
+
+--cookie <String>               |   Set cookie.
+--user-agent | -a <User-Agent>  |   Use the specified User-Agent.
+--random-agent | -r             |   Use a random User-Agent.
+--timeout <Time-Out>            |   Set timeout.
+--proxy=PROXY                   |   Use a proxy to connect to the target URL
+           Proxy example: --proxy http://127.0.0.1:8080
+                                  https://127.0.0.1:443
+                                  socks://127.0.0.1:414
+                       
+--about                         |   About Author
+--update                        |   Update to the latest version.
+--help | -h                     |   This help screen.
+--version                       |   Output the current joomscan version and exit.
+
+
+[0m
+[2026-05-06 17:43:28] OK: JoomScan installed
+[2026-05-06 17:43:28] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn pull --ff-only
+Already up to date.
+[2026-05-06 17:43:29] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/drupwn-modern
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/drupwn-modern
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install --upgrade pip
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install setuptools<81
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install setuptools<81
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt
+[2026-05-06 17:43:29] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/drupwn-src
+[2026-05-06 17:43:29] RUN(user:spabam): mkdir -p /home/spabam/.venv/cms_scanner/_build
+mkdir: cannot create directory ‘/home/spabam/.venv/cms_scanner’: Permission denied
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam mkdir -p /home/spabam/.venv/cms_scanner/_build
+[2026-05-06 17:43:29] RUN(user:spabam): cp -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn /home/spabam/.venv/cms_scanner/_build/drupwn-src
+cp: cannot create directory '/home/spabam/.venv/cms_scanner/_build/drupwn-src': No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam cp -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn /home/spabam/.venv/cms_scanner/_build/drupwn-src
+[2026-05-06 17:43:29] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/drupwn-src/build /home/spabam/.venv/cms_scanner/_build/drupwn-src/dist
+[2026-05-06 17:43:29] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install /home/spabam/.venv/cms_scanner/_build/drupwn-src
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip: No such file or directory
+[2026-05-06 17:43:29] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install /home/spabam/.venv/cms_scanner/_build/drupwn-src
+env: ‘/home/spabam/.venv/cms_scanner/drupwn-modern/bin/drupwn’: No such file or directory
+[2026-05-06 17:43:29] FAIL: Drupwn - Smoke test failed
+[2026-05-06 17:43:29] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vbscan pull --ff-only
+Already up to date.
+[2026-05-06 17:43:29] OK: VBScan installed
+[2026-05-06 17:43:29] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan pull --ff-only
+Already up to date.
+[2026-05-06 17:43:30] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan submodule update --init --recursive
+[2026-05-06 17:43:30] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmsscan
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/cmsscan
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsscan/bin/python: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsscan/bin/pip: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install --upgrade pip
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsscan/bin/python: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsscan/bin/pip: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/cmsscan/bin/python: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-05-06 17:43:30] OK: CMSScan installed
+[2026-05-06 17:43:30] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx pull --ff-only
+Already up to date.
+[2026-05-06 17:43:30] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/vulnx
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/vulnx
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/vulnx/bin/python: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/vulnx/bin/pip: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/vulnx/bin/pip install --upgrade pip
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/vulnx/bin/python: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+[2026-05-06 17:43:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/vulnx/bin/pip: No such file or directory
+[2026-05-06 17:43:30] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/vulnx/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt
+[2026-05-06 17:43:30] RUN(user:spabam): bash -lc <multiline-script omitted>
+[2026-05-06 17:43:30] OK: VulnX installed
+[2026-05-06 17:43:30] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd pull --ff-only
+Already up to date.
+[2026-05-06 17:43:31] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/clusterd
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/clusterd
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/python: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/pip: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/pip install --upgrade pip
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/python: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/pip: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install modernize six
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/pip: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/pip install modernize six
+[2026-05-06 17:43:31] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/clusterd-src
+[2026-05-06 17:43:31] RUN(user:spabam): cp -a /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd /home/spabam/.venv/cms_scanner/_build/clusterd-src
+cp: cannot create directory '/home/spabam/.venv/cms_scanner/_build/clusterd-src': No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam cp -a /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd /home/spabam/.venv/cms_scanner/_build/clusterd-src
+[2026-05-06 17:43:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/modernize --no-diffs -w -n -f default -x import -x imports_six -x itertools_imports_six -x urllib_six /home/spabam/.venv/cms_scanner/_build/clusterd-src
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/clusterd/bin/modernize: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/clusterd/bin/modernize --no-diffs -w -n -f default -x import -x imports_six -x itertools_imports_six -x urllib_six /home/spabam/.venv/cms_scanner/_build/clusterd-src
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/commands.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/sitecustomize.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/HTMLParser.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/urlparse.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/ConfigParser.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/Queue.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): bash -lc <multiline-script omitted>
+bash: line 1: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/httplib.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam bash -lc <multiline-script omitted>
+[2026-05-06 17:43:31] RUN(user:spabam): sed -i s/len(fingerengine\\.fingerprints) is 0/len(fingerengine.fingerprints) == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py
+sed: can't read /home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam sed -i s/len(fingerengine\\.fingerprints) is 0/len(fingerengine.fingerprints) == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py
+[2026-05-06 17:43:31] RUN(user:spabam): sed -i s/timeout is not 10/timeout != 10/; s/timeout is 0/timeout == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py
+sed: can't read /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam sed -i s/timeout is not 10/timeout != 10/; s/timeout is 0/timeout == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py
+[2026-05-06 17:43:31] RUN(user:spabam): sed -i s/re.findall('\\d+\/open',item)/re.findall(r'\\d+\/open', item)/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/discovery.py
+sed: can't read /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/discovery.py: No such file or directory
+[2026-05-06 17:43:31] ERROR: command failed with exit 0: user:spabam sed -i s/re.findall('\\d+\/open',item)/re.findall(r'\\d+\/open', item)/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/discovery.py
+[2026-05-06 17:43:31] RUN(user:spabam): env CLUSTERD_BUILD=/home/spabam/.venv/cms_scanner/_build/clusterd-src python3 -
+[2026-05-06 17:43:31] FAIL: Clusterd - unable to assemble runtime PYTHONPATH
+[2026-05-06 17:43:31] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku pull --ff-only
+Already up to date.
+[2026-05-06 17:43:32] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/wpseku
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:32] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/wpseku
+[2026-05-06 17:43:32] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpseku/bin/python: No such file or directory
+[2026-05-06 17:43:32] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+[2026-05-06 17:43:32] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpseku/bin/pip: No such file or directory
+[2026-05-06 17:43:32] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpseku/bin/pip install --upgrade pip
+[2026-05-06 17:43:32] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpseku/bin/python: No such file or directory
+[2026-05-06 17:43:32] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+[2026-05-06 17:43:32] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpseku/bin/pip: No such file or directory
+[2026-05-06 17:43:32] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpseku/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt
+[2026-05-06 17:43:32] OK: WPSeku installed
+[2026-05-06 17:43:32] RUN(user:spabam): gem install --user-install wpxf
+Successfully installed ffi-1.17.4-x86_64-linux-gnu
+Successfully installed ethon-0.18.0
+Successfully installed typhoeus-1.6.0
+Successfully installed sqlite3-1.7.3-x86_64-linux
+Successfully installed slop-4.10.1
+Successfully installed sequel-5.104.0
+Successfully installed rubyzip-1.3.0
+Successfully installed require_all-2.0.0
+Successfully installed nokogiri-1.19.3-x86_64-linux-gnu
+Successfully installed mime-types-data-3.2026.0414
+Successfully installed mime-types-3.7.0
+Successfully installed colorize-0.8.1
+Successfully installed wpxf-2.0.1
+Parsing documentation for ffi-1.17.4-x86_64-linux-gnu
+Installing ri documentation for ffi-1.17.4-x86_64-linux-gnu
+Parsing documentation for ethon-0.18.0
+Installing ri documentation for ethon-0.18.0
+Parsing documentation for typhoeus-1.6.0
+Installing ri documentation for typhoeus-1.6.0
+Parsing documentation for sqlite3-1.7.3-x86_64-linux
+Installing ri documentation for sqlite3-1.7.3-x86_64-linux
+Parsing documentation for slop-4.10.1
+Installing ri documentation for slop-4.10.1
+Parsing documentation for sequel-5.104.0
+Installing ri documentation for sequel-5.104.0
+Parsing documentation for rubyzip-1.3.0
+Installing ri documentation for rubyzip-1.3.0
+Parsing documentation for require_all-2.0.0
+Installing ri documentation for require_all-2.0.0
+Parsing documentation for nokogiri-1.19.3-x86_64-linux-gnu
+Installing ri documentation for nokogiri-1.19.3-x86_64-linux-gnu
+Parsing documentation for mime-types-data-3.2026.0414
+Installing ri documentation for mime-types-data-3.2026.0414
+Parsing documentation for mime-types-3.7.0
+Installing ri documentation for mime-types-3.7.0
+Parsing documentation for colorize-0.8.1
+Installing ri documentation for colorize-0.8.1
+Parsing documentation for wpxf-2.0.1
+Installing ri documentation for wpxf-2.0.1
+Done installing documentation for ffi, ethon, typhoeus, sqlite3, slop, sequel, rubyzip, require_all, nokogiri, mime-types-data, mime-types, colorize, wpxf after 7 seconds
+13 gems installed
+[2026-05-06 17:43:44] OK: WPXF installed
+[2026-05-06 17:43:44] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPForce pull --ff-only
+Already up to date.
+[2026-05-06 17:43:45] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/wpforce
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/wpforce
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/python: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/pip: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/python: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip modernize six
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/pip: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip modernize six
+[2026-05-06 17:43:45] RUN(user:spabam): cp /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPForce/wpforce.py /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+cp: cannot create regular file '/home/spabam/.venv/cms_scanner/wpforce/wpforce.py': No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam cp /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPForce/wpforce.py /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/modernize --no-diffs -w -n -f default /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/modernize: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/modernize --no-diffs -w -n -f default /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+[2026-05-06 17:43:45] RUN(user:spabam): env COMPAT_SCRIPT=/home/spabam/.venv/cms_scanner/wpforce/wpforce.py /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+env: ‘/home/spabam/.venv/cms_scanner/wpforce/bin/python’: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam env COMPAT_SCRIPT=/home/spabam/.venv/cms_scanner/wpforce/wpforce.py /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+[2026-05-06 17:43:45] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install requests six
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/wpforce/bin/pip: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/wpforce/bin/pip install requests six
+[2026-05-06 17:43:45] RUN(user:spabam): env PYTHONWARNINGS=ignore::SyntaxWarning /home/spabam/.venv/cms_scanner/wpforce/bin/python /home/spabam/.venv/cms_scanner/wpforce/wpforce.py -h
+env: ‘/home/spabam/.venv/cms_scanner/wpforce/bin/python’: No such file or directory
+[2026-05-06 17:43:45] ERROR: command failed with exit 0: user:spabam env PYTHONWARNINGS=ignore::SyntaxWarning /home/spabam/.venv/cms_scanner/wpforce/bin/python /home/spabam/.venv/cms_scanner/wpforce/wpforce.py -h
+[2026-05-06 17:43:45] OK: WPForce installed
+[2026-05-06 17:43:45] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomlavs pull --ff-only
+Already up to date.
+[2026-05-06 17:43:45] RUN(user:spabam): gem install --user-install slop typhoeus
+Successfully installed slop-4.10.1
+Parsing documentation for slop-4.10.1
+Done installing documentation for slop after 0 seconds
+Successfully installed typhoeus-1.6.0
+Parsing documentation for typhoeus-1.6.0
+Done installing documentation for typhoeus after 0 seconds
+2 gems installed
+[2026-05-06 17:43:46] RUN(user:spabam): bash -lc cd "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomlavs" && ruby joomlavs.rb >/dev/null
+[2026-05-06 17:43:46] OK: joomlavs installed
+[2026-05-06 17:43:46] RUN(user:spabam): gem install --user-install cms_scanner -v 0.13.9
+Building native extensions. This could take a while...
+Successfully installed yajl-ruby-1.4.3
+Successfully installed ethon-0.16.0
+Successfully installed typhoeus-1.4.1
+Successfully installed sys-proctable-1.3.0
+Successfully installed ruby-progressbar-1.13.0
+Successfully installed public_suffix-5.0.5
+Successfully installed addressable-2.8.10
+Successfully installed zeitwerk-2.7.5
+Successfully installed concurrent-ruby-1.3.6
+Successfully installed tzinfo-2.0.6
+Successfully installed i18n-1.14.8
+Successfully installed activesupport-6.1.7.10
+Successfully installed opt_parse_validator-1.9.5
+Successfully installed mini_portile2-2.8.9
+Building native extensions. This could take a while...
+Successfully installed nokogiri-1.15.7
+Successfully installed get_process_mem-0.2.7
+Successfully installed cms_scanner-0.13.9
+Parsing documentation for yajl-ruby-1.4.3
+Installing ri documentation for yajl-ruby-1.4.3
+Parsing documentation for ethon-0.16.0
+Installing ri documentation for ethon-0.16.0
+Parsing documentation for typhoeus-1.4.1
+Installing ri documentation for typhoeus-1.4.1
+Parsing documentation for sys-proctable-1.3.0
+Installing ri documentation for sys-proctable-1.3.0
+Parsing documentation for ruby-progressbar-1.13.0
+Installing ri documentation for ruby-progressbar-1.13.0
+Parsing documentation for public_suffix-5.0.5
+Installing ri documentation for public_suffix-5.0.5
+Parsing documentation for addressable-2.8.10
+Installing ri documentation for addressable-2.8.10
+Parsing documentation for zeitwerk-2.7.5
+Installing ri documentation for zeitwerk-2.7.5
+Parsing documentation for concurrent-ruby-1.3.6
+Installing ri documentation for concurrent-ruby-1.3.6
+Parsing documentation for tzinfo-2.0.6
+Installing ri documentation for tzinfo-2.0.6
+Parsing documentation for i18n-1.14.8
+Installing ri documentation for i18n-1.14.8
+Parsing documentation for activesupport-6.1.7.10
+Installing ri documentation for activesupport-6.1.7.10
+Parsing documentation for opt_parse_validator-1.9.5
+Installing ri documentation for opt_parse_validator-1.9.5
+Parsing documentation for mini_portile2-2.8.9
+Installing ri documentation for mini_portile2-2.8.9
+Parsing documentation for nokogiri-1.15.7
+Installing ri documentation for nokogiri-1.15.7
+Parsing documentation for get_process_mem-0.2.7
+Installing ri documentation for get_process_mem-0.2.7
+Parsing documentation for cms_scanner-0.13.9
+Installing ri documentation for cms_scanner-0.13.9
+Done installing documentation for yajl-ruby, ethon, typhoeus, sys-proctable, ruby-progressbar, public_suffix, addressable, zeitwerk, concurrent-ruby, tzinfo, i18n, activesupport, opt_parse_validator, mini_portile2, nokogiri, get_process_mem, cms_scanner after 5 seconds
+17 gems installed
+[2026-05-06 17:44:34] RUN(user:spabam): gem install --user-install dearchiver
+Successfully installed dearchiver-0.0.1
+Parsing documentation for dearchiver-0.0.1
+Installing ri documentation for dearchiver-0.0.1
+Done installing documentation for dearchiver after 0 seconds
+1 gem installed
+[2026-05-06 17:44:37] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter pull --ff-only
+Already up to date.
+[2026-05-06 17:44:37] INFO: Using Fingerprinter fallback repository: https://github.com/erwanlr/Fingerprinter.git
+[2026-05-06 17:44:37] RUN(user:spabam): bash -lc sed -i -E "s/gem 'cms_scanner', '~> 0\.13'/gem 'cms_scanner', '~> 0.13.0'/" "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/Gemfile"
+[2026-05-06 17:44:37] RUN(user:spabam): env FINGERPRINTER_ACTIONS=/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/lib/fingerprinter/actions.rb python3 -
+[2026-05-06 17:44:37] OK: Fingerprinter installed
+[2026-05-06 17:44:38] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan pull --ff-only
+Already up to date.
+[2026-05-06 17:44:39] INFO: Using AutoWPScan fallback repository: https://github.com/password123456/autowpscan.git
+[2026-05-06 17:44:39] RUN(user:spabam): env AUTOWPSCAN_MAIN=/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan/main.py python3 -
+[2026-05-06 17:44:39] OK: AutoWPScan installed
+[2026-05-06 17:44:39] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker pull --ff-only
+Already up to date.
+[2026-05-06 17:44:39] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/aem-hacker
+Error: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner'
+[2026-05-06 17:44:39] ERROR: command failed with exit 0: user:spabam python3 -m venv /home/spabam/.venv/cms_scanner/aem-hacker
+[2026-05-06 17:44:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/aem-hacker/bin/python: No such file or directory
+[2026-05-06 17:44:39] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+[2026-05-06 17:44:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install --upgrade pip
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip: No such file or directory
+[2026-05-06 17:44:39] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install --upgrade pip
+[2026-05-06 17:44:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/aem-hacker/bin/python: No such file or directory
+[2026-05-06 17:44:39] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+[2026-05-06 17:44:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt
+installer.sh: line 234: /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip: No such file or directory
+[2026-05-06 17:44:39] ERROR: command failed with exit 0: user:spabam /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt
+[2026-05-06 17:44:39] OK: AEM Detector installed
+[2026-05-06 17:44:39] ==================== PHASE FAIL: Tool Installation (rc=1, 87s) ====================
+[2026-05-06 17:44:39] ==================== PHASE START: Post-Install Verification ====================
+[2026-05-06 17:44:39] ==================== PHASE FAIL: Post-Install Verification (rc=1, 0s) ====================
+[2026-05-06 17:44:39] ==================== INSTALL SUMMARY ====================
+[2026-05-06 17:44:39] Install user: spabam (/home/spabam)
+[2026-05-06 17:44:39] Python venv root: /home/spabam/.venv/cms_scanner
+[2026-05-06 17:44:39] Installed tools: 13
+[2026-05-06 17:44:39]   - WPScan
+[2026-05-06 17:44:39]   - CMSeek
+[2026-05-06 17:44:39]   - JoomScan
+[2026-05-06 17:44:39]   - VBScan
+[2026-05-06 17:44:39]   - CMSScan
+[2026-05-06 17:44:39]   - VulnX
+[2026-05-06 17:44:39]   - WPSeku
+[2026-05-06 17:44:39]   - WPXF
+[2026-05-06 17:44:39]   - WPForce
+[2026-05-06 17:44:39]   - joomlavs
+[2026-05-06 17:44:39]   - Fingerprinter
+[2026-05-06 17:44:39]   - AutoWPScan
+[2026-05-06 17:44:39]   - AEM Detector
+[2026-05-06 17:44:39] Skipped tools: 0
+[2026-05-06 17:44:39] Failed tools: 4
+[2026-05-06 17:44:39]   - CMSmap: unexpected help output
+[2026-05-06 17:44:39]   - Droopescan: Smoke test failed
+[2026-05-06 17:44:39]   - Drupwn: Smoke test failed
+[2026-05-06 17:44:39]   - Clusterd: unable to assemble runtime PYTHONPATH
+[2026-05-06 17:44:39] Warnings: 1
+[2026-05-06 17:44:39]   - CMSmap: could not locate cmsmap.conf for exploitdb path patching
+[2026-05-06 17:44:39] Phase results: 4
+[2026-05-06 17:44:39]   - Preflight: ok (0s)
+[2026-05-06 17:44:39]   - System Dependencies: ok (0s)
+[2026-05-06 17:44:39]   - Tool Installation: fail (rc=1, 87s)
+[2026-05-06 17:44:39]   - Post-Install Verification: fail (rc=1, 0s)
+[2026-05-06 17:44:39] Wrappers are available in: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin
+[2026-05-06 17:44:39] Add to PATH: export PATH="/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin:$PATH"

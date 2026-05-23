@@ -1,0 +1,17 @@
+
+Scan Aborted: /home/spabam/.wpscan/db is not writable (uid: 1000, gid: 1000)
+Trace: /home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/lib/wpscan/db/updater.rb:32:in `initialize'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/app/controllers/core.rb:24:in `new'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/app/controllers/core.rb:24:in `local_db'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/app/controllers/core.rb:53:in `before_scan'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.15.0/lib/cms_scanner/controllers.rb:46:in `each'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.15.0/lib/cms_scanner/controllers.rb:46:in `block in run'
+/usr/lib/ruby/3.3.0/timeout.rb:170:in `timeout'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.15.0/lib/cms_scanner/controllers.rb:45:in `run'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.15.0/lib/cms_scanner/scan.rb:24:in `run'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/bin/wpscan:17:in `block in <top (required)>'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.15.0/lib/cms_scanner/scan.rb:15:in `initialize'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/bin/wpscan:6:in `new'
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/wpscan-3.8.28/bin/wpscan:6:in `<top (required)>'
+/home/spabam/.local/share/gem/ruby/3.3.0/bin/wpscan:25:in `load'
+/home/spabam/.local/share/gem/ruby/3.3.0/bin/wpscan:25:in `<main>'

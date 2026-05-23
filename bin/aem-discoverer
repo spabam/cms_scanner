@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec "/home/spabam/.venv/cms_scanner/aem-hacker/bin/python" "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/aem_discoverer.py" "$@"

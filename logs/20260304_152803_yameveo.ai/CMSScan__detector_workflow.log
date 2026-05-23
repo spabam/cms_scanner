@@ -1,0 +1,3 @@
+detected_cms=wordpress
+mapped_scanner=wpscan
+full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)

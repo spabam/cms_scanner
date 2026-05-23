@@ -1,0 +1,22 @@
+----------------------------------------
+ _ _ _ ___ ___ ___| |_ _ _ 
+| | | | . |_ -| -_| '_| | |
+|_____|  _|___|___|_,_|___|
+      |_|             v0.4.0
+
+WPSeku - Wordpress Security Scanner
+by Momo Outaadi (m4ll0k)
+----------------------------------------
+
+[1;32m[ + ][0m [0;32mTarget: https://yameveo.ai:443[0m
+[1;32m[ + ][0m [0;32mStarting: 15:51:37[0m
+[1;37m[0m
+[1;32m[ + ][0m [0;32mServer: cloudflare[0m
+[1;32m[ + ][0m [0;32mUncommon header "Nel" found, with contents: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}[0m
+[1;32m[ + ][0m [0;32mUncommon header "Referrer-Policy" found, with contents: strict-origin-when-cross-origin[0m
+[1;32m[ + ][0m [0;32mUncommon header "Report-To" found, with contents: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=5LfZugGA2gTLykH1cwqipcUAZpjRSvW4cAvSrjx%2FITgyU8YY5T1RPmfZzTzHpbGFSjG67GKTVlCAe9JH8XtprNI%2FgHr1vjI01mQjVbeTDwDCmu1uilA%3D"}]}[0m
+[1;32m[ + ][0m [0;32mUncommon header "cf-cache-status" found, with contents: DYNAMIC[0m
+[1;32m[ + ][0m [0;32mUncommon header "vary" found, with contents: accept-encoding[0m
+[1;32m[ + ][0m [0;32mUncommon header "CF-RAY" found, with contents: 9d71b335c976720a-CDG[0m
+[1;32m[ + ][0m [0;32mUncommon header "alt-svc" found, with contents: h3=":443"; ma=86400[0m
+[1;31m[ ! ][0m [0;31mFailed to establish a new connection[0m

@@ -1,0 +1,4 @@
+[-] Date & Time: 04/03/2026 14:23:19
+[ERROR] ExploitDB APT path was not found
+[-] Set the ExploitDB path "edbpath" in cmsmap.conf
+[-] ie: edbpath = /usr/share/exploitdb/

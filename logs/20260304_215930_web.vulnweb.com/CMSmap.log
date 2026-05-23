@@ -1,0 +1,16 @@
+[-] Date & Time: 04/03/2026 21:59:31
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/main.py", line 169, in main
+    addr = socket.gethostbyname(urlparse(args.target).hostname)
+socket.gaierror: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/main.py", line 181, in main
+    msg = "Unable to resolve: " + scanner.url
+          ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: can only concatenate str (not "NoneType") to str

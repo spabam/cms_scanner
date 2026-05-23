@@ -1,0 +1,415 @@
+CMS Unified Scan Report
+Generated: 2026-05-06 17:49:55
+Input target: yameveo.com
+Normalized target URL: https://yameveo.com:443
+Detected CMS: wordpress
+Detection: Auto-detected via nmap: 443/tcp open
+Working directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner
+Run log: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/run.log
+Tool logs directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com
+
+----- nmap 443 probe -----
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-05-06 17:49 +0200
+Nmap scan report for yameveo.com (46.225.190.38)
+Host is up (0.028s latency).
+rDNS record for 46.225.190.38: static.38.190.225.46.clients.your-server.de
+
+PORT    STATE SERVICE
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 0.72 seconds
+
+----- nmap 80 probe -----
+not executed
+
+
+================================================================================
+WPScan
+================================================================================
+Tool Name   : WPScan
+Command     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpscan --url https://yameveo.com:443 --detection-mode mixed --random-user-agent --no-banner --cache-dir /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/wpscan_runtime/cache --cookie-jar /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/wpscan_runtime/cookie_jar.txt
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/WPScan.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+wpscan executable not found in gem or system paths
+----------------------------------------
+
+
+================================================================================
+CMSmap
+================================================================================
+Tool Name   : CMSmap
+Command     : cmsmap https://yameveo.com:443 --noedb
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/CMSmap.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsmap: line 3: /home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap: No such file or directory
+----------------------------------------
+
+
+================================================================================
+CMSeeK
+================================================================================
+Tool Name   : CMSeeK
+Command     : cmseek -u https://yameveo.com:443 --batch --light-scan
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/CMSeeK.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmseek: line 3: /home/spabam/.venv/cms_scanner/cmseek/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (wordpress)
+================================================================================
+Tool Name   : Droopescan (wordpress)
+Command     : droopescan scan wordpress -u https://yameveo.com:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/Droopescan__wordpress.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (drupal)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'drupal'
+
+================================================================================
+Droopescan (joomla)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Droopescan (moodle)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'moodle'
+
+================================================================================
+Droopescan (silverstripe)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'silverstripe'
+
+================================================================================
+JoomScan
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Drupwn
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'drupal'
+
+================================================================================
+VBScan
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'vbulletin'
+
+================================================================================
+VulnX
+================================================================================
+Tool Name   : VulnX
+Command     : vulnx -u https://yameveo.com:443 --cms
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/VulnX.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/vulnx: line 3: /home/spabam/.venv/cms_scanner/vulnx/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPSeku
+================================================================================
+Tool Name   : WPSeku
+Command     : env PYTHONWARNINGS=ignore::SyntaxWarning wpseku --url https://yameveo.com:443
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/WPSeku.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpseku: line 3: /home/spabam/.venv/cms_scanner/wpseku/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPForce
+================================================================================
+Tool Name   : WPForce
+Command     : wpforce -i /tmp/tmp.mrnInU15rR/wpforce_users.txt -w /tmp/tmp.mrnInU15rR/wpforce_passwords.txt -u https://yameveo.com:443 -t 2
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/WPForce.log
+Started     : 2026-05-06 17:49:55
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:55
+Duration    : 0s
+
+Output:
+----------------------------------------
+env: ?/home/spabam/.venv/cms_scanner/wpforce/bin/python?: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPXF
+================================================================================
+Tool Name   : WPXF
+Command     : bash -lc cat '/tmp/tmp.mrnInU15rR/wpxf_input.txt' | '/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpxf'
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/WPXF.log
+Started     : 2026-05-06 17:49:55
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-05-06 17:49:57
+Duration    : 2s
+
+Output:
+----------------------------------------
+
+                      /\
+          _.--''-- , / /
+  ,---- .'          /_/
+   '---',  .  _  .    ;
+        ._  __ __      \
+       , _)        .-'  y      WordPress Exploit Framework
+       -          (_..   :     Version 2.0.1
+      ; ...  ... (\     \ '
+      _  \ \ \ \  /      ; :   Auxiliaries: 58
+     ( t  \ \/\ \/  _   '  l   Exploits:    288
+     \ |   \/  \/  i )- ' /    Payloads:    7
+      - '._        | /  ,'
+       ..   ' - ''  -j ,
+      (  '.___.. --'.
+       '.______..--'
+
+wpxf > wpxf > wpxf > y
+
+
+  [!] "y" is not a recognised command.
+
+wpxf > wpxf > wpxf > use auxiliary/info/wp_v4.7_user_info_disclosure
+
+
+  [+] Loaded module: #<Wpxf::Auxiliary::Wp47UserInfoDisclosure:0x00007f490d9b8680>
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set host yameveo.com
+
+
+  [+] Set host => yameveo.com
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set port 443
+
+
+  [+] Set port => 443
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set ssl true
+
+
+  [+] Set ssl => true
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set target_uri /
+
+
+  [+] Set target_uri => /
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set vhost yameveo.com
+
+
+  [+] Set vhost => yameveo.com
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > show options
+
+
+  Module options:
+
+    Name         Current Setting   Required   Description
+    ----------   ---------------   --------   --------------------------------------
+    host         yameveo.com       true       Address of the target host.
+    port         443               true       Port the remote host is listening on
+    proxy                          false      Proxy address ([protocol://]host:port)
+    ssl          true              true       Use SSL/HTTPS for all requests
+    target_uri   /                 true       Base path to the WordPress application
+    verbose      false             true       Enable verbose output
+    vhost        yameveo.com       false      HTTP server virtual host
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > check
+
+
+  [+] Target appears to be safe
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > run
+
+
+  [-] Calling the users API...
+
+      ID   Username        Name
+      --   -------------   -------------
+      1    yameveo_admin   yameveo_admin
+
+  [+] Saved export to /home/spabam/.wpxf/loot/2026-05-06_17-49-57.json
+  [+] Execution finished successfully
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > exit
+
+----------------------------------------
+
+
+================================================================================
+joomlavs
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Fingerprinter
+================================================================================
+Tool Name   : Fingerprinter
+Command     : fingerprinter --app-name wordpress --passive-fingerprint https://yameveo.com:443 --verbose
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/Fingerprinter.log
+Started     : 2026-05-06 17:49:57
+Status      : NONZERO
+Exit Code   : 1
+Finished    : 2026-05-06 17:49:57
+Duration    : 0s
+
+Output:
+----------------------------------------
+/usr/lib/ruby/3.3.0/bundler/definition.rb:599:in `materialize': Could not find ffi-1.17.3-x86_64-linux-gnu, addressable-2.8.9 in locally installed gems (Bundler::GemNotFound)
+	from /usr/lib/ruby/3.3.0/bundler/definition.rb:193:in `specs'
+	from /usr/lib/ruby/3.3.0/bundler/definition.rb:260:in `specs_for'
+	from /usr/lib/ruby/3.3.0/bundler/runtime.rb:18:in `setup'
+	from /usr/lib/ruby/3.3.0/bundler.rb:164:in `setup'
+	from /usr/lib/ruby/3.3.0/bundler/setup.rb:32:in `block in <top (required)>'
+	from /usr/lib/ruby/3.3.0/bundler/ui/shell.rb:173:in `with_level'
+	from /usr/lib/ruby/3.3.0/bundler/ui/shell.rb:119:in `silence'
+	from /usr/lib/ruby/3.3.0/bundler/setup.rb:32:in `<top (required)>'
+	from <internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from <internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/fingerprinter.rb:5:in `<main>'
+----------------------------------------
+
+
+================================================================================
+AutoWPScan
+================================================================================
+SKIP: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+
+================================================================================
+AEM Detector (aem-hacker)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+AEM Discoverer
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+CMSScan (detector workflow)
+================================================================================
+Tool Name   : CMSScan (detector workflow)
+Command     : env TARGET_URL_ENV=https://yameveo.com:443 /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsscan-python -c import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); m={'wordpress':'wpscan','drupal':'droopescan','joomla':'joomscan','vbulletin':'vbscan'}.get(c,'none'); print('detected_cms='+c); print('mapped_scanner='+m); print('full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)')
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/CMSScan__detector_workflow.log
+Started     : 2026-05-06 17:49:57
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:49:57
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsscan-python: line 3: /home/spabam/.venv/cms_scanner/cmsscan/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Execution Overview
+================================================================================
+Target URL      : https://yameveo.com:443
+Detected CMS    : wordpress
+Success (rc=0)  : 1
+Non-zero exits  : 9
+Timeouts        : 0
+Skipped         : 11
+Run log         : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/run.log
+Tool logs dir   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com
+Report file     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/yameveo.com.cms.txt
+
+================================================================================
+Skipped Tools (Consolidated)
+================================================================================
+- Droopescan (drupal): detected CMS 'wordpress', tool targets 'drupal'
+- Droopescan (joomla): detected CMS 'wordpress', tool targets 'joomla'
+- Droopescan (moodle): detected CMS 'wordpress', tool targets 'moodle'
+- Droopescan (silverstripe): detected CMS 'wordpress', tool targets 'silverstripe'
+- JoomScan: detected CMS 'wordpress', tool targets 'joomla'
+- Drupwn: detected CMS 'wordpress', tool targets 'drupal'
+- VBScan: detected CMS 'wordpress', tool targets 'vbulletin'
+- joomlavs: detected CMS 'wordpress', tool targets 'joomla'
+- AutoWPScan: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+- AEM Detector (aem-hacker): detected CMS 'wordpress', tool targets 'aem'
+- AEM Discoverer: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+Non-Zero And Timeout Tools
+================================================================================
+Non-zero:
+- WPScan (rc=127)
+- CMSmap (rc=127)
+- CMSeeK (rc=127)
+- Droopescan (wordpress) (rc=127)
+- VulnX (rc=127)
+- WPSeku (rc=127)
+- WPForce (rc=127)
+- Fingerprinter (rc=1)
+- CMSScan (detector workflow) (rc=127)
+
+================================================================================
+Operational Notes
+================================================================================
+None
+
+================================================================================
+Summary
+================================================================================
+Target URL            : https://yameveo.com:443
+Detected CMS          : wordpress
+Success (rc=0)        : 1
+Non-zero exits        : 9
+Timeouts              : 0
+Skipped               : 11
+Run log               : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com/run.log
+Tool logs directory   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_174954_yameveo.com
+Report generated at   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/yameveo.com.cms.txt

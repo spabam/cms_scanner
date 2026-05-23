@@ -1,0 +1,9 @@
+[2026-03-04 21:58:19] Target input       : https://web.vulnweb.com:443
+[2026-03-04 21:58:19] Normalized target  : https://web.vulnweb.com:443
+[2026-03-04 21:58:19] Detected CMS       : unknown
+[2026-03-04 21:58:19] Report output      : reports/refactor_smoke.cms.txt
+[2026-03-04 21:58:19] Run log            : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_215819_web.vulnweb.com/run.log
+[2026-03-04 21:58:19] Tool logs          : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_215819_web.vulnweb.com
+[2026-03-04 21:58:19] Output owner       : spabam:spabam
+[2026-03-04 21:58:26] Unified report written to reports/refactor_smoke.cms.txt
+[2026-03-04 21:58:26] Summary: success=8, nonzero=10, timeouts=1, skipped=2

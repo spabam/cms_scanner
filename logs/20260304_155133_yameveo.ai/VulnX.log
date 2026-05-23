@@ -1,0 +1,141 @@
+[1;0;34m
+                                                      
+                    .:.        .:,                    
+                   xM;           XK.                  
+                  dx'            .lO.                 
+                 do                ,0.                
+             .c.lN'      ,  '.     .k0.:'             
+              xMMk;d;''cOM0kWXl,',locMMX.             
+              .NMK.   :WMMMMMMMx    dMMc              
+               lMMO  lWMMMMMMMMMO. lMMO               
+                cWMxxMMMMMMMMMMMMKlWMk                
+                 .xWMMMMMMMMMMMMMMM0,[1;1;94m                 
+                   .,OMd,,,;0MMMO,.                   
+             .l0O.[1;97mVXVX[1;1;94mOX.[1;97mVXVX[1;1;94m0MO[1;97mVXVX[1;1;94m.0Kd,             
+            lWMMO0[1;97mVXVX0[1;1;94mOX.[1;97mVXVX[1;1;94ml[1;97mVXVX[1;1;94m.VXNMMO            
+           .MMX;.N0[1;97mVXVX0[1;1;94m0X.[1;97mVXVXVX0[1;1;94m.0M:.OMMl           
+          .OXc  ,MMO[1;97mVXVX0[1;1;94mVX[1;97m .VXVX0[1;1;94m0MMo  ,0X'          
+          0x.  :XMMMk[1;97mVXVX.[1;1;94mXO.[1;97mVXVX[1;1;94mdMMMWo.  :X'         
+         .d  'NMMMMMMk[1;97mVXVX[1;1;94m..[1;97mVXVX0[1;1;94m.XMMMMWl  ;c         
+            'NNoMMMMMMx[1;97mVXVXVXVXVX0.[1;1;94mXMMk0Mc            
+           .NMx OMMMMMMd[1;97mVXVXVX[1;1;94ml[1;97mVXVX[1;1;94m.NW.;MMc           
+          :NMMd .NMMMMMMd[1;97mVXVX[1;1;94mdMd,,,,oc ;MMWx          
+          .0MN,  'XMMMMMMo[1;97mVX[1;1;94moMMMMMMWl   0MW,          
+           .0.    .xWMMMMM:lMMMMMM0,     kc           
+            ,O.     .:dOKXXXNKOxc.      do            
+             '0c        -VulnX-       ,Ol             
+               ;.                     :.   
+
+    [1;97m# Coded By Anouar Ben Saad -[1;93m @anouarbensaad      
+                                           [1;0m
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/util/retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/vulnx.py", line 158, in <module>
+    detection()
+    ~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/vulnx.py", line 113, in detection
+    instance.instanciate()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/detector.py", line 136, in instanciate
+    cms = self.serialize()
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/detector.py", line 123, in serialize
+    name=self.detect(),
+         ~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/detector.py", line 100, in detect
+    elif re.search(re.compile(r'Prestashop|prestashop'), self.__getcontent__()):
+                                                         ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/detector.py", line 54, in __getcontent__
+    return requests.get(self.url, headers=self.headers,verify=False).text
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/adapters.py", line 659, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))

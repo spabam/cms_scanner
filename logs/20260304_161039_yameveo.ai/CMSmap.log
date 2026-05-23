@@ -1,0 +1,55 @@
+[-] Date & Time: 04/03/2026 16:10:59
+[I] Threads: 5
+[-] Target: https://yameveo.ai:443 (104.21.48.117)
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/main.py", line 175, in main
+    scanner.RunScanner()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/scanner.py", line 35, in RunScanner
+    genericchecker.HeadersCheck()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/genericchecks.py", line 73, in HeadersCheck
+    requester.request(self.url, data=None)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/requester.py", line 31, in request
+    self.response = urllib.request.urlopen(self.req)
+                    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [Errno 104] Connection reset by peer

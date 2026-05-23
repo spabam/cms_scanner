@@ -1,0 +1,30 @@
+[0;32;49m[+][0m[0;97;49m URL: https://blog.infrascan.net:443[0m
+[0;32;49m[+][0m[0;97;49m Started: Wed May  6 17:50:32 2026[0m
+
+[0;32;49m[+][0m[0;97;49m Found 21 interesting headers.[0m
+[0;97;49m | [0m[0;97;49m date: Wed, 06 May 2026 15:50:32 GMT[0m
+[0;97;49m | [0m[0;97;49m content-type: text/html; charset=UTF-8[0m
+[0;97;49m | [0m[0;97;49m content-length: 5324[0m
+[0;97;49m | [0m[0;97;49m accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA[0m
+[0;97;49m | [0m[0;97;49m cf-mitigated: challenge[0m
+[0;97;49m | [0m[0;97;49m content-security-policy: default-src 'none'; script-src 'nonce-f3GP1w6RcGKfBShEM2JQUt' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'[0m
+[0;97;49m | [0m[0;97;49m server: cloudflare[0m
+[0;97;49m | [0m[0;97;49m critical-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA[0m
+[0;97;49m | [0m[0;97;49m cross-origin-embedder-policy: require-corp[0m
+[0;97;49m | [0m[0;97;49m cross-origin-opener-policy: same-origin[0m
+[0;97;49m | [0m[0;97;49m cross-origin-resource-policy: same-origin[0m
+[0;97;49m | [0m[0;97;49m origin-agent-cluster: ?1[0m
+[0;97;49m | [0m[0;97;49m permissions-policy: accelerometer=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=(),xr-spatial-tracking=(self)[0m
+[0;97;49m | [0m[0;97;49m referrer-policy: same-origin[0m
+[0;97;49m | [0m[0;97;49m server-timing: chlray;desc="9f792424388cdb84"[0m
+[0;97;49m | [0m[0;97;49m x-content-type-options: nosniff[0m
+[0;97;49m | [0m[0;97;49m x-frame-options: SAMEORIGIN[0m
+[0;97;49m | [0m[0;97;49m report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=h%2BsNHaPkx2JFgwJbO17qP9jP6qKdmjOmGqK3f2a8ellRxqxkpOvx%2FsCQrDy%2BC0e2E4Ran03Z%2Bbb7jJay%2B2HbUCoOWgKYpYUFltSJTMBAnAwyWLZiFsiGrn%2BGVeSC%2B70KyAu7QkIO79cjq0qRtW65Sfo%3D"}]}[0m
+[0;97;49m | [0m[0;97;49m nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}[0m
+[0;97;49m | [0m[0;97;49m cf-ray: 9f792424388cdb84-MAD[0m
+[0;97;49m | [0m[0;97;49m alt-svc: h3=":443"; ma=86400[0m
+
+[0;31;49m[!][0m[0;97;49m Couldn't determine version[0m
+
+[0;32;49m[+][0m[0;97;49m Finished[0m
+

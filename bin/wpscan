@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || echo "${BASH_SOURCE[0]}")"
+GEM_HOME_DIR="/home/spabam/.local/share/gem/ruby/3.3.0"
+WPSCAN_HOME="/home/spabam/.wpscan"
+DEFAULT_CACHE_DIR="${WPSCAN_HOME}/cache"
+DEFAULT_COOKIE_JAR="${WPSCAN_HOME}/cookie_jar.txt"
+
+mkdir -p "${DEFAULT_CACHE_DIR}" >/dev/null 2>&1 || true
+mkdir -p "$(dirname "${DEFAULT_COOKIE_JAR}")" >/dev/null 2>&1 || true
+touch "${DEFAULT_COOKIE_JAR}" >/dev/null 2>&1 || true
+
+HAS_CACHE_DIR=0
+HAS_COOKIE_JAR=0
+for arg in "$@"; do
+  if [[ "${arg}" == "--cache-dir" ]]; then
+    HAS_CACHE_DIR=1
+  elif [[ "${arg}" == "--cookie-jar" ]]; then
+    HAS_COOKIE_JAR=1
+  fi
+done
+
+declare -a WPSCAN_EXTRA_ARGS=()
+if [[ "${HAS_CACHE_DIR}" -eq 0 ]]; then
+  WPSCAN_EXTRA_ARGS+=(--cache-dir "${WPSCAN_CACHE_DIR:-${DEFAULT_CACHE_DIR}}")
+fi
+if [[ "${HAS_COOKIE_JAR}" -eq 0 ]]; then
+  WPSCAN_EXTRA_ARGS+=(--cookie-jar "${WPSCAN_COOKIE_JAR:-${DEFAULT_COOKIE_JAR}}")
+fi
+
+for candidate in \
+  "/home/spabam/.local/share/gem/ruby/3.3.0/bin"/wpscan \
+  "/home/spabam"/.local/share/gem/ruby/*/bin/wpscan \
+  /usr/local/bin/wpscan \
+  /usr/bin/wpscan; do
+  if [[ -x "${candidate}" ]]; then
+    if [[ "$(readlink -f "${candidate}" 2>/dev/null || echo "${candidate}")" == "${SCRIPT_PATH}" ]]; then
+      continue
+    fi
+    RUNTIME_GEM_HOME="${GEM_HOME_DIR}"
+    if [[ "${candidate}" == "/home/spabam"/.local/share/gem/ruby/*/bin/wpscan ]]; then
+      RUNTIME_GEM_HOME="$(dirname "$(dirname "${candidate}")")"
+    fi
+    exec env HOME="/home/spabam" GEM_HOME="${RUNTIME_GEM_HOME}" GEM_PATH="${RUNTIME_GEM_HOME}:${GEM_PATH:-}" "${candidate}" "${WPSCAN_EXTRA_ARGS[@]}" "$@"
+  fi
+done
+
+echo "wpscan executable not found in gem or system paths" >&2
+exit 127

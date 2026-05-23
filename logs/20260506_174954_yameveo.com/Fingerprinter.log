@@ -1,0 +1,12 @@
+/usr/lib/ruby/3.3.0/bundler/definition.rb:599:in `materialize': Could not find ffi-1.17.3-x86_64-linux-gnu, addressable-2.8.9 in locally installed gems (Bundler::GemNotFound)
+	from /usr/lib/ruby/3.3.0/bundler/definition.rb:193:in `specs'
+	from /usr/lib/ruby/3.3.0/bundler/definition.rb:260:in `specs_for'
+	from /usr/lib/ruby/3.3.0/bundler/runtime.rb:18:in `setup'
+	from /usr/lib/ruby/3.3.0/bundler.rb:164:in `setup'
+	from /usr/lib/ruby/3.3.0/bundler/setup.rb:32:in `block in <top (required)>'
+	from /usr/lib/ruby/3.3.0/bundler/ui/shell.rb:173:in `with_level'
+	from /usr/lib/ruby/3.3.0/bundler/ui/shell.rb:119:in `silence'
+	from /usr/lib/ruby/3.3.0/bundler/setup.rb:32:in `<top (required)>'
+	from <internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from <internal:/usr/lib/ruby/vendor_ruby/rubygems/core_ext/kernel_require.rb>:136:in `require'
+	from /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/fingerprinter.rb:5:in `<main>'

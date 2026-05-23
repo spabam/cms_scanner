@@ -1,0 +1,93 @@
+[32m[+][0m URL: https://yameveo.ai/ [2606:4700:3033::ac43:970d]
+[32m[+][0m Started: Wed Mar  4 16:10:41 2026
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entries:
+ |  - server: cloudflare
+ |  - nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+ |  - referrer-policy: strict-origin-when-cross-origin
+ |  - report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=6Urq90%2BbwLOEl3lLIoAEyKCYQ%2FioNNchpgzi9pS4InhQ5pFKfW%2BTKBBDCK2fx4Cs%2FswmyUIoGmlJZRa%2F9UIpajXoZ8e57QgLBZ5Uua14XbTg4lp5"}]}
+ |  - cf-cache-status: DYNAMIC
+ |  - cf-ray: 9d71cf1d2b679b4f-FRA
+ |  - alt-svc: h3=":443"; ma=86400
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m robots.txt found: https://yameveo.ai/robots.txt
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m XML-RPC seems to be enabled: https://yameveo.ai/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[32m[+][0m WordPress readme found: https://yameveo.ai/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m The external WP-Cron seems to be enabled: https://yameveo.ai/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[32m[+][0m WordPress version 6.9.1 identified (Latest, released on 2026-02-03).
+ | Found By: Meta Generator (Passive Detection)
+ |  - https://yameveo.ai/, Match: 'WordPress 6.9.1'
+ | Confirmed By: Rss Generator (Aggressive Detection)
+ |  - https://yameveo.ai/feed/, <generator>https://wordpress.org/?v=6.9.1</generator>
+ |  - https://yameveo.ai/comments/feed/, <generator>https://wordpress.org/?v=6.9.1</generator>
+
+[32m[+][0m WordPress theme in use: yameveo-sentinel-classic
+ | Location: https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/
+ | Style URL: https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/style.css?ver=1.0.0
+ | Style Name: Yameveo Sentinel Classic
+ | Style URI: https://yameveo.com
+ | Description: A premium cybersecurity-focused WordPress theme built for Yameveo. Features the Sentinel Classic bra...
+ | Author: Yameveo
+ | Author URI: https://yameveo.com
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
+ |
+ | Version: 1.0.0 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/style.css?ver=1.0.0, Match: 'Version: 1.0.0'
+
+[32m[+][0m Enumerating All Plugins (via Passive Methods)
+[32m[+][0m Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[34m[i][0m Plugin(s) Identified:
+
+[32m[+][0m *
+ | Location: https://yameveo.ai/wp-content/plugins/*/
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | The version could not be determined.
+
+[32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
+
+ Checking Config Backups -: |==================================================|
+
+[34m[i][0m No Config Backups Found.
+
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Wed Mar  4 16:10:59 2026
+[32m[+][0m Requests Done: 179
+[32m[+][0m Cached Requests: 7
+[32m[+][0m Data Sent: 59.369 KB
+[32m[+][0m Data Received: 388.506 KB
+[32m[+][0m Memory used: 287.574 MB
+[32m[+][0m Elapsed time: 00:00:17

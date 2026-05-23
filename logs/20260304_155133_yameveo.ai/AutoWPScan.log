@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan'); import main; main._home_path='/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports'; main._wpscan_api_token=os.environ.get('WPSCAN_API_TOKEN',''); print(main.run_wpscan(os.environ['TARGET_URL_ENV'],'single-target','0'))
+                                                                                                                                                                                                                                                                                                                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan/main.py", line 162, in run_wpscan
+    vulnerabilities_count, wp_banner, vulnerabilities_list = parse_wpscan_result(output_file_name)
+                                                             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan/main.py", line 172, in parse_wpscan_result
+    wp_ver = f"{data['version']['number']}"
+                ~~~~^^^^^^^^^^^
+KeyError: 'version'

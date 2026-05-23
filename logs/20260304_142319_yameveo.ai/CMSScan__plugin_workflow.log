@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms,wpscan,droopescan,joomscan,vbscan; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); print('detected_cms='+c); print((wpscan(u) if c=='wordpress' else droopescan(u) if c=='drupal' else joomscan(u) if c=='joomla' else vbscan(u) if c=='vbulletin' else 'No mapped scanner for detected CMS'))
+                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/plugins/scanners.py", line 4, in <module>
+    from fake_useragent import UserAgent
+ModuleNotFoundError: No module named 'fake_useragent'

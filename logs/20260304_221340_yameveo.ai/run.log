@@ -1,0 +1,9 @@
+[2026-03-04 22:13:40] Target input       : https://yameveo.ai:443
+[2026-03-04 22:13:40] Normalized target  : https://yameveo.ai:443
+[2026-03-04 22:13:40] Detected CMS       : wordpress
+[2026-03-04 22:13:40] Report output      : reports/yameveo.ai.cms.refined.txt
+[2026-03-04 22:13:40] Run log            : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_221340_yameveo.ai/run.log
+[2026-03-04 22:13:40] Tool logs          : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_221340_yameveo.ai
+[2026-03-04 22:13:40] Output owner       : spabam:spabam
+[2026-03-04 22:14:14] Unified report written to reports/yameveo.ai.cms.refined.txt
+[2026-03-04 22:14:14] Summary: success=7, nonzero=0, timeouts=3, skipped=11

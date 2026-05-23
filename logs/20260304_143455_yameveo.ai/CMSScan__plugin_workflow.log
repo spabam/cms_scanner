@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms,wpscan,droopescan,joomscan,vbscan; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); print('detected_cms='+c); print((wpscan(u) if c=='wordpress' else droopescan(u) if c=='drupal' else joomscan(u) if c=='joomla' else vbscan(u) if c=='vbulletin' else 'No mapped scanner for detected CMS'))
+                                                                                                                                                                                                                                                                                          ~~~~~~^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/plugins/scanners.py", line 60, in wpscan
+    return cmd_runner(wp_scan)
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/plugins/scanners.py", line 34, in cmd_runner
+    return json.dumps(json.loads(exc.output.strip()))
+                      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+detected_cms=wordpress
+[INFO] wpscan scanning URL: https://yameveo.ai:443
+[ERROR] 127 env: ‘/home/spabam/.local/share/gem/ruby/3.3.0/bin/wpscan’: No such file or directory
+

@@ -1,0 +1,686 @@
+CMS Unified Scan Report
+Generated: 2026-05-06 17:50:07
+Input target: blog.infrascan.net
+Normalized target URL: https://blog.infrascan.net:443
+Detected CMS: unknown
+Detection: Auto-detected via nmap: 443/tcp open
+Working directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner
+Run log: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/run.log
+Tool logs directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net
+
+----- nmap 443 probe -----
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-05-06 17:50 +0200
+Nmap scan report for blog.infrascan.net (172.67.134.101)
+Host is up (0.019s latency).
+Other addresses for blog.infrascan.net (not scanned): 104.21.25.167 2606:4700:3032::6815:19a7 2606:4700:3031::ac43:8665
+
+PORT    STATE SERVICE
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 0.54 seconds
+
+----- nmap 80 probe -----
+not executed
+
+
+================================================================================
+WPScan
+================================================================================
+Tool Name   : WPScan
+Command     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpscan --url https://blog.infrascan.net:443 --detection-mode mixed --random-user-agent --no-banner --cache-dir /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/wpscan_runtime/cache --cookie-jar /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/wpscan_runtime/cookie_jar.txt
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/WPScan.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+wpscan executable not found in gem or system paths
+----------------------------------------
+
+
+================================================================================
+CMSmap
+================================================================================
+Tool Name   : CMSmap
+Command     : cmsmap https://blog.infrascan.net:443 --noedb
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/CMSmap.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsmap: line 3: /home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap: No such file or directory
+----------------------------------------
+
+
+================================================================================
+CMSeeK
+================================================================================
+Tool Name   : CMSeeK
+Command     : cmseek -u https://blog.infrascan.net:443 --batch --light-scan
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/CMSeeK.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmseek: line 3: /home/spabam/.venv/cms_scanner/cmseek/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (wordpress)
+================================================================================
+Tool Name   : Droopescan (wordpress)
+Command     : droopescan scan wordpress -u https://blog.infrascan.net:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Droopescan__wordpress.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (drupal)
+================================================================================
+Tool Name   : Droopescan (drupal)
+Command     : droopescan scan drupal -u https://blog.infrascan.net:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Droopescan__drupal.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (joomla)
+================================================================================
+Tool Name   : Droopescan (joomla)
+Command     : droopescan scan joomla -u https://blog.infrascan.net:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Droopescan__joomla.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (moodle)
+================================================================================
+Tool Name   : Droopescan (moodle)
+Command     : droopescan scan moodle -u https://blog.infrascan.net:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Droopescan__moodle.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Droopescan (silverstripe)
+================================================================================
+Tool Name   : Droopescan (silverstripe)
+Command     : droopescan scan silverstripe -u https://blog.infrascan.net:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Droopescan__silverstripe.log
+Started     : 2026-05-06 17:50:07
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:07
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/droopescan: line 3: /home/spabam/.venv/cms_scanner/droopescan/bin/droopescan: No such file or directory
+----------------------------------------
+
+
+================================================================================
+JoomScan
+================================================================================
+Tool Name   : JoomScan
+Command     : joomscan --url https://blog.infrascan.net:443 -ec --no-report
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/JoomScan.log
+Started     : 2026-05-06 17:50:07
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-05-06 17:50:08
+Duration    : 1s
+
+Output:
+----------------------------------------
+
+    ____  _____  _____  __  __  ___   ___    __    _  _
+   (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  (
+  \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
+			(1337.today)
+
+    --=[OWASP JoomScan
+    +---++---==[Version : 0.0.7
+    +---++---==[Update Date : [2018/09/23]
+    +---++---==[Authors : Mohammad Reza Espargham , Ali Razmjoo
+    --=[Code name : Self Challenge
+    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP
+
+Processing https://blog.infrascan.net:443 ...
+
+
+[+] FireWall Detector
+[++] Firewall detected : CloudFlare
+
+[+] Detecting Joomla Version
+[++] The target is not alive!
+
+----------------------------------------
+
+
+================================================================================
+Drupwn
+================================================================================
+Tool Name   : Drupwn
+Command     : drupwn --mode enum --target https://blog.infrascan.net:443 --users --nodes --modules --dfiles --themes --thread 4
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/Drupwn.log
+Started     : 2026-05-06 17:50:08
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:08
+Duration    : 0s
+
+Output:
+----------------------------------------
+env: ?/home/spabam/.venv/cms_scanner/drupwn-modern/bin/drupwn?: No such file or directory
+----------------------------------------
+
+
+================================================================================
+VBScan
+================================================================================
+Tool Name   : VBScan
+Command     : vbscan https://blog.infrascan.net:443
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/VBScan.log
+Started     : 2026-05-06 17:50:08
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-05-06 17:50:31
+Duration    : 23s
+
+Output:
+----------------------------------------
+
+  _  _  ____  ___   ___    __    _  _
+ ( \/ )(  _ \/ __) / __)  /__\  ( \( )
+  \  /  ) _ <\__ \( (__  /(__)\  )  (
+   \/  (____/(___/ \___)(__)(__)(_)\_)
+		(1337.today)
+
+    --=[OWASP VBScan
+    +---++---==[Version : 0.1.8
+    +---++---==[Update Date : [2018/09/13]
+    +---++---==[Author : Mohammad Reza Espargham
+    +---++---==[Website : www.reza.es
+    --=[Code name : Self Challenge
+     @OWASP_VBScan , @rezesp , @OWASP
+
+Processing https://blog.infrascan.net:443 ...
+
+
+[+] Detecting Vbulletin based Firewall
+[++] No known firewall detected
+
+[+] Detecting vBulletin Version
+[++] vBulletin ..
+
+
+[+] Core Vbulletin Vulnerability
+[++] Target vbulletin core is not vulnerable
+
+[+] Vbulletin password logger Detecting
+[++] Password logger not found
+
+[+] Checking apache info/status files
+[++] Readable info/status files are not found
+
+[+] Checking admincp/modcp path
+[++] admincp does not exist or renamed
+[++] modcp does not exist or renamed
+
+[+] Checking upgrade.php to find admincp
+[++] upgrade.php not found
+
+[+] Checking validator.php
+[++] validator.php is not found
+
+[+] Checking robots.txt existing
+[++] robots.txt is not found
+
+[+] Checking c99 xml shell in admincp/subscriptions.php
+[++] c99 xml shell is Not Found
+
+[+] Finding common backup files name
+[++] Backup files are not found
+
+[+] Finding common log files name
+[++] error log is not found
+
+[+] Checking config.php.x for disclure config file
+[++] Readable config files are not found
+
+[+] Checking faq.php RCE backdoor
+[++] Remote Code Execute backdoor not found
+
+[+] Checking vBSEO 3.x - LFI (Local File Inclusion) vulnerability
+[++] vbseo.php LFI is not vulnerable
+
+[+] Checking vBulletin vBExperience 3 'sortorder' Parameter Cross Site Scripting Vulnerability
+[++] xperience.php not vulnerable
+
+[+] Checking arcade.php SQLI Vulnerability
+[++] arcade.php not found
+
+[+] 'Checking for email before registration plugin SQL injection vulnerability
+[++] register.php is not vulnerable
+
+[+] Checking for Tapatalk vulnerability
+[++] Tapatalk not found
+
+[+] Checking for routestring plugin RCE vulnerability
+[++] Routestring plugin is not vulnerable
+
+[+] Checking for OpenRedirection
+[++] Open Redirection is not found
+
+[+] Checking vBulletin YUI 2.9.0 XSS
+[++] uploader.swf not found
+
+[+] Checking for html tags status
+[++] HTML tag are Disable
+
+[+] Checking Vbulletin 5.x - Remote Code Execution Exploit
+[++] decodeArguments is not vulnerable
+
+
+Your Report : reports/blog.infrascan.net:443/
+----------------------------------------
+
+
+================================================================================
+VulnX
+================================================================================
+Tool Name   : VulnX
+Command     : vulnx -u https://blog.infrascan.net:443 --cms
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/VulnX.log
+Started     : 2026-05-06 17:50:31
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:31
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/vulnx: line 3: /home/spabam/.venv/cms_scanner/vulnx/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPSeku
+================================================================================
+Tool Name   : WPSeku
+Command     : env PYTHONWARNINGS=ignore::SyntaxWarning wpseku --url https://blog.infrascan.net:443
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/WPSeku.log
+Started     : 2026-05-06 17:50:31
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:31
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpseku: line 3: /home/spabam/.venv/cms_scanner/wpseku/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPForce
+================================================================================
+Tool Name   : WPForce
+Command     : wpforce -i /tmp/tmp.dElhWBQYSN/wpforce_users.txt -w /tmp/tmp.dElhWBQYSN/wpforce_passwords.txt -u https://blog.infrascan.net:443 -t 2
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/WPForce.log
+Started     : 2026-05-06 17:50:31
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:31
+Duration    : 0s
+
+Output:
+----------------------------------------
+env: ?/home/spabam/.venv/cms_scanner/wpforce/bin/python?: No such file or directory
+----------------------------------------
+
+
+================================================================================
+WPXF
+================================================================================
+Tool Name   : WPXF
+Command     : bash -lc cat '/tmp/tmp.dElhWBQYSN/wpxf_input.txt' | '/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpxf'
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/WPXF.log
+Started     : 2026-05-06 17:50:31
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-05-06 17:50:31
+Duration    : 0s
+
+Output:
+----------------------------------------
+
+                      /\
+          _.--''-- , / /
+  ,---- .'          /_/
+   '---',  .  _  .    ;
+        ._  __ __      \
+       , _)        .-'  y      WordPress Exploit Framework
+       -          (_..   :     Version 2.0.1
+      ; ...  ... (\     \ '
+      _  \ \ \ \  /      ; :   Auxiliaries: 58
+     ( t  \ \/\ \/  _   '  l   Exploits:    288
+     \ |   \/  \/  i )- ' /    Payloads:    7
+      - '._        | /  ,'
+       ..   ' - ''  -j ,
+      (  '.___.. --'.
+       '.______..--'
+
+wpxf > wpxf > wpxf > y
+
+
+  [!] "y" is not a recognised command.
+
+wpxf > wpxf > wpxf > use auxiliary/info/wp_v4.7_user_info_disclosure
+
+
+  [+] Loaded module: #<Wpxf::Auxiliary::Wp47UserInfoDisclosure:0x00007f1c8ec693d0>
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set host blog.infrascan.net
+
+
+  [+] Set host => blog.infrascan.net
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set port 443
+
+
+  [+] Set port => 443
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set ssl true
+
+
+  [+] Set ssl => true
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set target_uri /
+
+
+  [+] Set target_uri => /
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set vhost blog.infrascan.net
+
+
+  [+] Set vhost => blog.infrascan.net
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > show options
+
+
+  Module options:
+
+    Name         Current Setting      Required   Description
+    ----------   ------------------   --------   --------------------------------------
+    host         blog.infrascan.net   true       Address of the target host.
+    port         443                  true       Port the remote host is listening on
+    proxy                             false      Proxy address ([protocol://]host:port)
+    ssl          true                 true       Use SSL/HTTPS for all requests
+    target_uri   /                    true       Base path to the WordPress application
+    verbose      false                true       Enable verbose output
+    vhost        blog.infrascan.net   false      HTTP server virtual host
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > check
+
+
+  [!] Could not determine if the target is vulnerable
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > run
+
+
+  [!] https://blog.infrascan.net/ does not appear to be running WordPress
+  [!] Execution failed
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > exit
+
+----------------------------------------
+
+Post-Processing: Reclassified as SKIP
+Reason         : WPXF module workflow did not execute correctly
+
+
+================================================================================
+joomlavs
+================================================================================
+Tool Name   : joomlavs
+Command     : joomlavs -u https://blog.infrascan.net:443 -q --hide-banner
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/joomlavs.log
+Started     : 2026-05-06 17:50:31
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-05-06 17:50:32
+Duration    : 1s
+
+Output:
+----------------------------------------
+[+] URL: https://blog.infrascan.net:443
+
+[+] Started: Wed May  6 17:50:32 2026
+
+
+[+] Found 21 interesting headers.
+
+ |  date: Wed, 06 May 2026 15:50:32 GMT
+
+ |  content-type: text/html; charset=UTF-8
+
+ |  content-length: 5324
+
+ |  accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+
+ |  cf-mitigated: challenge
+
+ |  content-security-policy: default-src 'none'; script-src 'nonce-f3GP1w6RcGKfBShEM2JQUt' 'unsafe-eval' https://challenges.cloudflare.com; script-src-attr 'none'; style-src 'unsafe-inline'; img-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src 'self' https://challenges.cloudflare.com blob:; child-src 'self' https://challenges.cloudflare.com blob:; worker-src blob:; form-action http: https:; base-uri 'self'
+
+ |  server: cloudflare
+
+ |  critical-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+
+ |  cross-origin-embedder-policy: require-corp
+
+ |  cross-origin-opener-policy: same-origin
+
+ |  cross-origin-resource-policy: same-origin
+
+ |  origin-agent-cluster: ?1
+
+ |  permissions-policy: accelerometer=(),browsing-topics=(),camera=(),clipboard-read=(),clipboard-write=(),geolocation=(),gyroscope=(),hid=(),interest-cohort=(),magnetometer=(),microphone=(),payment=(),publickey-credentials-get=(),screen-wake-lock=(),serial=(),sync-xhr=(),usb=(),xr-spatial-tracking=(self)
+
+ |  referrer-policy: same-origin
+
+ |  server-timing: chlray;desc="9f792424388cdb84"
+
+ |  x-content-type-options: nosniff
+
+ |  x-frame-options: SAMEORIGIN
+
+ |  report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=h%2BsNHaPkx2JFgwJbO17qP9jP6qKdmjOmGqK3f2a8ellRxqxkpOvx%2FsCQrDy%2BC0e2E4Ran03Z%2Bbb7jJay%2B2HbUCoOWgKYpYUFltSJTMBAnAwyWLZiFsiGrn%2BGVeSC%2B70KyAu7QkIO79cjq0qRtW65Sfo%3D"}]}
+
+ |  nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+
+ |  cf-ray: 9f792424388cdb84-MAD
+
+ |  alt-svc: h3=":443"; ma=86400
+
+
+[!] Couldn't determine version
+
+
+[+] Finished
+
+
+----------------------------------------
+
+
+================================================================================
+Fingerprinter
+================================================================================
+SKIP: no mapped Fingerprinter app for detected CMS 'unknown'
+
+================================================================================
+AutoWPScan
+================================================================================
+SKIP: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+
+================================================================================
+AEM Detector (aem-hacker)
+================================================================================
+Tool Name   : AEM Detector (aem-hacker)
+Command     : aem-hacker -u https://blog.infrascan.net:443 --workers 4
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/AEM_Detector__aem-hacker.log
+Started     : 2026-05-06 17:50:32
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:32
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/aem-hacker: line 3: /home/spabam/.venv/cms_scanner/aem-hacker/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+AEM Discoverer
+================================================================================
+Tool Name   : AEM Discoverer
+Command     : aem-discoverer --file /tmp/tmp.dElhWBQYSN/aem_targets.txt --workers 4
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/AEM_Discoverer.log
+Started     : 2026-05-06 17:50:32
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:32
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/aem-discoverer: line 3: /home/spabam/.venv/cms_scanner/aem-hacker/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+CMSScan (detector workflow)
+================================================================================
+Tool Name   : CMSScan (detector workflow)
+Command     : env TARGET_URL_ENV=https://blog.infrascan.net:443 /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsscan-python -c import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); m={'wordpress':'wpscan','drupal':'droopescan','joomla':'joomscan','vbulletin':'vbscan'}.get(c,'none'); print('detected_cms='+c); print('mapped_scanner='+m); print('full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)')
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/CMSScan__detector_workflow.log
+Started     : 2026-05-06 17:50:32
+Status      : NONZERO
+Exit Code   : 127
+Finished    : 2026-05-06 17:50:32
+Duration    : 0s
+
+Output:
+----------------------------------------
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsscan-python: line 3: /home/spabam/.venv/cms_scanner/cmsscan/bin/python: No such file or directory
+----------------------------------------
+
+
+================================================================================
+Execution Overview
+================================================================================
+Target URL      : https://blog.infrascan.net:443
+Detected CMS    : unknown
+Success (rc=0)  : 3
+Non-zero exits  : 15
+Timeouts        : 0
+Skipped         : 3
+Run log         : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/run.log
+Tool logs dir   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net
+Report file     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/blog.infrascan.net.cms.txt
+
+================================================================================
+Skipped Tools (Consolidated)
+================================================================================
+- WPXF: WPXF module workflow did not execute correctly
+- Fingerprinter: no mapped Fingerprinter app for detected CMS 'unknown'
+- AutoWPScan: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+
+================================================================================
+Non-Zero And Timeout Tools
+================================================================================
+Non-zero:
+- WPScan (rc=127)
+- CMSmap (rc=127)
+- CMSeeK (rc=127)
+- Droopescan (wordpress) (rc=127)
+- Droopescan (drupal) (rc=127)
+- Droopescan (joomla) (rc=127)
+- Droopescan (moodle) (rc=127)
+- Droopescan (silverstripe) (rc=127)
+- Drupwn (rc=127)
+- VulnX (rc=127)
+- WPSeku (rc=127)
+- WPForce (rc=127)
+- AEM Detector (aem-hacker) (rc=127)
+- AEM Discoverer (rc=127)
+- CMSScan (detector workflow) (rc=127)
+
+================================================================================
+Operational Notes
+================================================================================
+- WPXF: reclassified as SKIP (WPXF module workflow did not execute correctly)
+
+================================================================================
+Summary
+================================================================================
+Target URL            : https://blog.infrascan.net:443
+Detected CMS          : unknown
+Success (rc=0)        : 3
+Non-zero exits        : 15
+Timeouts              : 0
+Skipped               : 3
+Run log               : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net/run.log
+Tool logs directory   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260506_175007_blog.infrascan.net
+Report generated at   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/blog.infrascan.net.cms.txt

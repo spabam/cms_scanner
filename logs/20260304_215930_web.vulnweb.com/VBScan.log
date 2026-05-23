@@ -1,0 +1,95 @@
+[H[2J[3J[33m
+  _  _  ____  ___   ___    __    _  _
+ ( \/ )(  _ \/ __) / __)  /__\  ( \( )
+  \  /  ) _ <\__ \( (__  /(__)\  )  (
+   \/  (____/(___/ \___)(__)(__)(_)\_)
+[31m		(1337.today)[0m
+   
+    --=[[34mOWASP VBScan[0m
+    +---++---==[Version : [31m0.1.8
+[0m    +---++---==[Update Date : [[31m2018/09/13[0m]
+    +---++---==[Author : [31mMohammad Reza Espargham[0m
+    +---++---==[Website : [31mwww.reza.es[0m
+    --=[Code name : [31mSelf Challenge[0m
+     @OWASP_VBScan , @rezesp , @OWASP
+
+[34m[34mProcessing https://web.vulnweb.com:443 ...
+
+
+[34m
+[+] Detecting Vbulletin based Firewall
+[31m[++] No known firewall detected
+[34m[31m[++] The target is alive! But is not running on vbulletin.
+Do you want to continue? [y/N] [34m
+[+] Detecting vBulletin Version
+[33m[++] vBulletin ..
+
+[34m[34m
+[+] Core Vbulletin Vulnerability
+[31m[++] Target vbulletin core is not vulnerable
+[34m[34m
+[+] Vbulletin password logger Detecting
+[31m[++] Password logger not found
+[34m[34m
+[+] Checking apache info/status files
+[31m[++] Readable info/status files are not found
+[34m[34m
+[+] Checking admincp/modcp path
+[31m[++] admincp does not exist or renamed
+[++] modcp does not exist or renamed
+[34m[34m
+[+] Checking upgrade.php to find admincp
+[31m[++] upgrade.php not found
+[34m[34m
+[+] Checking validator.php
+[31m[++] validator.php is not found
+[34m[34m
+[+] Checking robots.txt existing
+[31m[++] robots.txt is not found
+[34m[34m
+[+] Checking c99 xml shell in admincp/subscriptions.php
+[31m[++] c99 xml shell is Not Found
+[34m[34m
+[+] Finding common backup files name
+[31m[++] Backup files are not found
+[34m[34m
+[+] Finding common log files name
+[31m[++] error log is not found
+[34m[34m
+[+] Checking config.php.x for disclure config file
+[31m[++] Readable config files are not found
+[34m[34m
+[+] Checking faq.php RCE backdoor
+[31m[++] Remote Code Execute backdoor not found
+[34m[34m
+[+] Checking vBSEO 3.x - LFI (Local File Inclusion) vulnerability
+[31m[++] vbseo.php LFI is not vulnerable
+[34m[34m
+[+] Checking vBulletin vBExperience 3 'sortorder' Parameter Cross Site Scripting Vulnerability
+[31m[++] xperience.php not vulnerable
+[34m[34m
+[+] Checking arcade.php SQLI Vulnerability
+[31m[++] arcade.php not found
+[34m[34m
+[+] 'Checking for email before registration plugin SQL injection vulnerability
+[31m[++] register.php is not vulnerable
+[34m[34m
+[+] Checking for Tapatalk vulnerability
+[31m[++] Tapatalk not found
+[34m[34m
+[+] Checking for routestring plugin RCE vulnerability
+[31m[++] Routestring plugin is not vulnerable
+[34m[34m
+[+] Checking for OpenRedirection
+[31m[++] Open Redirection is not found
+[34m[34m
+[+] Checking vBulletin YUI 2.9.0 XSS
+[31m[++] uploader.swf not found
+[34m[34m
+[+] Checking for html tags status
+[31m[++] 
+Shutting Down , Interrupt by user
+[34m[33m
+
+Your Report : reports/web.vulnweb.com:443/
+[0m

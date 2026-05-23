@@ -1,0 +1,781 @@
+CMS Unified Scan Report
+Generated: 2026-03-04 22:31:51
+Input target: yameveo.ai
+Normalized target URL: https://yameveo.ai:443
+Detected CMS: wordpress
+Detection: Auto-detected via nmap: 443/tcp open
+Working directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner
+Run log: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/run.log
+Tool logs directory: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai
+
+----- nmap 443 probe -----
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-03-04 22:31 +0100
+Nmap scan report for yameveo.ai (172.67.151.13)
+Host is up (0.011s latency).
+Other addresses for yameveo.ai (not scanned): 2606:4700:3033::ac43:970d 2606:4700:3030::6815:3075 104.21.48.117
+
+PORT    STATE SERVICE
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 2.05 seconds
+
+----- nmap 80 probe -----
+not executed
+
+
+================================================================================
+WPScan
+================================================================================
+Tool Name   : WPScan
+Command     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpscan --url https://yameveo.ai:443 --detection-mode mixed --random-user-agent --no-banner --cache-dir /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/wpscan_runtime/cache --cookie-jar /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/wpscan_runtime/cookie_jar.txt
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/WPScan.log
+Started     : 2026-03-04 22:31:51
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:32:17
+Duration    : 26s
+
+Output:
+----------------------------------------
+[+] URL: https://yameveo.ai/ [2606:4700:3030::6815:3075]
+[+] Started: Wed Mar  4 22:31:55 2026
+
+Interesting Finding(s):
+
+[+] Headers
+ | Interesting Entries:
+ |  - server: cloudflare
+ |  - nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+ |  - referrer-policy: strict-origin-when-cross-origin
+ |  - report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=jAdCbu%2BUcqLQGikB2a%2F8GTbtUgGNQf8ukNkimpmcDA2pcH8WE4RaJr%2Ba2AGJIurjJBPr%2BQYUD3xl%2BGyOCry%2FblSH7WpHk8xnzxAzkzhZm57bS6hK4N4%3D"}]}
+ |  - cf-cache-status: DYNAMIC
+ |  - cf-ray: 9d73fd86af88031c-MAD
+ |  - alt-svc: h3=":443"; ma=86400
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[+] robots.txt found: https://yameveo.ai/robots.txt
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[+] XML-RPC seems to be enabled: https://yameveo.ai/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[+] WordPress readme found: https://yameveo.ai/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[+] The external WP-Cron seems to be enabled: https://yameveo.ai/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[+] WordPress version 6.9.1 identified (Latest, released on 2026-02-03).
+ | Found By: Meta Generator (Passive Detection)
+ |  - https://yameveo.ai/, Match: 'WordPress 6.9.1'
+ | Confirmed By: Rss Generator (Aggressive Detection)
+ |  - https://yameveo.ai/feed/, <generator>https://wordpress.org/?v=6.9.1</generator>
+ |  - https://yameveo.ai/comments/feed/, <generator>https://wordpress.org/?v=6.9.1</generator>
+
+[+] WordPress theme in use: yameveo-sentinel-classic
+ | Location: https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/
+ | Style URL: https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/style.css?ver=1.0.0
+ | Style Name: Yameveo Sentinel Classic
+ | Style URI: https://yameveo.com
+ | Description: A premium cybersecurity-focused WordPress theme built for Yameveo. Features the Sentinel Classic bra...
+ | Author: Yameveo
+ | Author URI: https://yameveo.com
+ |
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
+ |
+ | Version: 1.0.0 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/style.css?ver=1.0.0, Match: 'Version: 1.0.0'
+
+[+] Enumerating All Plugins (via Passive Methods)
+[+] Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[i] Plugin(s) Identified:
+
+[+] *
+ | Location: https://yameveo.ai/wp-content/plugins/*/
+ |
+ | Found By: Urls In Homepage (Passive Detection)
+ | Confirmed By: Urls In 404 Page (Passive Detection)
+ |
+ | The version could not be determined.
+
+[+] Enumerating Config Backups (via Passive and Aggressive Methods)
+
+ Checking Config Backups -: |================================================================================================================================================================|
+
+[i] No Config Backups Found.
+
+[!] You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[+] Finished: Wed Mar  4 22:32:17 2026
+[+] Requests Done: 179
+[+] Cached Requests: 7
+[+] Data Sent: 58.117 KB
+[+] Data Received: 389.176 KB
+[+] Memory used: 279.723 MB
+[+] Elapsed time: 00:00:21
+----------------------------------------
+
+
+================================================================================
+CMSmap
+================================================================================
+Tool Name   : CMSmap
+Command     : cmsmap https://yameveo.ai:443 --noedb
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/CMSmap.log
+Started     : 2026-03-04 22:32:17
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:32:52
+Duration    : 35s
+
+Output:
+----------------------------------------
+[-] Date & Time: 04/03/2026 22:32:17
+[I] Threads: 5
+[-] Target: https://yameveo.ai:443 (104.21.48.117)
+[I] Server: cloudflare
+[L] X-Frame-Options: Not Enforced
+[I] Strict-Transport-Security: Not Enforced
+[I] X-Content-Security-Policy: Not Enforced
+[L] Robots.txt Found: https://yameveo.ai:443/robots.txt
+[I] CMS Detection: WordPress
+[I] Wordpress Version: 6.9.1
+[I] Wordpress Theme: yameveo-sentinel-classic
+[-] WordPress usernames identified:
+[M] ]
+[M] yameveo_admin
+[M] XML-RPC services are enabled
+[M] Website vulnerable to XML-RPC Brute Force Vulnerability
+[I] Autocomplete Off Not Found: https://yameveo.ai:443/wp-login.php
+[-] Default WordPress Files:
+[-] Searching Wordpress Plugins ...
+
+[I] *","
+[I] Checking for Directory Listing Enabled ...
+[-] Date & Time: 04/03/2026 22:32:52
+[-] Completed in: 0:00:35
+----------------------------------------
+
+
+================================================================================
+CMSeeK
+================================================================================
+Tool Name   : CMSeeK
+Command     : cmseek -u https://yameveo.ai:443 --batch --light-scan
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/CMSeeK.log
+Started     : 2026-03-04 22:32:52
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:32:53
+Duration    : 1s
+
+Output:
+----------------------------------------
+True
+[i] Updating CMSeeK result index...
+[*] Report index updated successfully!
+
+ ___ _  _ ____ ____ ____ _  _
+|    |\/| [__  |___ |___ |_/  by @r3dhax0r
+|___ |  | ___| |___ |___ | \_ Version 1.1.3 K-RONA
+
+
+ [+]  CMS Detection And Deep Scan  [+]
+
+[i] Scanning Site: https://yameveo.ai:443
+[*] CMS Detected, CMS ID: wp, Detection method: header
+[*] Starting version detection
+[*] Version Detected, WordPress Version 6.9.1
+
+ ___ _  _ ____ ____ ____ _  _
+|    |\/| [__  |___ |___ |_/  by @r3dhax0r
+|___ |  | ___| |___ |___ | \_ Version 1.1.3 K-RONA
+
+
+ [+]  CMS Scan Results  [+]
+
+ ??Target: yameveo.ai:443
+ ?
+ ??? CMS: WordPress
+ ?    ?
+ ?    ??? Version: 6.9.1
+ ?    ??? URL: https://wordpress.org
+ ?
+ ??? Result: /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSeeK/Result/yameveo.ai_443/cms.json
+ ?
+ ??Scan Completed in 0.39 Seconds, using 1 Requests
+
+
+ CMSeeK says ~ zaijian
+----------------------------------------
+
+
+================================================================================
+Droopescan (wordpress)
+================================================================================
+Tool Name   : Droopescan (wordpress)
+Command     : droopescan scan wordpress -u https://yameveo.ai:443 --enumerate v -t 4 --timeout 15 --hide-progressbar
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/Droopescan__wordpress.log
+Started     : 2026-03-04 22:32:53
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:32:53
+Duration    : 0s
+
+Output:
+----------------------------------------
+[+] Possible version(s):
+    5.8
+
+[+] Scan finished (0:00:00.601319 elapsed)
+----------------------------------------
+
+
+================================================================================
+Droopescan (drupal)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'drupal'
+
+================================================================================
+Droopescan (joomla)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Droopescan (moodle)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'moodle'
+
+================================================================================
+Droopescan (silverstripe)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'silverstripe'
+
+================================================================================
+JoomScan
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Drupwn
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'drupal'
+
+================================================================================
+VBScan
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'vbulletin'
+
+================================================================================
+VulnX
+================================================================================
+Tool Name   : VulnX
+Command     : vulnx -u https://yameveo.ai:443 --cms
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/VulnX.log
+Started     : 2026-03-04 22:32:53
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:32:57
+Duration    : 4s
+
+Output:
+----------------------------------------
+
+
+                    .:.        .:,
+                   xM;           XK.
+                  dx'            .lO.
+                 do                ,0.
+             .c.lN'      ,  '.     .k0.:'
+              xMMk;d;''cOM0kWXl,',locMMX.
+              .NMK.   :WMMMMMMMx    dMMc
+               lMMO  lWMMMMMMMMMO. lMMO
+                cWMxxMMMMMMMMMMMMKlWMk
+                 .xWMMMMMMMMMMMMMMM0,
+                   .,OMd,,,;0MMMO,.
+             .l0O.VXVXOX.VXVX0MOVXVX.0Kd,
+            lWMMO0VXVX0OX.VXVXlVXVX.VXNMMO
+           .MMX;.N0VXVX00X.VXVXVX0.0M:.OMMl
+          .OXc  ,MMOVXVX0VX .VXVX00MMo  ,0X'
+          0x.  :XMMMkVXVX.XO.VXVXdMMMWo.  :X'
+         .d  'NMMMMMMkVXVX..VXVX0.XMMMMWl  ;c
+            'NNoMMMMMMxVXVXVXVXVX0.XMMk0Mc
+           .NMx OMMMMMMdVXVXVXlVXVX.NW.;MMc
+          :NMMd .NMMMMMMdVXVXdMd,,,,oc ;MMWx
+          .0MN,  'XMMMMMMoVXoMMMMMMWl   0MW,
+           .0.    .xWMMMMM:lMMMMMM0,     kc
+            ,O.     .:dOKXXXNKOxc.      do
+             '0c        -VulnX-       ,Ol
+               ;.                     :.
+
+    # Coded By Anouar Ben Saad - @anouarbensaad
+
+
+ [Target] => https://yameveo.ai:443
+
+ ????????????????????????????????????????????
+ [~] looking for cms
+ [+] CMS : Wordpress
+ ????????????????????????????????????????????
+ [~] Web Hosting Information
+ [-] Cannot Find OS & HostingServer
+ ????????????????????????????????????????????
+ [~] CMS Information Gathering
+ [+] User : yameveo_admin
+ [+] Version : 6.9.1
+ ????????????????????????????????????????????
+
+ [ Elapsed Time ] => 3.81 seconds
+----------------------------------------
+
+
+================================================================================
+WPSeku
+================================================================================
+Tool Name   : WPSeku
+Command     : env PYTHONWARNINGS=ignore::SyntaxWarning wpseku --url https://yameveo.ai:443
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/WPSeku.log
+Started     : 2026-03-04 22:32:57
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:33:26
+Duration    : 29s
+
+Output:
+----------------------------------------
+----------------------------------------
+ _ _ _ ___ ___ ___| |_ _ _
+| | | | . |_ -| -_| '_| | |
+|_____|  _|___|___|_,_|___|
+      |_|             v0.4.0
+
+WPSeku - Wordpress Security Scanner
+by Momo Outaadi (m4ll0k)
+----------------------------------------
+
+[ + ] Target: https://yameveo.ai:443
+[ + ] Starting: 22:32:58
+
+[ + ] Server: cloudflare
+[ + ] Uncommon header "Nel" found, with contents: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+[ + ] Uncommon header "Referrer-Policy" found, with contents: strict-origin-when-cross-origin
+[ + ] Uncommon header "Report-To" found, with contents: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ZU9huqEpIXtug%2F4H53ah9Lwyq7BuHQBfeznMoDt58EHY68%2BOnKJOLWsSd5%2BsUofamfeFQbiyKhFzetP7ioazr7Li%2B8dw36K2IHzNMrFwvPZdEooIvRw%3D"}]}
+[ + ] Uncommon header "cf-cache-status" found, with contents: DYNAMIC
+[ + ] Uncommon header "vary" found, with contents: accept-encoding
+[ + ] Uncommon header "CF-RAY" found, with contents: 9d73ff1f6f8d0642-MAD
+[ + ] Uncommon header "alt-svc" found, with contents: h3=":443"; ma=86400
+[ + ] robots.txt file was found at: https://yameveo.ai:443/robots.txt
+[ + ] readme.html file was found at: https://yameveo.ai:443/readme.html
+[ + ] Robots was found at: https://yameveo.ai:443/robots.txt
+----------------------------------------
+# As a condition of accessing this website, you agree to abide by the following
+# content signals:
+
+# (a)  If a Content-Signal = yes, you may collect content for the corresponding
+#      use.
+# (b)  If a Content-Signal = no, you may not collect content for the
+#      corresponding use.
+# (c)  If the website operator does not include a Content-Signal for a
+#      corresponding use, the website operator neither grants nor restricts
+#      permission via Content-Signal with respect to the corresponding use.
+
+# The content signals and their meanings are:
+
+# search:   building a search index and providing search results (e.g., returning
+#           hyperlinks and short excerpts from your website's contents). Search does not
+#           include providing AI-generated search summaries.
+# ai-input: inputting content into one or more AI models (e.g., retrieval
+#           augmented generation, grounding, or other real-time taking of content for
+#           generative AI search answers).
+# ai-train: training or fine-tuning AI models.
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
+# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
+# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
+
+# BEGIN Cloudflare Managed content
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no
+Allow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# END Cloudflare Managed Content
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yameveo.ai/sitemap.xml
+
+----------------------------------------
+[ + ] Running WordPress version: 6.9.1
+[ ! ] Failed to establish a new connection
+----------------------------------------
+
+
+================================================================================
+WPForce
+================================================================================
+Tool Name   : WPForce
+Command     : wpforce -i /tmp/tmp.VitiINywOt/wpforce_users.txt -w /tmp/tmp.VitiINywOt/wpforce_passwords.txt -u https://yameveo.ai:443 -t 2
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/WPForce.log
+Started     : 2026-03-04 22:33:26
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:33:27
+Duration    : 1s
+
+Output:
+----------------------------------------
+       ,-~~-.___.       __        __ ____   _____
+      / |  x     \      \ \      / /|  _ \ |  ___|___   _ __  ___  ___
+     (  )        0       \ \ /\ / / | |_) || |_  / _ \ | '__|/ __|/ _ \.
+      \_/-, ,----'  ____  \ V  V /  |  __/ |  _|| (_) || |  | (__|  __/
+         ====      ||   \_ \_/\_/   |_|    |_|   \___/ |_|   \___|\___|
+        /  \-'~;   ||     |                v.1.0.0
+       /  __/~| ...||__/|-"   Brute Force Attack Tool for Wordpress
+     =(  _____||________|                 ~n00py~
+
+Username List: /tmp/tmp.VitiINywOt/wpforce_users.txt (2)
+Password List: /tmp/tmp.VitiINywOt/wpforce_passwords.txt (4)
+URL: https://yameveo.ai:443
+Trying: https://yameveo.ai:443/xmlrpc.php
+ 0% Percent Complete
+  0% Percent Complete
+  0% Percent Complete
+  0% Percent Complete
+  0% Percent Complete
+  75% Percent Complete
+  75% Percent Complete
+  75% Percent Complete
+  100% Percent Complete
+
+All correct pairs:
+{}
+----------------------------------------
+
+
+================================================================================
+WPXF
+================================================================================
+Tool Name   : WPXF
+Command     : bash -lc cat '/tmp/tmp.VitiINywOt/wpxf_input.txt' | '/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/wpxf'
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/WPXF.log
+Started     : 2026-03-04 22:33:27
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:33:28
+Duration    : 1s
+
+Output:
+----------------------------------------
+
+                      /\
+          _.--''-- , / /
+  ,---- .'          /_/
+   '---',  .  _  .    ;
+        ._  __ __      \
+       , _)        .-'  y      WordPress Exploit Framework
+       -          (_..   :     Version 2.0.1
+      ; ...  ... (\     \ '
+      _  \ \ \ \  /      ; :   Auxiliaries: 58
+     ( t  \ \/\ \/  _   '  l   Exploits:    288
+     \ |   \/  \/  i )- ' /    Payloads:    7
+      - '._        | /  ,'
+       ..   ' - ''  -j ,
+      (  '.___.. --'.
+       '.______..--'
+
+wpxf > wpxf > wpxf > y
+
+
+  [!] "y" is not a recognised command.
+
+wpxf > wpxf > wpxf > use auxiliary/info/wp_v4.7_user_info_disclosure
+
+
+  [+] Loaded module: #<Wpxf::Auxiliary::Wp47UserInfoDisclosure:0x00007f73f910f580>
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set host yameveo.ai
+
+
+  [+] Set host => yameveo.ai
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set port 443
+
+
+  [+] Set port => 443
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set ssl true
+
+
+  [+] Set ssl => true
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set target_uri /
+
+
+  [+] Set target_uri => /
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > set vhost yameveo.ai
+
+
+  [+] Set vhost => yameveo.ai
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > show options
+
+
+  Module options:
+
+    Name         Current Setting   Required   Description
+    ----------   ---------------   --------   --------------------------------------
+    host         yameveo.ai        true       Address of the target host.
+    port         443               true       Port the remote host is listening on
+    proxy                          false      Proxy address ([protocol://]host:port)
+    ssl          true              true       Use SSL/HTTPS for all requests
+    target_uri   /                 true       Base path to the WordPress application
+    verbose      false             true       Enable verbose output
+    vhost        yameveo.ai        false      HTTP server virtual host
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > check
+
+
+  [+] Target appears to be safe
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > run
+
+
+  [-] Calling the users API...
+
+      ID   Username        Name
+      --   -------------   -------------
+      1    yameveo_admin   yameveo_admin
+
+  [+] Saved export to /home/spabam/.wpxf/loot/2026-03-04_22-33-28.json
+  [+] Execution finished successfully
+
+wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > wpxf [auxiliary/info/wp_v4.7_user_info_disclosure] > exit
+
+----------------------------------------
+
+
+================================================================================
+joomlavs
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'joomla'
+
+================================================================================
+Fingerprinter
+================================================================================
+Tool Name   : Fingerprinter
+Command     : fingerprinter --app-name wordpress --passive-fingerprint https://yameveo.ai:443 --verbose
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/Fingerprinter.log
+Started     : 2026-03-04 22:33:28
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:33:30
+Duration    : 2s
+
+Output:
+----------------------------------------
+
+Passively Fingerprinting -: |
+Path not in the DB for https://yameveo.ai/
+Passively Fingerprinting -: |
+Path not in the DB for https://yameveo.ai/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fyameveo.ai%2F
+Passively Fingerprinting -: |===
+Path not in the DB for https://yameveo.ai/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fyameveo.ai%2F&format=xml
+Passively Fingerprinting -: |========
+Path not in the DB for https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/fonts/fonts.css?ver=1.0.0
+Passively Fingerprinting -: |============
+Path not in the DB for https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/style.css?ver=1.0.0
+Passively Fingerprinting -: |=================
+Path not in the DB for https://yameveo.ai/wp-json/
+Passively Fingerprinting -: |======================
+Path not in the DB for https://yameveo.ai/wp-json/wp/v2/pages/122
+Passively Fingerprinting -: |===========================
+Path not in the DB for https://yameveo.ai/xmlrpc.php?rsd
+Passively Fingerprinting -: |================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/favicon-512-150x150.png
+Passively Fingerprinting -: |===================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/favicon-512.png
+Passively Fingerprinting -: |========================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/yameveo-logo-horizontal.png
+Passively Fingerprinting -: |============================================
+Path not in the DB for https://yameveo.ai/about/
+Passively Fingerprinting -: |=================================================
+Path not in the DB for https://yameveo.ai/services/
+Passively Fingerprinting -: |======================================================
+Path not in the DB for https://yameveo.ai/projects/
+Passively Fingerprinting -: |===========================================================
+Path not in the DB for https://yameveo.ai/blog/
+Passively Fingerprinting -: |================================================================
+Path not in the DB for https://yameveo.ai/contact/
+Passively Fingerprinting -: |===================================================================
+Path not in the DB for https://yameveo.ai/projects
+Passively Fingerprinting -: |========================================================================
+Path not in the DB for https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/images/about-logo.png
+Passively Fingerprinting -: |============================================================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/team-1-2-300x281.png
+Passively Fingerprinting -: |=================================================================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/team-2-281x300.png
+Passively Fingerprinting -: |======================================================================================
+Path not in the DB for https://yameveo.ai/wp-content/uploads/2026/02/team-3-2-300x300.jpg
+Passively Fingerprinting -: |===========================================================================================
+Path not in the DB for https://yameveo.ai/cdn-cgi/l/email-protection#076f626b6b68477e666a6271626829666e
+Passively Fingerprinting -: |================================================================================================
+Path not in the DB for https://yameveo.ai/service/ai-solutions/
+Passively Fingerprinting -: |===================================================================================================
+Path not in the DB for https://yameveo.ai/service/cybersecurity/
+Passively Fingerprinting -: |========================================================================================================
+Path not in the DB for https://yameveo.ai/service/software-development/
+Passively Fingerprinting -: |============================================================================================================
+Path not in the DB for https://yameveo.ai/service/blockchain/
+Passively Fingerprinting -: |=================================================================================================================
+Path not in the DB for https://yameveo.ai/service/ciam/
+Passively Fingerprinting -: |======================================================================================================================
+Path not in the DB for https://yameveo.ai/service/ecommerce/
+Passively Fingerprinting -: |===========================================================================================================================
+Path not in the DB for https://yameveo.ai/privacy-policy/
+Passively Fingerprinting -: |================================================================================================================================
+Path not in the DB for https://yameveo.ai/privacy-policy-yameveo-sl/
+Passively Fingerprinting -: |===================================================================================================================================
+Path not in the DB for https://yameveo.ai/privacy-policy-yameveo-eood/
+Passively Fingerprinting -: |========================================================================================================================================
+Path not in the DB for https://yameveo.ai/legal-notice/
+Passively Fingerprinting -: |============================================================================================================================================
+Path not in the DB for https://yameveo.ai/gender-equality-plan/
+Passively Fingerprinting -: |=================================================================================================================================================
+Path not in the DB for https://yameveo.ai/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js
+Passively Fingerprinting -: |======================================================================================================================================================
+Path not in the DB for https://yameveo.ai/wp-content/themes/yameveo-sentinel-classic/js/main.js?ver=1.0.0
+Passively Fingerprinting -: |================================================================================================================================================================|
+
+No match found
+----------------------------------------
+
+
+================================================================================
+AutoWPScan
+================================================================================
+SKIP: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+
+================================================================================
+AEM Detector (aem-hacker)
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+AEM Discoverer
+================================================================================
+SKIP: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+CMSScan (detector workflow)
+================================================================================
+Tool Name   : CMSScan (detector workflow)
+Command     : env TARGET_URL_ENV=https://yameveo.ai:443 /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/bin/cmsscan-python -c import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); m={'wordpress':'wpscan','drupal':'droopescan','joomla':'joomscan','vbulletin':'vbscan'}.get(c,'none'); print('detected_cms='+c); print('mapped_scanner='+m); print('full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)')
+Tool Log    : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/CMSScan__detector_workflow.log
+Started     : 2026-03-04 22:33:30
+Status      : SUCCESS
+Exit Code   : 0
+Finished    : 2026-03-04 22:33:30
+Duration    : 0s
+
+Output:
+----------------------------------------
+detected_cms=wordpress
+mapped_scanner=wpscan
+full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)
+----------------------------------------
+
+
+================================================================================
+Execution Overview
+================================================================================
+Target URL      : https://yameveo.ai:443
+Detected CMS    : wordpress
+Success (rc=0)  : 10
+Non-zero exits  : 0
+Timeouts        : 0
+Skipped         : 11
+Run log         : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/run.log
+Tool logs dir   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai
+Report file     : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/yameveo.ai.cms.txt
+
+================================================================================
+Skipped Tools (Consolidated)
+================================================================================
+- Droopescan (drupal): detected CMS 'wordpress', tool targets 'drupal'
+- Droopescan (joomla): detected CMS 'wordpress', tool targets 'joomla'
+- Droopescan (moodle): detected CMS 'wordpress', tool targets 'moodle'
+- Droopescan (silverstripe): detected CMS 'wordpress', tool targets 'silverstripe'
+- JoomScan: detected CMS 'wordpress', tool targets 'joomla'
+- Drupwn: detected CMS 'wordpress', tool targets 'drupal'
+- VBScan: detected CMS 'wordpress', tool targets 'vbulletin'
+- joomlavs: detected CMS 'wordpress', tool targets 'joomla'
+- AutoWPScan: WPSCAN_API_TOKEN not set (AutoWPScan requires token-backed WPScan JSON for stable results)
+- AEM Detector (aem-hacker): detected CMS 'wordpress', tool targets 'aem'
+- AEM Discoverer: detected CMS 'wordpress', tool targets 'aem'
+
+================================================================================
+Non-Zero And Timeout Tools
+================================================================================
+None
+
+================================================================================
+Operational Notes
+================================================================================
+None
+
+================================================================================
+Summary
+================================================================================
+Target URL            : https://yameveo.ai:443
+Detected CMS          : wordpress
+Success (rc=0)        : 10
+Non-zero exits        : 0
+Timeouts              : 0
+Skipped               : 11
+Run log               : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai/run.log
+Tool logs directory   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/logs/20260304_223151_yameveo.ai
+Report generated at   : /home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/reports/yameveo.ai.cms.txt

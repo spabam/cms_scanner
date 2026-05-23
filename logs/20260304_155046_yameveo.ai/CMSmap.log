@@ -1,0 +1,15 @@
+E: Unable to locate package exploitdb
+[-] Date & Time: 04/03/2026 15:50:47
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/cmsmap/bin/cmsmap", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/main.py", line 109, in main
+    updater.CheckLocalFiles()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/coreupdate.py", line 226, in CheckLocalFiles
+    self.SortUniqueFile()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/lib/coreupdate.py", line 82, in SortUniqueFile
+    f = open(list, "w")
+PermissionError: [Errno 13] Permission denied: '/home/spabam/.venv/cms_scanner/cmsmap/lib/python3.13/site-packages/cmsmap/data/wp_plugins_small.txt'

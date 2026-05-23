@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec env PYTHONWARNINGS=ignore::SyntaxWarning,ignore::UserWarning "/home/spabam/.venv/cms_scanner/drupwn-modern/bin/drupwn" "$@"

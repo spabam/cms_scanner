@@ -1,0 +1,54 @@
+/home/spabam/.local/share/gem/ruby/3.3.0/bin/wpscan: Interrupt
+[32m[+][0m URL: https://yameveo.ai/ [2606:4700:3033::ac43:970d]
+[32m[+][0m Started: Wed Mar  4 22:13:44 2026
+
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entries:
+ |  - server: cloudflare
+ |  - nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+ |  - referrer-policy: strict-origin-when-cross-origin
+ |  - report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=L6QQosKEKcWJudHb6cVwhQxWVoC9%2FWIF%2F0nO25YMrzQuGU0gpp%2BkN3MGSft0em20p%2F80oVjIywtgOhZ7jrO9z4jZNhZPXlCx6sDHkixKPJvYoEn%2BfDQ%3D"}]}
+ |  - cf-cache-status: DYNAMIC
+ |  - cf-ray: 9d73e2e48b590642-MAD
+ |  - alt-svc: h3=":443"; ma=86400
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+[32m[+][0m robots.txt found: https://yameveo.ai/robots.txt
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m XML-RPC seems to be enabled: https://yameveo.ai/xmlrpc.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
+
+[32m[+][0m WordPress readme found: https://yameveo.ai/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+
+[32m[+][0m The external WP-Cron seems to be enabled: https://yameveo.ai/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Wed Mar  4 22:13:49 2026
+[32m[+][0m Requests Done: 25
+[32m[+][0m Cached Requests: 5
+[32m[+][0m Data Sent: 7.434 KB
+[32m[+][0m Data Received: 158.856 KB
+[32m[+][0m Memory used: 141.746 MB
+[32m[+][0m Elapsed time: 00:00:04
+
+Scan Aborted: Canceled by User

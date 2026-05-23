@@ -1,0 +1,9 @@
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-05-06 17:48 +0200
+Nmap scan report for infrascan.net (172.67.134.101)
+Host is up (0.019s latency).
+Other addresses for infrascan.net (not scanned): 2606:4700:3031::ac43:8665 2606:4700:3032::6815:19a7 104.21.25.167
+
+PORT    STATE SERVICE
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 0.54 seconds

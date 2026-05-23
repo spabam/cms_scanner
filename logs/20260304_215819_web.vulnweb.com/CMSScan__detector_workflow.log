@@ -1,0 +1,3 @@
+detected_cms=unknown
+mapped_scanner=none
+full_workflow=disabled (set CMSSCAN_FULL_WORKFLOW=1 to enable)

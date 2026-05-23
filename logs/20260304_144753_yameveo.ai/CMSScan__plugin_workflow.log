@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan'); from plugins.scanners import find_cms,wpscan,droopescan,joomscan,vbscan; u=os.environ['TARGET_URL_ENV']; c=find_cms(u); print('detected_cms='+c); print((wpscan(u) if c=='wordpress' else droopescan(u) if c=='drupal' else joomscan(u) if c=='joomla' else vbscan(u) if c=='vbulletin' else 'No mapped scanner for detected CMS'))
+                                                                                                                                                                                                                                                                                          ~~~~~~^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/plugins/scanners.py", line 60, in wpscan
+    return cmd_runner(wp_scan)
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/CMSScan/plugins/scanners.py", line 29, in cmd_runner
+    result = check_output(cmd, stderr=STDOUT, universal_newlines=True)
+  File "/usr/lib/python3.13/subprocess.py", line 472, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1209, in communicate
+    stdout = self.stdout.read()
+KeyboardInterrupt
+detected_cms=wordpress
+[INFO] wpscan scanning URL: https://yameveo.ai:443

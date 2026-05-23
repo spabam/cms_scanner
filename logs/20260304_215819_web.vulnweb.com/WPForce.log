@@ -1,0 +1,14 @@
+       ,-~~-.___.       __        __ ____   _____
+      / |  x     \      \ \      / /|  _ \ |  ___|___   _ __  ___  ___
+     (  )        0       \ \ /\ / / | |_) || |_  / _ \ | '__|/ __|/ _ \.
+      \_/-, ,----'  ____  \ V  V /  |  __/ |  _|| (_) || |  | (__|  __/
+         ====      ||   \_ \_/\_/   |_|    |_|   \___/ |_|   \___|\___|
+        /  \-'~;   ||     |                v.1.0.0
+       /  __/~| ...||__/|-"   Brute Force Attack Tool for Wordpress
+     =(  _____||________|                 ~n00py~
+    
+Username List: /tmp/tmp.QZ080Hc96P/wpforce_users.txt (2)
+Password List: /tmp/tmp.QZ080Hc96P/wpforce_passwords.txt (4)
+URL: https://web.vulnweb.com:443
+Trying: https://web.vulnweb.com:443/xmlrpc.php
+Could not identify XMLRPC.  Please verify the domain.

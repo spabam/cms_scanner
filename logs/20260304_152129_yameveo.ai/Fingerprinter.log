@@ -1,0 +1,9 @@
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/cms_scanner-0.13.9/lib/cms_scanner.rb:9: warning: bigdecimal was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.4.0.
+You can add bigdecimal to your Gemfile or gemspec to silence this warning.
+/home/spabam/.local/share/gem/ruby/3.3.0/gems/activesupport-6.1.7.10/lib/active_support/core_ext/hash/conversions.rb:3: warning: base64 was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.4.0.
+You can add base64 to your Gemfile or gemspec to silence this warning.
+
+No match found
+undefined method `in_scope_urls' for an instance of CMSScanner::Target
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/lib/fingerprinter/actions.rb:254:in `passive_fingerprint'
+/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/fingerprinter/fingerprinter.rb:68:in `<main>'

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec "/home/spabam/.venv/cms_scanner/droopescan/bin/droopescan" "$@"

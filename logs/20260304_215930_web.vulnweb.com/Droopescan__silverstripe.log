@@ -1,0 +1,100 @@
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/socket.py", line 977, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='web.vulnweb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/droopescan/bin/droopescan", line 5, in <module>
+    droopescan.main()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/droopescan.py", line 55, in main
+    ds.run()
+    ~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/cement/core/foundation.py", line 764, in run
+    self.controller._dispatch()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/cement/core/controller.py", line 466, in _dispatch
+    return func()
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/cement/core/controller.py", line 472, in _dispatch
+    return func()
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/silverstripe.py", line 59, in silverstripe
+    self.plugin_init()
+    ~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/internal/base_plugin_internal.py", line 297, in plugin_init
+    self.process_url(opts, functionality, enabled_functionality, hide_progressbar)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/internal/base_plugin_internal.py", line 316, in process_url
+    output = self.url_scan(url, opts, functionality, enabled_functionality,
+            hide_progressbar=hide_progressbar)
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/internal/base_plugin_internal.py", line 414, in url_scan
+    url, host_header = self.determine_redirect(url, host_header, opts)
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/internal/base_plugin_internal.py", line 496, in determine_redirect
+    redir_url = self._determine_redirect(url, opts['verb'],
+            opts['timeout'], self._generate_headers(host_header))
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/dscan/plugins/internal/base_plugin_internal.py", line 463, in _determine_redirect
+    r = requests_verb(url, timeout=timeout, headers=headers, allow_redirects=False)
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/requests/sessions.py", line 624, in head
+    return self.request("HEAD", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/spabam/.venv/cms_scanner/droopescan/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='web.vulnweb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)"))

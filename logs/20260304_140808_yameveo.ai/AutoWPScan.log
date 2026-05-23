@@ -1,0 +1,12 @@
+/bin/sh: 1: wpscan: not found
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import os,sys; sys.path.insert(0,'/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan'); import main; print(main.run_wpscan(os.environ['TARGET_URL_ENV'],'single-target','0'))
+                                                                                                                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan/main.py", line 158, in run_wpscan
+    vulnerabilities_count, wp_banner, vulnerabilities_list = parse_wpscan_result(output_file_name)
+                                                             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/AutoWPScan/main.py", line 165, in parse_wpscan_result
+    with open(result_file, 'r', encoding='utf-8') as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/20260304_843696728004_yameveo.ai:443_wpscan_result.json'

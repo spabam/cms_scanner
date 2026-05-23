@@ -1,0 +1,61 @@
+[0;33;49m  [!] [0mRefreshing the module cache...
+
+[H[2J[3J
+[0m[33m[1m                      /\
+[0m[33m[1m          _.--''-- , / /
+[0m[33m[1m  ,---- .'          /_/
+[0m[33m[1m   '---',  .  _  .    ;
+[0m[33m[1m        ._  __ __      \
+[0m[33m[1m       , _)        .-'  y      [0m[97m[1mWordPress Exploit Framework
+[0m[33m[1m       -          (_..   :     [0m[97mVersion 2.0.1
+[0m[33m[1m      ; ...  ... (\     \ '
+[0m[33m[1m      _  \ \ \ \  /      ; :   [0m[97m[1mAuxiliaries: [0m[32m58
+[0m[33m[1m     ( t  \ \/\ \/  _   '  l   [0m[97m[1mExploits:    [0m[32m288
+[0m[33m[1m     \ |   \/  \/  i )- ' /    [0m[97m[1mPayloads:    [0m[32m7
+[0m[33m[1m      - '._        | /  ,'
+[0m[33m[1m       ..   ' - ''  -j ,
+[0m[33m[1m      (  '.___.. --'.
+[0m[33m[1m       '.______..--'
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > help
+[1G
+  Command                 Description                                                                              
+  ---------------------   --------------------------------------------------------------------------------------   
+  back                    Change the context of the session back to it was before loading the current module.      
+  check                   Check if the currently loaded module can be used against the specified target.           
+  clear                   Clear the screen.                                                                        
+  creds                   List the credentials stored in the current workspace.                                    
+  creds -d [id]           Delete the credential with the matching [id] number.                                     
+  exit                    Exit the WordPress Exploit Framework prompt.                                             
+  gset [option] [value]   Set the [value] of [option] globally, so it is used by the current and future modules.   
+  gunset [option]         Unset a global [option] set with the gset command.                                       
+  help                    Shows this information.                                                                  
+  info                    Display information about the currently loaded module.                                   
+  loot                    List the loot collected from targets in the current workspace.                           
+  loot -d [id]            Delete the loot item with the matching [id] number.                                      
+  loot -p [id]            Print the content of the loot item with the matching [id] number.                        
+  quit                    Exit the WordPress Exploit Framework prompt.                                             
+  rebuild_cache           Re-build the module cache.                                                               
+  run                     Run the currently loaded module.                                                         
+  set [option] [value]    Set the [value] of [option] for the currently loaded module.                             
+  search [keywords]       Search for modules that contain one or more of the specified [keywords]                  
+  show advanced           Show the advanced options of the currently loaded module.                                
+  show auxiliary          Show the list of available auxiliary modules.                                            
+  show exploits           Show the list of available exploits.                                                     
+  show options            Show the basic options of the currently loaded module.                                   
+  unset [option]          Unset an [option] set with the set command.                                              
+  use [module_path]       Load the specified module into the current context.                                      
+  workspace               List the available workspaces.                                                           
+  workspace [name]        Switch to the [name] workspace.                                                          
+  workspace -a [name]     Add a new workspace.                                                                     
+  workspace -d [name]     Delete the [name] workspace.                                                             
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > search scanner
+[1G
+[0;31;49m  [!] [0mNo results for "scanner"
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > set target_uri https://yameveo.ai:443
+[1G
+
+[4;94;49mwpxf[0m > [?25l[1G[K[1G[0m[4;94;49mwpxf[0m > [0m[?25h[8G[?25l[1G[K[?25h[1G[4;94;49mwpxf[0m > exit
+[1G[H[2J[3J

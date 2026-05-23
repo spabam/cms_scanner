@@ -1,0 +1,125 @@
+[1;0;34m
+                                                      
+                    .:.        .:,                    
+                   xM;           XK.                  
+                  dx'            .lO.                 
+                 do                ,0.                
+             .c.lN'      ,  '.     .k0.:'             
+              xMMk;d;''cOM0kWXl,',locMMX.             
+              .NMK.   :WMMMMMMMx    dMMc              
+               lMMO  lWMMMMMMMMMO. lMMO               
+                cWMxxMMMMMMMMMMMMKlWMk                
+                 .xWMMMMMMMMMMMMMMM0,[1;1;94m                 
+                   .,OMd,,,;0MMMO,.                   
+             .l0O.[1;97mVXVX[1;1;94mOX.[1;97mVXVX[1;1;94m0MO[1;97mVXVX[1;1;94m.0Kd,             
+            lWMMO0[1;97mVXVX0[1;1;94mOX.[1;97mVXVX[1;1;94ml[1;97mVXVX[1;1;94m.VXNMMO            
+           .MMX;.N0[1;97mVXVX0[1;1;94m0X.[1;97mVXVXVX0[1;1;94m.0M:.OMMl           
+          .OXc  ,MMO[1;97mVXVX0[1;1;94mVX[1;97m .VXVX0[1;1;94m0MMo  ,0X'          
+          0x.  :XMMMk[1;97mVXVX.[1;1;94mXO.[1;97mVXVX[1;1;94mdMMMWo.  :X'         
+         .d  'NMMMMMMk[1;97mVXVX[1;1;94m..[1;97mVXVX0[1;1;94m.XMMMMWl  ;c         
+            'NNoMMMMMMx[1;97mVXVXVXVXVX0.[1;1;94mXMMk0Mc            
+           .NMx OMMMMMMd[1;97mVXVXVX[1;1;94ml[1;97mVXVX[1;1;94m.NW.;MMc           
+          :NMMd .NMMMMMMd[1;97mVXVX[1;1;94mdMd,,,,oc ;MMWx          
+          .0MN,  'XMMMMMMo[1;97mVX[1;1;94moMMMMMMWl   0MW,          
+           .0.    .xWMMMMM:lMMMMMM0,     kc           
+            ,O.     .:dOKXXXNKOxc.      do            
+             '0c        -VulnX-       ,Ol             
+               ;.                     :.   
+
+    [1;97m# Coded By Anouar Ben Saad -[1;93m @anouarbensaad      
+                                           [1;0m
+
+ [1;94m[[1;97mTarget[1;94m][1;97m => https://web.vulnweb.com:443[1;0m 
+ 
+[1;97m −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+ [1;93m[~][1;97m looking for cms
+ [1;92m[+][1;97m CMS : Uknown
+[1;97m −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+ [1;93m[~][1;97m Web Hosting Information
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/socket.py", line 977, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -2] Name or service not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connection.py", line 211, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='web.vulnweb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/vulnx.py", line 158, in <module>
+    detection()
+    ~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/vulnx.py", line 113, in detection
+    instance.instanciate()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/detector.py", line 159, in instanciate
+    instance.serveros()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/executor/Uknown.py", line 37, in serveros
+    os.os_server()
+    ~~~~~~~~~~~~^^
+  File "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/vulnx/modules/gathering/host_gathering.py", line 27, in os_server
+    response = requests.get(self.url, headers=self.headers,verify=False).headers
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/spabam/.venv/cms_scanner/vulnx/lib/python3.13/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='web.vulnweb.com', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("HTTPSConnection(host='web.vulnweb.com', port=443): Failed to resolve 'web.vulnweb.com' ([Errno -2] Name or service not known)"))

@@ -1,0 +1,9 @@
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-03-04 15:51 +0100
+Nmap scan report for yameveo.ai (172.67.151.13)
+Host is up (0.0031s latency).
+Other addresses for yameveo.ai (not scanned): 104.21.48.117 2606:4700:3033::ac43:970d 2606:4700:3030::6815:3075
+
+PORT    STATE SERVICE
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 0.51 seconds
