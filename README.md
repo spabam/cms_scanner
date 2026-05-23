@@ -1,0 +1,684 @@
+# Universal CMS Vulnerability Scanner
+Copyright (c) INFRA - Andrea Bodei 2026-2036
+
+Universal CMS Vulnerability Scanner (UCVS) is a framework that integrates multiple open source CMS security scanners into a single automated workflow.
+
+The system detects the Content Management System used by a target website and runs specialized vulnerability scanners accordingly. The objective is to provide a unified interface for scanning a wide variety of CMS platforms.
+
+The framework integrates the following scanners:
+
+Core scanners:
+
+* WPScan
+* CMSmap
+* CMSeek
+* Droopescan
+* JoomScan
+* Drupwn
+* VBScan
+* CMSScan
+* VulnX
+* Clusterd
+
+Additional scanners:
+
+* WPSeku
+* WPXF
+* WPForce
+* joomlavs
+* Fingerprinter
+* AutoWPScan
+* AEM Detector
+
+---
+
+# Key Features
+
+* Single entrypoint scan runner: `./run_cms_scanner.sh <target> [report_output]`
+* Automatic target normalization to a full URL (`http(s)://host:port[/path]`)
+* Automatic protocol/port probing with `nmap` when protocol/port is omitted
+* CMS-aware execution: CMS-specific tools are skipped when the detected CMS does not match
+* Default report output in `./reports` when no report path is provided
+* User-controlled report path/name override when `report_output` is provided
+* Per-run logging in `./logs/<timestamp_target>/` (`run.log`, one log per tool, and nmap probe logs)
+* Built-in per-tool timeout control via `TOOL_TIMEOUT` (default: 180s)
+* CMSScan runs in fast detector mode by default; optional full plugin workflow via `CMSSCAN_FULL_WORKFLOW=1`
+* AutoWPScan `scan_aborted` outputs are automatically reclassified as `SKIP` in summary counters
+* Unified report with per-tool command, exit code, output, and summary counters
+
+---
+
+# Supported CMS and Tools
+
+| Tool          | CMS Covered                                                                   | Description                                                          |
+| ------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| WPScan        | WordPress                                                                     | Plugin enumeration, theme enumeration, vulnerability database lookup |
+| CMSmap        | WordPress, Joomla, Drupal                                                     | CMS detection and vulnerability scanning                             |
+| CMSeek        | 180+ CMS including WordPress, Joomla, Drupal, Magento, TYPO3, Ghost, OpenCart | CMS fingerprinting and enumeration                                   |
+| Droopescan    | Drupal, SilverStripe, WordPress, Moodle                                       | Module/theme/version enumeration                                     |
+| JoomScan      | Joomla                                                                        | Component vulnerability detection                                    |
+| Drupwn        | Drupal                                                                        | Drupal enumeration and exploitation framework                        |
+| VBScan        | vBulletin                                                                     | Vulnerability scanner for vBulletin forums                           |
+| CMSScan       | Multiple CMS platforms                                                        | Automated CMS vulnerability scanning                                 |
+| VulnX         | WordPress, Joomla, Drupal, OpenCart, PrestaShop                               | CMS vulnerability scanner and exploit detection                      |
+| Clusterd      | Generic web infrastructure                                                    | Large scale scanning and clustering                                  |
+| WPSeku        | WordPress                                                                     | WordPress security scanner and vulnerability detection               |
+| WPXF          | WordPress                                                                     | Exploitation framework for WordPress vulnerabilities                 |
+| WPForce       | WordPress                                                                     | Credential testing and enumeration                                   |
+| joomlavs      | Joomla                                                                        | Joomla vulnerability scanner                                         |
+| Fingerprinter | Multiple CMS                                                                  | CMS detection and fingerprinting                                     |
+| AutoWPScan    | WordPress                                                                     | Automated large scale WordPress scanning                             |
+| AEM Detector  | Adobe Experience Manager                                                      | Detects AEM installations                                            |
+
+---
+
+# CMS Coverage Summary
+
+| CMS                      | Scanners                                                                     |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| WordPress                | WPScan, CMSmap, CMSeek, Droopescan, VulnX, WPSeku, WPXF, WPForce, AutoWPScan |
+| Joomla                   | CMSmap, CMSeek, JoomScan, VulnX, joomlavs                                    |
+| Drupal                   | CMSmap, CMSeek, Droopescan, Drupwn                                           |
+| Magento                  | CMSeek                                                                       |
+| TYPO3                    | CMSeek                                                                       |
+| Ghost                    | CMSeek                                                                       |
+| Shopify                  | CMSeek                                                                       |
+| OpenCart                 | CMSeek, VulnX                                                                |
+| PrestaShop               | VulnX                                                                        |
+| SilverStripe             | Droopescan                                                                   |
+| vBulletin                | VBScan                                                                       |
+| Adobe Experience Manager | AEM Detector                                                                 |
+| Unknown CMS              | Fingerprinter, CMSeek, CMSScan                                               |
+
+---
+
+# Architecture
+
+`run_cms_scanner.sh` runs scanners in a modular pipeline.
+
+```
+Target URL
+    |
+Target normalization + nmap protocol/port detection
+    |
+CMS detection
+    |
+CMS specific scanner
+    |
+General-purpose scanners
+    |
+Report aggregation
+```
+
+Execution model:
+
+```
+1. Parse target and normalize to URL
+2. If protocol/port missing, probe with nmap (443 then 80)
+3. Detect CMS from HTTP response patterns
+4. Run compatible scanner set and skip non-applicable CMS-specific tools
+5. Save report + per-tool logs and append final summary
+```
+
+---
+
+# Installation
+
+Verified on **March 4, 2026**.
+
+The framework runs on Linux systems such as Ubuntu, Debian, and Kali.
+
+Install base dependencies:
+
+```
+sudo apt update
+sudo apt install -y git curl perl ruby ruby-dev build-essential \
+  python3 python3-pip python3-venv \
+  libxml2-dev libxslt1-dev zlib1g-dev liblzma-dev libcurl4-openssl-dev \
+  nmap
+```
+
+Optional legacy runtime for older tools (for example WPForce):
+
+```
+sudo apt install -y python2
+```
+
+---
+
+## Automated Installer (`installer.sh`)
+
+Use the bundled installer to install all tools and generate wrappers in `./bin`.
+By default, all Python dependencies are installed in `~/.venv/cms_scanner`.
+The installer uses non-interactive Git (`GIT_TERMINAL_PROMPT=0`) so missing/private repositories fail fast without prompting for GitHub username/password.
+It also patches scanner runtime edge cases:
+
+* installs required Fingerprinter Ruby gems (`cms_scanner` pinned to `0.13.9`, `dearchiver`)
+* patches AutoWPScan to use optional `WPSCAN_API_TOKEN` (no hardcoded placeholder token)
+* patches CMSmap `edbpath` to a user-writable directory and bootstraps missing data files to avoid large auto-clone/update stalls on first scan
+
+Install with dependency provisioning:
+
+```
+./installer.sh --system-deps
+```
+
+If run as a non-root user with `--system-deps`, the script prompts once for your sudo password (`sudo -v`).
+
+Install using already-present system dependencies:
+
+```
+./installer.sh
+```
+
+If the installer is executed as root (for example via `sudo` or `su`), it detects the original user (`SUDO_USER`/`logname`) and runs pip/gem/git installs as that user so dependencies do not land under `/root`.
+
+Useful options:
+
+* `--no-update`: reuse existing checkouts without `git pull`
+* `--skip-smoke-tests`: skip post-install command checks
+* `--tools-dir <path>`: custom checkout directory
+* `--venv-dir <path>`: custom venv directory (default: `~/.venv/cms_scanner`)
+
+Installer code layout (`installer.sh`) is fully commented by sections:
+
+* CLI/logging helpers
+* user resolution and run-as-user execution wrappers
+* dependency/runtime helpers (`apt`, `ruby`, `perl`, `sudo` gating)
+* filesystem/repository/wrapper helpers
+* phase orchestration and Python 3.12+ compatibility shims
+* one installer function per integrated tool
+* preflight/system-install/tool-install/verification phases + final summary
+
+This makes it easier to maintain and safely extend a single tool installer without touching unrelated logic.
+
+After install, add wrappers to your shell PATH:
+
+```
+export PATH="$(pwd)/bin:$PATH"
+```
+
+Installer test results on **March 4, 2026**:
+
+* `./installer.sh`: Installed 17, Skipped 0, Failed 0, Warnings 0
+* `./installer.sh` as user `spabam`: Installed 17, Skipped 0, Failed 0, Warnings 0
+
+---
+
+# Install Integrated Scanners
+
+## WPScan
+
+WPScan is the primary scanner for WordPress core/plugin/theme enumeration and vulnerability checks.
+
+Prerequisites from upstream:
+
+* Ruby >= 3.0
+* curl >= 7.72
+
+Install via distro package (recommended on Kali):
+
+```
+sudo apt update
+sudo apt install -y wpscan
+```
+
+Install via RubyGems (recommended on Ubuntu/Debian):
+
+```
+gem install --user-install wpscan
+```
+
+If gem installation fails with missing `ruby.h`/native extension errors:
+
+```
+sudo apt install -y ruby-dev build-essential
+gem install --user-install wpscan
+```
+
+Post-install checks:
+
+```
+wpscan --version
+wpscan --update
+```
+
+Example run:
+
+```
+wpscan --url https://target.tld --enumerate u,p,t
+```
+
+For vulnerability data from WPScan API, add `--api-token <token>`.
+
+---
+
+## CMSmap
+
+```
+git clone https://github.com/Dionach/CMSmap.git
+cd CMSmap
+python3 -m pip install .
+```
+
+---
+
+## CMSeek
+
+```
+git clone https://github.com/Tuhinshubhra/CMSeeK.git
+cd CMSeeK
+python3 -m pip install -r requirements.txt
+```
+
+Run:
+
+```
+python3 cmseek.py
+```
+
+---
+
+## Droopescan
+
+Droopescan performs CMS-specific enumeration (plugins/themes/modules/versions), especially for Drupal.
+
+Install in a dedicated virtual environment:
+
+```
+python3 -m venv .venv-droopescan
+source .venv-droopescan/bin/activate
+pip install --upgrade pip
+pip install droopescan
+```
+
+Sanity check:
+
+```
+droopescan --help
+```
+
+Example run:
+
+```
+droopescan scan drupal -u https://target.tld
+```
+
+Compatibility note: on Python 3.12+ (for example Python 3.13), upstream `droopescan` dependencies use removed stdlib modules (`imp`, `distutils`). `installer.sh` now auto-applies compatibility shims inside the tool venv so `droopescan --help` works on modern Python.
+
+On Debian/Ubuntu systems:
+
+```
+sudo apt install -y python3.11 python3.11-venv
+```
+
+---
+
+## JoomScan
+
+```
+git clone https://github.com/OWASP/joomscan.git
+cd joomscan
+perl joomscan.pl
+```
+
+---
+
+## Drupwn
+
+Drupwn is a Drupal-focused enumeration and exploitation tool.
+
+`pip3 install drupwn` fails in current environments (no matching PyPI distribution), so install from source:
+
+```
+git clone https://github.com/immunIT/drupwn.git
+cd drupwn
+python3 -m venv .venv-drupwn
+source .venv-drupwn/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install .
+```
+
+Sanity check:
+
+```
+drupwn --help
+```
+
+Example run:
+
+```
+drupwn --mode enum --target https://target.tld --users --modules --themes
+```
+
+Compatibility note: if you hit `No module named 'pkg_resources'`, install a compatible setuptools release:
+
+```
+pip install "setuptools<81"
+```
+
+---
+
+## VBScan
+
+The old `rezasp/vbscan` URL now redirects to `OWASP/vbscan` (archived/read-only).
+
+```
+git clone https://github.com/OWASP/vbscan.git
+cd vbscan
+perl vbscan.pl <target>
+```
+
+---
+
+## CMSScan
+
+`s0md3v/CMSscan` is unavailable. Use the currently available CMSScan project:
+
+```
+git clone https://github.com/ajinabraham/CMSScan.git
+cd CMSScan
+./setup.sh
+```
+
+---
+
+## VulnX
+
+```
+git clone https://github.com/anouarbensaad/vulnx.git
+cd vulnx
+python3 -m pip install -r requirements.txt
+```
+
+---
+
+## Clusterd
+
+`clusterd/clusterd` is unavailable and `make` is not the correct install path. Use:
+
+```
+git clone https://github.com/hatRiot/clusterd.git
+cd clusterd
+python3 -m pip install -r requirements.txt
+python3 clusterd.py --help
+```
+
+Compatibility note: current upstream `hatRiot/clusterd` codebase still contains Python 2 era patterns and may not run cleanly on modern Python 3. The installer applies compatibility shims and then runs a smoke test; if runtime errors remain, it marks Clusterd as `SKIP` (not `FAIL`).
+
+---
+
+## WPSeku
+
+`m4ll0k/WPSeku` is unavailable. Use the community fork:
+
+```
+git clone https://github.com/andripwn/WPSeku.git
+cd WPSeku
+python3 -m pip install -r requirements.txt
+python3 wpseku.py
+```
+
+---
+
+## WPXF
+
+`rastating/wpxf` is unavailable. Install the WPXF gem instead:
+
+```
+gem install --user-install wpxf
+wpxf
+```
+
+Project source repository: `https://github.com/rastating/wordpress-exploit-framework` (archived/read-only).
+
+---
+
+## WPForce
+
+WPForce upstream is Python 2.7 based (`urllib2` usage in source).
+`installer.sh` now installs WPForce in one of two modes:
+
+* Python 2 mode (when `python2` is available): installs `requests` for Python 2 and runs upstream script directly.
+* Python 3 compatibility mode (automatic fallback): creates a dedicated venv, auto-converts `wpforce.py` with `modernize`, and runs it with Python 3.
+
+Manual Python 2 install path:
+
+```
+git clone https://github.com/n00py/WPForce.git
+cd WPForce
+python2 -m pip install --user requests
+python2 wpforce.py -h
+```
+
+If `python2` is unavailable on your distro release, run WPForce in a legacy container/VM that provides Python 2.7.
+
+---
+
+## joomlavs
+
+`joomlavs` is archived/read-only. On modern Ruby 3.x, bundler lockfile workflows can fail.
+Use direct gem dependencies instead of bundled lockfile resolution:
+
+```
+git clone https://github.com/rastating/joomlavs.git
+cd joomlavs
+gem install --user-install slop typhoeus
+ruby joomlavs.rb
+```
+
+This is the path used by `installer.sh`.
+
+---
+
+## Fingerprinter
+
+Primary URL from older docs is unavailable:
+
+```
+https://github.com/pentesterlab/fingerprinter
+```
+
+`installer.sh` uses this maintained public fallback:
+
+```
+https://github.com/erwanlr/Fingerprinter
+```
+
+---
+
+## AutoWPScan
+
+Primary URL from older docs is unavailable:
+
+```
+https://github.com/ethicalhack3r/AutoWPScan
+```
+
+`installer.sh` uses this public fallback:
+
+```
+https://github.com/password123456/autowpscan
+```
+
+---
+
+## AEM Detector
+
+```
+git clone https://github.com/0ang3el/aem-hacker.git
+cd aem-hacker
+python3 -m pip install -r requirements.txt
+```
+
+---
+
+## Installer Skip Conditions
+
+The installer intentionally reports some tools as `SKIP` when upstream/runtime constraints are detected:
+
+* `Clusterd`: skipped when runtime compatibility issues remain after automated Python 3 compatibility shims.
+
+`run_cms_scanner.sh` also reclassifies known runtime anomalies as `SKIP` in the report summary:
+
+* `AutoWPScan`: `scan_aborted` output with rc=0 (commonly API-token/rate-limit related)
+* `Fingerprinter`: runtime stacktrace/error output with rc=0 from upstream tool behavior
+
+---
+
+## Verification References
+
+Upstream references used to verify the installation instructions:
+
+* https://github.com/wpscanteam/wpscan
+* https://www.kali.org/tools/wpscan/
+* https://github.com/Dionach/CMSmap
+* https://github.com/Tuhinshubhra/CMSeeK
+* https://github.com/SamJoan/droopescan
+* https://github.com/OWASP/joomscan
+* https://github.com/immunIT/drupwn
+* https://github.com/OWASP/vbscan
+* https://github.com/ajinabraham/CMSScan
+* https://github.com/anouarbensaad/vulnx
+* https://github.com/hatRiot/clusterd
+* https://github.com/andripwn/WPSeku
+* https://github.com/rastating/wordpress-exploit-framework
+* https://github.com/n00py/WPForce
+* https://github.com/rastating/joomlavs
+* https://github.com/0ang3el/aem-hacker
+* https://github.com/pentesterlab/fingerprinter
+* https://github.com/erwanlr/Fingerprinter
+* https://github.com/ethicalhack3r/AutoWPScan
+* https://github.com/password123456/autowpscan
+
+---
+
+# Running the Framework
+
+Basic scan:
+
+```
+./run_cms_scanner.sh yameveo.ai
+```
+
+Specify protocol/port directly:
+
+```
+./run_cms_scanner.sh https://target.tld:443
+```
+
+Save report with a custom filename in `reports/`:
+
+```
+./run_cms_scanner.sh target.tld my-report.txt
+```
+
+Save report to a custom path:
+
+```
+./run_cms_scanner.sh target.tld /tmp/target-report.txt
+```
+
+Save report to a custom directory with default generated name:
+
+```
+./run_cms_scanner.sh target.tld /tmp/
+```
+
+When protocol and port are omitted, the runner probes with `nmap` in this order:
+
+1. `443/tcp` then assume `https://...:443` when open
+2. `80/tcp` then assume `http://...:80` when open
+3. if both are closed/unreachable, exits with:
+   `Target not found, please specify protocol (http:// or https://) and port (:80 or :443)`
+
+In restricted environments where outbound probing is blocked, pass an explicit URL:
+
+```
+./run_cms_scanner.sh https://target.tld:443
+```
+
+Control timeout for each tool:
+
+```
+TOOL_TIMEOUT=60 ./run_cms_scanner.sh target.tld
+```
+
+Run full CMSScan plugin workflow (default is fast detector workflow):
+
+```
+CMSSCAN_FULL_WORKFLOW=1 CMSSCAN_FULL_TIMEOUT=420 ./run_cms_scanner.sh target.tld
+```
+
+Optional: provide WPScan API token for AutoWPScan enrichment:
+
+```
+WPSCAN_API_TOKEN=<token> ./run_cms_scanner.sh target.tld
+```
+
+`run_cms_scanner.sh` has been refactored and commented into clear stages:
+
+* target parsing/normalization helpers
+* ownership/log lifecycle helpers
+* reusable execution helpers (`run_tool_if_available`, `run_cms_tool_if_available`, `append_skip`)
+* sequential tool execution with explicit CMS-aware skip logic
+* unified summary/report generation
+
+---
+
+# Output
+
+Default behavior:
+
+* Report is saved to `./reports/<normalized-target>.cms.txt` if no output path/name is provided
+* Runtime logs are always saved under `./logs/<timestamp_target>/`
+
+Output layout:
+
+```
+reports/
+ ├ target1.cms.txt
+ └ target2.cms.txt
+
+logs/
+ └ 20260304_142319_target.tld/
+    ├ run.log
+    ├ nmap_443.txt
+    ├ nmap_80.txt
+    ├ WPScan.log
+    ├ CMSeeK.log
+    └ ...
+```
+
+Report contents include:
+
+* input and normalized target
+* detected CMS
+* nmap probe results
+* per-tool command line, exit code, and stdout/stderr
+* explicit skip reasons for non-applicable CMS-specific tools
+* explicit reclassification notes for known tool/runtime edge cases
+* final summary (`success`, `nonzero`, `timeouts`, `skipped`)
+
+---
+
+# Use Cases
+
+Typical applications include:
+
+* penetration testing
+* CMS vulnerability research
+* automated reconnaissance
+* bug bounty scanning
+* large scale web infrastructure analysis
+
+---
+
+# Legal Notice
+
+Use this software only on systems you own or where explicit authorization has been granted. Unauthorized scanning may violate applicable laws.
+
+Copyright (c) INFRA - Andrea Bodei 2026-2036
+# cms_scanner
+# cms_scanner
