@@ -1,0 +1,19 @@
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
+# id	module	install_hook	environment	role	data_policy
+wpscan	wpscan.sh	install_wpscan	ruby	required	bounded-required
+cmsmap	cmsmap.sh	install_cmsmap	cms-python	required	bounded-required
+cmseek	cmseek.sh	install_cmseek	cms-python	required	none
+droopescan	droopescan.sh	install_droopescan	cms-python	required	opt-in-required
+joomscan	joomscan.sh	install_joomscan	perl	required	none
+drupwn	drupwn.sh	install_drupwn	cms-python	required	opt-in-required
+vbscan	vbscan.sh	install_vbscan	perl	required	none
+cmsscan	cmsscan.sh	install_cmsscan	cms-python	required	none
+vulnx	vulnx.sh	install_vulnx	cms-python	required	none
+clusterd	clusterd.sh	install_clusterd	cms-python	auxiliary-required	none
+wpseku	wpseku.sh	install_wpseku	cms-python	required	none
+wpxf	wpxf.sh	install_wpxf	ruby	required	none
+wpforce	wpforce.sh	install_wpforce	cms-python	required	none
+joomlavs	joomlavs.sh	install_joomlavs	ruby	required	none
+fingerprinter	fingerprinter.sh	install_fingerprinter	ruby	required	opt-in-required
+autowpscan	autowpscan.sh	install_autowpscan	cms-python	required	none
+aem_detector	aem_detector.sh	install_aem_detector	cms-python	required	none

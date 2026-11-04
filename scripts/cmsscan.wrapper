@@ -1,0 +1,496 @@
+#!/usr/bin/env bash
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
+# VANTAGE / INFRA AI OU PROJECT NOTICE
+# Project-maintained VAPT integration by Andrea Bodei and INFRA AI OU for the
+# VANTAGE project under the European Commission DIGITAL programme.
+# AUTHORIZED USE ONLY: governments, companies, professionals, and other entities
+# may use these tools only with explicit permission to perform VAPT against each
+# specific target and only within the approved scope and rules of engagement.
+# This repository grants no explicit or implicit authorization to test any target.
+# Andrea Bodei, INFRA AI OU, the VANTAGE project, the DIGITAL programme, and the
+# European Commission disclaim responsibility for unauthorized use or misuse.
+# See PROJECT_NOTICE.md; applicable licenses and upstream notices remain authoritative.
+
+# Copyright © 2026 Andrea Bodei — www.andreabodei.com
+# Copyright (c) 2026-2036 Andrea Bodei <info at andreabodei.com>
+# Decrypt and extract the packaged CMS scanner archive, then run run_cms_scanner.sh.
+set -euo pipefail
+
+ARCHIVE_NAME="${INFRA_ARCHIVE_NAME:-0139684769}"
+INFRA_LIB_DIR="${INFRA_LIB_DIR:-/opt/infrascan/lib}"
+ARCHIVE_PATH="${INFRA_ARCHIVE_PATH:-${INFRA_LIB_DIR}/${ARCHIVE_NAME}}"
+ARCHIVE_PATH_FALLBACK="${INFRA_ARCHIVE_PATH_FALLBACK:-${ARCHIVE_PATH}.7z}"
+MANIFEST_PATH="${INFRA_ARCHIVE_MANIFEST_PATH:-${ARCHIVE_PATH}.manifest}"
+INFRAUTH_PATH="${INFRAUTH_PATH:-/etc/infrascan/infrauth}"
+INFRAUTH_FALLBACK_PATH="${INFRAUTH_FALLBACK_PATH:-/etc/infrascan/infrauth}"
+TMP_ROOT="${CMS_SCANNER_TMPDIR:-${TMPDIR:-/tmp}}"
+INVOCATION_DIR="$(pwd -P)"
+PROGRESS_FILE_OPTION=""
+RUNTIME_LOG_FILE_OPTION=""
+QUIET_PROGRESS=0
+CMSSCAN_PROGRESS_PATH=""
+CMSSCAN_LOG_PATH=""
+
+vantage_aiuser_entry="$(/usr/bin/getent passwd aiuser 2>/dev/null || true)"
+vantage_aiuser_uid="$(printf '%s\n' "$vantage_aiuser_entry" | /usr/bin/awk -F: 'NR == 1 {print $3}')"
+if [[ -z "$vantage_aiuser_uid" ||
+      "$(/usr/bin/id -u)" != "$vantage_aiuser_uid" ||
+      "${VANTAGE_DISPATCHED:-0}" != 1 ]]; then
+  [[ -f /usr/bin/infra-scan-main && ! -L /usr/bin/infra-scan-main &&
+     -x /usr/bin/infra-scan-main ]] || {
+    printf 'cmsscan: trusted /usr/bin/infra-scan-main is not installed\n' >&2
+    exit 77
+  }
+  exec /usr/bin/infra-scan-main cmsscan "$@"
+fi
+unset vantage_aiuser_entry vantage_aiuser_uid
+# INFRA_VAPT_BANNER_BEGIN
+infra_vapt_scanner="cmsscan"
+case "${VANTAGE_COMMAND_TOKEN:-${0##*/}}" in
+  cmsscan|cmscan) infra_vapt_scanner="${VANTAGE_COMMAND_TOKEN:-${0##*/}}" ;;
+esac
+printf 'INFRA VAPT %s%s by Andrea Bodei www.andreabodei.com\n' "$infra_vapt_scanner" "${VANTAGE_COMMAND_VERSION:+ $VANTAGE_COMMAND_VERSION}" >&2
+unset infra_vapt_scanner
+# INFRA_VAPT_BANNER_END
+
+INVOCATION_DIR="${VANTAGE_RESULTS_DIR:-${INVOCATION_DIR}}"
+
+usage() {
+  local cmd
+  cmd="$(basename "$0")"
+  cat <<EOF
+Copyright (c) 2026-2036 Andrea Bodei - info at andreabodei.com
+
+Usage:
+  ${cmd} [--tor] [--scanner NAME] <target> [report_output]
+  ${cmd} -h|--help
+
+Description:
+  Decrypts the packaged INFRA CMS scanner archive, verifies its manifest, runs
+  the bundled run_cms_scanner.sh workflow, and stores reports/logs in the
+  current working directory by default.
+
+Arguments:
+  target
+      Required. Accepted forms:
+        example.com
+        example.com:8080
+        example.com/path
+        http://example.com
+        https://example.com:8443/path
+
+      If the scheme or port is omitted, the bundled runner probes 443 and 80
+      with nmap and chooses https or http from the first open web port it finds.
+
+  report_output
+      Optional. Controls where the consolidated report is written.
+      If omitted:
+        ./reports/<normalized-target>.cms.txt
+      If a directory or trailing slash is provided:
+        <directory>/<normalized-target>.cms.txt
+      If a bare filename is provided:
+        ./reports/<filename>
+      If a path is provided:
+        <path>
+
+Options:
+  --tor
+      Route scanner connections through the local Tor SOCKS proxy on port
+      9050. Requires torsocks and a running Tor service.
+
+  --scanner NAME
+      Run only one scanner. If omitted, all scanners run by default.
+      Use --scanner all to force the default behavior.
+
+      Supported names:
+        all
+        wpscan, cmsmap, cmseek, droopescan, joomscan, drupwn, vbscan
+        vulnx, wpseku, wpforce, wpxf, joomlavs, fingerprinter
+        autowpscan, aem-hacker, aem-discoverer, cmsscan
+
+  --progress-file PATH
+      Override the scalar progress file. Precedence is CLI, CMSSCAN_* (or the
+      CMSCAN alias), INFRA_*, then .cmsscan.<uid>.<UTC timestamp>.progress.
+
+  --log-file PATH
+      Override the paired runtime log using the same precedence.
+
+  --quiet
+      Suppress progress stdout only; progress and log files remain active.
+
+  -h, --help, help
+      Show this help and exit without decrypting the scanner archive.
+
+Output:
+  Consolidated report:
+      <resolved report_output>
+  Per-tool logs:
+      ./logs/<normalized-target>-<timestamp>/
+
+Exit status:
+  0  Scanner completed, or help was shown.
+  1  Invalid arguments, illegal target, missing dependency, integrity failure,
+     archive decrypt failure, or runner failure.
+
+Examples:
+  ${cmd} web.vulnweb.com
+  ${cmd} --tor --scanner wpscan https://web.vulnweb.com
+  ${cmd} --scanner droopescan https://example.com reports/droopescan.txt
+  ${cmd} http://web.vulnweb.com
+  ${cmd} https://web.vulnweb.com:443
+  ${cmd} example.com reports/example.cms.txt
+  ${cmd} https://example.com /tmp/example.cms.txt
+EOF
+}
+
+die() {
+  echo "Error: $*" >&2
+  exit 1
+}
+
+need_cmd() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+truthy() {
+  case "${1:-}" in
+    1|true|TRUE|yes|YES|on|ON) return 0 ;;
+  esac
+  return 1
+}
+
+runtime_absolute_path() {
+  case "$1" in
+    /*) printf '%s\n' "$1" ;;
+    *) printf '%s/%s\n' "${INVOCATION_DIR}" "$1" ;;
+  esac
+}
+
+progress_line() {
+  local value="$1" filled empty filled_text empty_text
+  filled=$((value * 32 / 100))
+  empty=$((32 - filled))
+  printf -v filled_text '%*s' "${filled}" ''
+  printf -v empty_text '%*s' "${empty}" ''
+  filled_text="${filled_text// /#}"
+  empty_text="${empty_text// /-}"
+  LC_NUMERIC=C printf 'Progress: [%s%s] %5.1f%%' \
+    "${filled_text}" "${empty_text}" "${value}"
+}
+
+initialize_runtime_artifacts() {
+  local uid timestamp stem progress_value log_value directory temporary line
+  uid="${VANTAGE_RUNTIME_UID:-$(/usr/bin/id -u)}"
+  timestamp="$(date -u +'%Y%m%dT%H%M%S%NZ')"
+  stem="${INVOCATION_DIR}/.cmsscan.${uid}.${timestamp}"
+  progress_value="${PROGRESS_FILE_OPTION:-${CMSSCAN_PROGRESS_FILE:-${CMSCAN_PROGRESS_FILE:-${INFRA_PROGRESS_FILE:-${stem}.progress}}}}"
+  log_value="${RUNTIME_LOG_FILE_OPTION:-${CMSSCAN_LOG_FILE:-${CMSCAN_LOG_FILE:-${INFRA_LOG_FILE:-${stem}.log}}}}"
+  CMSSCAN_PROGRESS_PATH="$(runtime_absolute_path "${progress_value}")"
+  CMSSCAN_LOG_PATH="$(runtime_absolute_path "${log_value}")"
+  [[ "${CMSSCAN_PROGRESS_PATH}" != "${CMSSCAN_LOG_PATH}" ]] \
+    || die "progress and log paths must be different"
+  mkdir -p -- "$(dirname -- "${CMSSCAN_PROGRESS_PATH}")" \
+    "$(dirname -- "${CMSSCAN_LOG_PATH}")" \
+    || die "could not create runtime artifact directory"
+  : >>"${CMSSCAN_LOG_PATH}" || die "could not create runtime log: ${CMSSCAN_LOG_PATH}"
+  chmod 0600 "${CMSSCAN_LOG_PATH}" >/dev/null 2>&1 || true
+  directory="$(dirname -- "${CMSSCAN_PROGRESS_PATH}")"
+  temporary="$(mktemp "${directory}/.cmsscan-progress.XXXXXXXX")" \
+    || die "could not create progress file"
+  if ! printf '0' >"${temporary}" || ! chmod 0600 "${temporary}" \
+      || ! mv -f -- "${temporary}" "${CMSSCAN_PROGRESS_PATH}"; then
+    rm -f -- "${temporary}" >/dev/null 2>&1 || true
+    die "could not publish progress file: ${CMSSCAN_PROGRESS_PATH}"
+  fi
+  line="$(progress_line 0)"
+  printf '%s\n' "${line}" >>"${CMSSCAN_LOG_PATH}"
+  if [[ "${QUIET_PROGRESS}" -eq 0 ]] \
+      && ! truthy "${VAPTSCAN_MANAGED_PROGRESS:-0}"; then
+    printf '%s\n' "${line}"
+  fi
+  export CMSSCAN_PROGRESS_FILE="${CMSSCAN_PROGRESS_PATH}"
+  export CMSSCAN_LOG_FILE="${CMSSCAN_LOG_PATH}"
+}
+
+sha256_file() {
+  local path="$1"
+  if need_cmd sha256sum; then
+    sha256sum "$path" | awk '{print $1}'
+  elif need_cmd shasum; then
+    shasum -a 256 "$path" | awk '{print $1}'
+  elif need_cmd openssl; then
+    openssl dgst -sha256 "$path" | awk '{print $NF}'
+  else
+    return 1
+  fi
+}
+
+manifest_value() {
+  local manifest="$1"
+  local key="$2"
+  awk -F= -v target="$key" '$1 == target { print substr($0, index($0, "=") + 1); exit }' "$manifest"
+}
+
+manifest_file_hash() {
+  local manifest="$1"
+  local relative_path="$2"
+  awk -v target="$relative_path" '$1 == "critical_file" && $2 == target { print $3; exit }' "$manifest"
+}
+
+verify_archive_manifest() {
+  local archive="$1"
+  local manifest="$2"
+  local expected=""
+  local actual=""
+
+  [ -f "$manifest" ] || die "archive integrity manifest not found: $manifest"
+  expected="$(manifest_value "$manifest" "archive_sha256")"
+  [[ "$expected" =~ ^[0-9a-fA-F]{64}$ ]] || die "archive manifest is missing a valid archive SHA-256"
+  actual="$(sha256_file "$archive")" || die "failed to compute archive SHA-256"
+  [ "$actual" = "$expected" ] || die "archive integrity verification failed"
+}
+
+verify_extracted_file() {
+  local manifest="$1"
+  local relative_path="$2"
+  local extracted_path="$3"
+  local expected=""
+  local actual=""
+
+  [ -f "$extracted_path" ] || die "critical file not found after extraction: $relative_path"
+  expected="$(manifest_file_hash "$manifest" "$relative_path")"
+  [[ "$expected" =~ ^[0-9a-fA-F]{64}$ ]] || die "archive manifest is missing a valid file SHA-256 for: $relative_path"
+  actual="$(sha256_file "$extracted_path")" || die "failed to compute SHA-256 for extracted file: $relative_path"
+  [ "$actual" = "$expected" ] || die "integrity verification failed for extracted file: $relative_path"
+}
+
+resolve_infrauth_path() {
+  local candidate
+  for candidate in "$INFRAUTH_PATH" "$INFRAUTH_FALLBACK_PATH"; do
+    [ -n "$candidate" ] || continue
+    if [ -f "$candidate" ] && [ -r "$candidate" ] && [ ! -L "$candidate" ]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+derive_archive_password() {
+  local raw=""
+  local auth_path=""
+  local derived=""
+
+  if [ -n "${INFRA_ARCHIVE_PASSWORD:-}" ]; then
+    printf '%s\n' "$INFRA_ARCHIVE_PASSWORD"
+    return 0
+  fi
+
+  auth_path="$(resolve_infrauth_path || true)"
+  [ -n "$auth_path" ] || return 1
+  raw="$(env -i PATH=/usr/bin:/bin bash --noprofile --norc "$auth_path" 2>/dev/null || true)"
+  raw="$(printf '%s' "$raw" | head -n 1 | tr -d '\r' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')"
+  [ -n "$raw" ] || return 1
+  derived="${raw/www./info@}"
+  [ -n "$derived" ] || return 1
+  printf '%s\n' "$derived"
+}
+
+normalize_target_host() {
+  local input="$1"
+  local host
+  host="$(printf '%s' "$input" | tr '[:upper:]' '[:lower:]')"
+  host="${host#http://}"
+  host="${host#https://}"
+  host="${host##*@}"
+  host="${host%%/*}"
+  host="${host%%\?*}"
+  host="${host%%\#*}"
+  if [[ "$host" != \[*\] ]] && [[ "$host" == *:* ]]; then
+    host="${host%%:*}"
+  fi
+  host="${host%.}"
+  printf '%s' "$host"
+}
+
+is_illegal_target() {
+  local host
+  host="$(normalize_target_host "$1")"
+  case "$host" in
+    andreabodei.com|*.andreabodei.com|infrascan.net|*.infrascan.net|haxor.ai|*.haxor.ai)
+      return 0
+      ;;
+  esac
+  return 1
+}
+
+has_help_arg() {
+  local arg
+  for arg in "$@"; do
+    case "$arg" in
+      -h|--help|help)
+        return 0
+        ;;
+    esac
+  done
+  return 1
+}
+
+parse_invocation() {
+  local scanner_value=""
+  local option=""
+  local -a positionals=()
+
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      -h|--help|help)
+        usage
+        exit 0
+        ;;
+      --tor)
+        ;;
+      --quiet)
+        QUIET_PROGRESS=1
+        ;;
+      --progress-file|--log-file)
+        option="$1"
+        shift
+        if [ "$#" -eq 0 ] || [ -z "${1:-}" ] || [[ "$1" == --* ]]; then
+          echo "Missing path for ${option}" >&2
+          exit 1
+        fi
+        if [ "${option}" = "--progress-file" ]; then
+          PROGRESS_FILE_OPTION="$1"
+        else
+          RUNTIME_LOG_FILE_OPTION="$1"
+        fi
+        ;;
+      --progress-file=*)
+        PROGRESS_FILE_OPTION="${1#*=}"
+        [ -n "${PROGRESS_FILE_OPTION}" ] || die "missing path for --progress-file"
+        ;;
+      --log-file=*)
+        RUNTIME_LOG_FILE_OPTION="${1#*=}"
+        [ -n "${RUNTIME_LOG_FILE_OPTION}" ] || die "missing path for --log-file"
+        ;;
+      --scanner|--tool|--only)
+        shift
+        if [ "$#" -eq 0 ] || [ -z "${1:-}" ] || [[ "$1" == --* ]]; then
+          echo "Missing scanner name for --scanner" >&2
+          usage >&2
+          exit 1
+        fi
+        scanner_value="$1"
+        ;;
+      --scanner=*|--tool=*|--only=*)
+        scanner_value="${1#*=}"
+        if [ -z "$scanner_value" ]; then
+          echo "Missing scanner name for --scanner" >&2
+          usage >&2
+          exit 1
+        fi
+        ;;
+      --)
+        shift
+        while [ "$#" -gt 0 ]; do
+          positionals+=("$1")
+          shift
+        done
+        break
+        ;;
+      --*)
+        echo "Unknown option: $1" >&2
+        usage >&2
+        exit 1
+        ;;
+      *)
+        positionals+=("$1")
+        ;;
+    esac
+    shift
+  done
+
+  if [ "${#positionals[@]}" -lt 1 ] || [ "${#positionals[@]}" -gt 2 ]; then
+    usage >&2
+    exit 1
+  fi
+
+  target="${positionals[0]}"
+}
+
+cleanup() {
+  if [ -n "${TMP_DIR:-}" ] && [ -d "${TMP_DIR:-}" ]; then
+    rm -rf -- "$TMP_DIR" >/dev/null 2>&1 || true
+  fi
+}
+
+if has_help_arg "$@"; then
+  usage
+  exit 0
+fi
+
+if [ "$#" -eq 0 ] || [ -z "${1:-}" ]; then
+  exit 0
+fi
+
+[[ "$(/usr/bin/id -u)" == "$(/usr/bin/getent passwd aiuser 2>/dev/null | /usr/bin/awk -F: 'NR == 1 {print $3}')" ]] || \
+  die "cmsscan worker identity changed unexpectedly"
+
+parse_invocation "$@"
+if is_illegal_target "$target"; then
+  echo "illegal target"
+  exit 1
+fi
+initialize_runtime_artifacts
+
+need_cmd 7z || die "7z not found. Install p7zip-full."
+if ! need_cmd sha256sum && ! need_cmd shasum && ! need_cmd openssl; then
+  die "SHA-256 tool not found. Install sha256sum, shasum, or openssl."
+fi
+
+ARCHIVE_TO_USE="$ARCHIVE_PATH"
+if [ ! -f "$ARCHIVE_TO_USE" ] && [ -f "$ARCHIVE_PATH_FALLBACK" ]; then
+  ARCHIVE_TO_USE="$ARCHIVE_PATH_FALLBACK"
+  if [ -z "${INFRA_ARCHIVE_MANIFEST_PATH:-}" ] && [ -f "${ARCHIVE_PATH_FALLBACK}.manifest" ]; then
+    MANIFEST_PATH="${ARCHIVE_PATH_FALLBACK}.manifest"
+  fi
+fi
+
+[ -f "$ARCHIVE_TO_USE" ] || die "scanner bundle not found at $ARCHIVE_PATH"
+[ -r "$ARCHIVE_TO_USE" ] || die "scanner bundle is not readable: $ARCHIVE_TO_USE"
+[ -r "$MANIFEST_PATH" ] || die "archive manifest is not readable: $MANIFEST_PATH"
+
+verify_archive_manifest "$ARCHIVE_TO_USE" "$MANIFEST_PATH"
+
+mkdir -p "$TMP_ROOT" 2>/dev/null || true
+TMP_DIR="$(mktemp -d "${TMP_ROOT%/}/cms_scanner_XXXXXX")"
+trap cleanup EXIT INT TERM
+CALLER_CWD="${INVOCATION_DIR}"
+password="$(derive_archive_password || true)"
+[ -n "$password" ] || die "unable to derive archive password"
+
+if ! 7z x -t7z "-p${password}" -y "-o${TMP_DIR}" "$ARCHIVE_TO_USE" >/dev/null 2>&1; then
+  die "failed to decrypt scanner payload"
+fi
+unset password
+
+RUNNER_PATH=""
+if [ -x "$TMP_DIR/cms_scanner/run_cms_scanner.sh" ]; then
+  RUNNER_PATH="$TMP_DIR/cms_scanner/run_cms_scanner.sh"
+elif [ -x "$TMP_DIR/run_cms_scanner.sh" ]; then
+  RUNNER_PATH="$TMP_DIR/run_cms_scanner.sh"
+else
+  RUNNER_PATH="$(find "$TMP_DIR" -maxdepth 3 -type f -name run_cms_scanner.sh 2>/dev/null | head -n 1 || true)"
+fi
+[ -n "$RUNNER_PATH" ] || die "scanner payload is invalid (run_cms_scanner.sh not found)"
+chmod +x "$RUNNER_PATH" >/dev/null 2>&1 || true
+
+SCANNER_DIR="$(cd "$(dirname "$RUNNER_PATH")" && pwd)"
+verify_extracted_file "$MANIFEST_PATH" "run_cms_scanner.sh" "$SCANNER_DIR/run_cms_scanner.sh"
+
+mkdir -p "$CALLER_CWD/reports" "$CALLER_CWD/logs"
+cd "$CALLER_CWD"
+CMS_SCANNER_REPORTS_DIR="$CALLER_CWD/reports" \
+CMS_SCANNER_LOGS_DIR="$CALLER_CWD/logs" \
+  bash "$RUNNER_PATH" "$@"
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com

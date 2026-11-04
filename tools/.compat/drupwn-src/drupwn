@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
+
+from __future__ import print_function
+
+import os
+
+from engine.Dispatcher import Dispatcher
+from engine.Exploiter import Exploiter
+from engine.Fingerprinter import Fingerprinter
+from engine.Logger import Logger
+from engine.Parser import Parser
+from engine.Request import Request
+from plugins.Update import Update
+
+__author__ = "Jean Lejeune <jlejeune@immunit.ch>"
+__copyright__ = "Copyright 2018, ImmunIT"
+
+
+def welcome():
+    print("""
+        ____
+       / __ \_______  ______ _      ______
+      / / / / ___/ / / / __ \ | /| / / __ \\
+     / /_/ / /  / /_/ / /_/ / |/ |/ / / / /
+    /_____/_/   \__,_/ .___/|__/|__/_/ /_/
+                     /_/
+    """)
+
+if __name__ == "__main__":
+    welcome()
+
+    config = Parser().parse()
+    logger = Logger(config["log"])
+    
+    if config['update']:
+        Update(logger,config).run()
+        raise SystemExit(0)
+        
+    request = Request(config["target"], config["cookies"], config["delay"], config["userAgent"], config["bauth"],
+        config["proxy"] if config["proxy"] is not None else config["proxies"])
+
+    try:
+        request.get()
+    except:
+        logger.handle("\n[-] Target is not reachable. Exiting.", logger.ERROR)
+        os._exit(-1)
+
+    if config["version"] is None:
+        Fingerprinter(request, logger).fingerprint(config)
+
+        if config["version"] is None:
+            logger.handle("\n[-] The automatic detection failed. Please specify a version", logger.ERROR)
+        else:
+            logger.handle("\n[+] Version detected: " + str(config["version"]) + "\n", logger.SUCCESS)
+
+    if config["mode"] == "enum":
+        Dispatcher(request, logger).dispatch(config)
+    elif config["mode"] == "exploit":
+        Exploiter(request, logger, config).run()
+    else:
+        logger.handle("[-] Unknown mode. Modes available : enum | exploit", logger.ERROR)
+    logger.close()
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com

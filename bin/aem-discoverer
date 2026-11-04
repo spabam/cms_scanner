@@ -1,3 +1,31 @@
 #!/usr/bin/env bash
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
+# Copyright © 2026 Andrea Bodei — www.andreabodei.com
 set -euo pipefail
-exec "/home/spabam/.venv/cms_scanner/aem-hacker/bin/python" "/home/spabam/Dropbox/Public/VANTAGE/VAPT/WA-SCAN/infra_fuzzer/cms_scanner/tools/aem-hacker/aem_discoverer.py" "$@"
+export PYTHONDONTWRITEBYTECODE=1
+
+RUNTIME_PASSWD="$(/usr/bin/getent passwd aiuser 2>/dev/null || true)"
+RUNTIME_UID="$(printf '%s\n' "$RUNTIME_PASSWD" | /usr/bin/cut -d: -f3)"
+CANONICAL_HOME="$(printf '%s\n' "$RUNTIME_PASSWD" | /usr/bin/cut -d: -f6)"
+if [[ ! "$RUNTIME_UID" =~ ^[1-9][0-9]*$ ||
+      "$(/usr/bin/id -u)" != "$RUNTIME_UID" ||
+      "${VANTAGE_DISPATCHED:-0}" != 1 ||
+      "$CANONICAL_HOME" != /* || "$CANONICAL_HOME" == / ||
+      "${HOME:-}" != "$CANONICAL_HOME" ]]; then
+  echo "CMS scanner tools must run as aiuser inside a dispatched CMS scan" >&2
+  exit 77
+fi
+
+WRAPPER_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+PROJECT_ROOT="$(cd -- "${WRAPPER_DIR}/.." && pwd -P)"
+if [[ -f "${WRAPPER_DIR}/../run_cms_scanner.sh" && -d "${WRAPPER_DIR}/../tools" ]]; then
+  PROJECT_ROOT="$(cd -- "${WRAPPER_DIR}/.." && pwd -P)"
+fi
+
+CANONICAL_VENV="${CANONICAL_HOME}/.local/share/vantage/cms_scanner/venv"
+CANONICAL_PYTHON="${CANONICAL_VENV}/bin/python"
+export VIRTUAL_ENV="${CANONICAL_VENV}"
+export PATH="${CANONICAL_VENV}/bin:${PATH}"
+
+exec "${CANONICAL_PYTHON}" "${PROJECT_ROOT}/tools/.compat/upstream/aem-hacker/aem_discoverer.py" "$@"
+# Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com

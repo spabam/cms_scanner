@@ -1,0 +1,3 @@
+[2026-07-28 23:20:21] RUN(user:spabam): /home/spabam/.venv/bin/python -m pip --version
+pip 26.1.2 from /home/spabam/.venv/lib/python3.12/site-packages/pip (python 3.12)
+[2026-07-28 23:20:21] UPDATE SKIP: Canonical Python pip - disabled by --no-update

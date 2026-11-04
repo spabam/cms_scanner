@@ -1,0 +1,3 @@
+-- Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
+CREATE TABLE cmsscan (id integer PRIMARY KEY, url CHAR(256) NOT NULL, cms CHAR(256) NOT NULL, result TEXT NOT NULL, tms CHAR(50) NOT NULL)
+-- Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
