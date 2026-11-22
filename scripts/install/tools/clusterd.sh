@@ -2,6 +2,39 @@
 # Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
 # Installer-only adapter; sourcing declares functions and performs no work.
 
+cms_disable_shared_fuze_login() {
+  run_user_cmd /usr/bin/python3 - "$@" <<'PY'
+import os
+import re
+import stat
+import sys
+import tempfile
+from pathlib import Path
+
+for root in map(Path, sys.argv[1:]):
+    path = root / "src/lib/coldfusion/fuze.cfml"
+    if not path.exists():
+        continue
+    if path.is_symlink() or not path.is_file():
+        raise SystemExit("Refusing an unexpected Fuze asset")
+    source = path.read_bytes()
+    disabled = b"<cfabort> <!--- Shared login disabled in this distribution. --->"
+    if source.startswith(disabled):
+        continue
+    # Stop before any CFML is evaluated, and remove any stored login hash.
+    source = re.sub(rb'(?im)^\s*<cfset\s+Password\s*=.*?>([^\r\n]*)', b'', source)
+    with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as output:
+        staged = Path(output.name)
+        try:
+            output.write(disabled + b"\n" + source)
+            output.flush()
+            os.fchmod(output.fileno(), stat.S_IMODE(path.stat().st_mode))
+            os.replace(staged, path)
+        finally:
+            staged.unlink(missing_ok=True)
+PY
+}
+
 install_clusterd() {
   local name="Clusterd"
   local repo="${TOOLS_DIR}/clusterd"
@@ -17,6 +50,10 @@ install_clusterd() {
     return 0
   fi
   repo="${EFFECTIVE_REPO_DIR}"
+  if ! cms_disable_shared_fuze_login "$repo" "${TOOLS_DIR}/clusterd" "${COMPAT_DIR}/upstream/clusterd"; then
+    mark_failed "$name" "unable to disable the bundled shared login"
+    return 0
+  fi
   if ! scanner_pip_install -r "${repo}/requirements.txt"; then
     mark_failed "$name" "requirements installation failed"
     return 0

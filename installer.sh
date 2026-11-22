@@ -1,4 +1,27 @@
 #!/usr/bin/env bash
+# VANTAGE_VAPT_CONTAINER_DELEGATION: on a host this project is deployed as
+# its VAPT container (containers/delegate.sh); VAPT_NATIVE_INSTALL=1 forces native.
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    __vapt_dir="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+    for __vapt_root in "$__vapt_dir" "$__vapt_dir/.." "$__vapt_dir/../.." "$__vapt_dir/../../.."; do
+        if [[ -f "$__vapt_root/containers/delegate.sh" && -f "$__vapt_root/containers/services.tsv" ]]; then
+            source "$__vapt_root/containers/delegate.sh" vapt-cmsscan "$@"
+            break
+        fi
+    done
+    unset __vapt_dir __vapt_root
+fi
+if [[ "${BASH_SOURCE[0]}" == "$0" && "${1:-}" == "--containers" ]]; then
+    shift
+    __sub_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
+    __vapt_root="$__sub_dir"
+    while [[ "$__vapt_root" != / && ! -f "$__vapt_root/containers/install.sh" ]]; do
+        __vapt_root="${__vapt_root%/*}"
+    done
+    if [[ -f "$__vapt_root/containers/install.sh" ]]; then
+        exec bash "$__vapt_root/containers/install.sh" "$@"
+    fi
+fi
 # Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
     printf '%s\n' 'Copyrights to Andrea Bodei 2026-2036 www.andreabodei.com'
@@ -2904,6 +2927,7 @@ cms_installer_is_current() {
         "${TOOLS_DIR}/vulnx" vulnx "${BIN_DIR}/vulnx" && return 0
       ;;
     install_clusterd)
+      cms_disable_shared_fuze_login "${TOOLS_DIR}/clusterd" "${COMPAT_DIR}/upstream/clusterd" "${COMPAT_DIR}/clusterd-src" || return 1
       if cms_repair_clusterd_runtime "${COMPAT_DIR}/clusterd-src" && \
         clusterd_runtime_is_usable; then
         cms_git_tool_is_current "Clusterd" https://github.com/hatRiot/clusterd.git \
@@ -4701,7 +4725,7 @@ compile_cmsscan_wrapper() {
   chmod 700 "${tmp_source}"
 
   log "Compiling ${INFRA_CMSSCAN_WRAPPER_SOURCE} with shc into ${INFRA_CMSSCAN_BIN}"
-  if ! "${shc_cmd}" -f "${tmp_source}" -o "${tmp_bin}" >/dev/null 2>&1; then
+  if ! "${shc_cmd}" -r -f "${tmp_source}" -o "${tmp_bin}" >/dev/null 2>&1; then
     rm -rf "${tmp_dir}"
     mark_failed "cmsscan wrapper" "shc compilation failed"
     return 1

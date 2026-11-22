@@ -18,7 +18,8 @@ set -Eeuo pipefail
 # Every scan, including help-time dependency probes, uses the managed account.
 vantage_aiuser_entry="$(/usr/bin/getent passwd aiuser 2>/dev/null || true)"
 vantage_aiuser_uid="$(printf '%s\n' "$vantage_aiuser_entry" | /usr/bin/awk -F: 'NR == 1 {print $3}')"
-if [[ -z "$vantage_aiuser_uid" ||
+if [[ "${VAPT_CONTAINER:-0}" != 1 ]] &&
+   [[ -z "$vantage_aiuser_uid" ||
       "$(/usr/bin/id -u)" != "$vantage_aiuser_uid" ||
       "${VANTAGE_DISPATCHED:-0}" != 1 ]]; then
   if [[ -f /usr/bin/infra-scan-main && ! -L /usr/bin/infra-scan-main &&

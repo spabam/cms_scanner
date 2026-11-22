@@ -1,3 +1,4 @@
+<cfabort> <!--- Shared login disabled in this distribution. --->
 <html>
 
 <!---
@@ -24,7 +25,7 @@
 
 <!--- _________Login_config_________ ---->
 <cfset UserName="god">
-<cfset Password="c21f969b5f03d33d43e04f8f136e7682"> <!--- MD5 --->
+
 <!--- ------------------------------ ---->
 
 <head>
