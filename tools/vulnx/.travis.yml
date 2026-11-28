@@ -1,0 +1,23 @@
+language: python
+os:
+  # os building
+  - linux
+python:
+  # version of python.
+  - 3.6
+before_install:
+  - python -m venv "$HOME/.venv"
+install:
+  # install packages.
+  - '"$HOME/.venv/bin/python" -m pip install -r ./requirements.txt'
+before_script:
+  - '"$HOME/.venv/bin/python" -m pip install flake8'
+  # stop the build if there are Python syntax errors or undefined names
+  - '"$HOME/.venv/bin/flake8" . --count --select=E901,E999,F821,F822,F823 --show-source --statistics'
+  # exit-zero treats all errors as warnings.  The GitHub editor is 127 chars wide
+  - '"$HOME/.venv/bin/flake8" . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics'
+script:
+  # run this command to grabber all informations, and apply the vunerabilites search
+  - '"$HOME/.venv/bin/python" vulnx.py -u isetso.rnu.tn --cms all -t3 --web-info --exploit'
+  # show list dorks & search example for blaze dork 5 page of google search & output the results to logs/Dorks/getTime()
+  - '"$HOME/.venv/bin/python" vulnx.py -l all -D blaze -n 5 --output logs/'

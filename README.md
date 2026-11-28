@@ -24,8 +24,22 @@ The Universal CMS Vulnerability Scanner coordinates multiple upstream CMS
 security tools behind one target-normalizing, dispatcher-managed command with
 consolidated reports and bounded runtime progress.
 
+## Bundled open-source tools (possibly modified)
+
+This repository **includes third-party open-source tools** in `tools/`: AutoWPScan, CMSScan,
+CMSeeK, CMSmap, WPForce, WPSeku, aem-hacker, clusterd, drupwn, Fingerprinter, JoomlaVS,
+OWASP JoomScan, OWASP VBScan and VulnX. They were written by their own authors, not by this
+project, and **the copies here may be modified versions** of the originals: comments added at
+the top of files, Python environment and path adjustments, and a few integration fixes. Each
+tool keeps its upstream licence file unchanged (GPL-3.0, MIT, Apache-2.0, BSD-2-Clause, and
+CC BY-NC 4.0 for Fingerprinter, which allows non-commercial use only); the original copyright
+stays with the upstream authors. [`tools/THIRD_PARTY.md`](tools/THIRD_PARTY.md) lists each
+tool's upstream repository, the commit this copy started from, its licence, and the files that
+differ from upstream. For an unmodified tool, use its upstream project.
+
 ## Topics
 
+- [Bundled open-source tools (possibly modified)](#bundled-open-source-tools-possibly-modified)
 - [Supported tools](#supported-tools)
 - [Installation and fixed runtime identity](#installation-and-fixed-runtime-identity)
 - [Public commands and private workers](#public-commands-and-private-workers)
@@ -335,8 +349,10 @@ These tests use fixtures or mocks and do not authorize or initiate a live scan.
 - [`logs/`](logs/README.md): operational evidence handling
 - [`reports/`](reports/README.md): consolidated report format
 - [`tests/`](tests/README.md): offline verification
-- `tools/`: bundled third-party/upstream source and notices; any commands in
-  upstream READMEs describe those projects, not the supported VANTAGE runtime
+- `tools/`: bundled third-party open-source tools, possibly modified, with their
+  upstream licences; [`tools/THIRD_PARTY.md`](tools/THIRD_PARTY.md) lists each one's
+  origin, licence and changes. Commands in upstream READMEs describe those projects,
+  not the supported VANTAGE runtime
 
 ## Legal notice
 

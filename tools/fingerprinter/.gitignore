@@ -1,0 +1,21 @@
+*.gem
+*.rbc
+*.lock
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+db/wordpress_plugin
+db/wordpress_theme
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
